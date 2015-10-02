@@ -1,11 +1,11 @@
-package com.realdolmen.redoairproject.repositories;
+package com.realdolmen.redoairproject.persistence.repositories;
 
 import com.realdolmen.redoairproject.entities.Flight;
 import org.junit.*;
 
 import javax.inject.Inject;
 
-public class FlightRepositoryTest
+public class FlightRepositoryTest extends PersistenceTest
 {
 
     private Flight flight;

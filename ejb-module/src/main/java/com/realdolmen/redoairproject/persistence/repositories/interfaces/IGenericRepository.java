@@ -1,6 +1,5 @@
-package com.realdolmen.redoairproject.repositories.interfaces;
+package com.realdolmen.redoairproject.persistence.repositories.interfaces;
 
-import javax.ejb.Remote;
 import java.util.List;
 
 public interface IGenericRepository<T> {

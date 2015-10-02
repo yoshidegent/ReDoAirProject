@@ -1,7 +1,7 @@
-package com.realdolmen.redoairproject.repositories;
+package com.realdolmen.redoairproject.persistence.repositories;
 
 import com.realdolmen.redoairproject.entities.AbstractEntity;
-import com.realdolmen.redoairproject.repositories.interfaces.IGenericRepository;
+import com.realdolmen.redoairproject.persistence.repositories.interfaces.IGenericRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
