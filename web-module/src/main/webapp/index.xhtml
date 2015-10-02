@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+</h:head>
+<h:body>
+    <h1>Home</h1>
+
+    <p>Landing page.</p>
+    <h:link outcome="/books.xhtml">List of books</h:link><br/>
+
+    <h:outputLabel value="Flight ID:"/>
+    <h:form>
+        <h:inputText value="#{flightController.flightId}"/><br/>
+        <h:commandButton value="FlightDetails" action="#{flightController.showFlightDetails}"/>
+    </h:form>
+
+    <h:form><h:commandLink value="All passengers" action="#{passengerConversationController.navigateToAllPassengers}"/></h:form>
+
+</h:body>
+</html>
