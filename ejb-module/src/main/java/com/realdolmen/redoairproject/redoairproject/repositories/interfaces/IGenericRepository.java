@@ -5,9 +5,8 @@ import java.util.List;
 
 public interface IGenericRepository<T> {
 
-    T create(T t);
+    T createOrUpdate(T t);
     T findById(Long id);
-    T update(T t);
     void delete(T t);
     void refresh(T t);
     List<T> findAll();

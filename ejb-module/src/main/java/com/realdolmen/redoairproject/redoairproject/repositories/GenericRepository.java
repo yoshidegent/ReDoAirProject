@@ -20,21 +20,16 @@ public abstract class GenericRepository<T extends AbstractEntity> implements IGe
     protected EntityManager entityManager;
 
     @Override
-    public T create(T t)
+    public T createOrUpdate(T t)
     {
-        entityManager.persist(t);
+        T t2 = entityManager.merge(t);
         entityManager.flush();
-        return t;
+        return t2;
     }
 
     @Override
     public T findById(Long id) {
         return entityManager.find(persistentClass, id);
-    }
-
-    @Override
-    public T update(T t) {
-        return entityManager.merge(t);
     }
 
     @Override
