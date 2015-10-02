@@ -10,6 +10,12 @@ import java.util.List;
 
 public abstract class GenericRepository<T extends AbstractEntity> implements IGenericRepository<T> {
 
+    private Class<T> persistentClass;
+
+    public GenericRepository(Class<T> persistentClass) {
+        this.persistentClass = persistentClass;
+    }
+
     @PersistenceContext
     protected EntityManager entityManager;
 
@@ -22,7 +28,7 @@ public abstract class GenericRepository<T extends AbstractEntity> implements IGe
     }
 
     @Override
-    public T findById(Class<T> persistentClass, Long id) {
+    public T findById(Long id) {
         return entityManager.find(persistentClass, id);
     }
 
@@ -42,7 +48,7 @@ public abstract class GenericRepository<T extends AbstractEntity> implements IGe
     }
 
     @Override
-    public List<T> findAll(Class<T> persistentClass) {
+    public List<T> findAll() {
         String queryString = "Select t from " + persistentClass.getSimpleName() + " t";
         TypedQuery<T> query = entityManager.createQuery(queryString, persistentClass);
 
