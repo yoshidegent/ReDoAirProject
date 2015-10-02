@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.persistence.repositories.interfaces;
+package com.realdolmen.redoairproject.persistence.interfaces;
 
 import com.realdolmen.redoairproject.entities.Flight;
 

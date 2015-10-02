@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.persistence.repositories;
+package com.realdolmen.redoairproject.persistence;
 
 import com.realdolmen.redoairproject.entities.Flight;
 import org.junit.*;
@@ -23,7 +23,7 @@ public class FlightRepositoryTest extends PersistenceTest
     @Test
     public void testFlightPersists()
     {
-        flight = flightRepository.createOrUpdate(flight);
+        //flight = flightRepository.createOrUpdate(flight);
         Assert.assertNotNull(flight.getId());
     }
 }

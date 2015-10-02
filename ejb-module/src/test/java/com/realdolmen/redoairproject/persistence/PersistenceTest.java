@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.persistence.repositories;
+package com.realdolmen.redoairproject.persistence;
 
 import com.realdolmen.redoairproject.persistence.config.DatabaseEngine;
 import org.junit.*;
