@@ -1,9 +1,9 @@
-package com.realdolmen.redoairproject.redoairproject.entities;
+package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Entity;
 
 @Entity
-public class Passenger extends AbstractEntity {
+public class TravelAgency extends AbstractEntity {
 
     /**
      * Class fields
