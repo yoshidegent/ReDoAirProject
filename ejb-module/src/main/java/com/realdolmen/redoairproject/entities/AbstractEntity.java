@@ -16,7 +16,6 @@ public class AbstractEntity implements Serializable{
     public AbstractEntity() {
     }
 
-
     public AbstractEntity(Long id) {
         this.id = id;
     }

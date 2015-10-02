@@ -1,5 +1,6 @@
 package com.realdolmen.redoairproject.entities;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 
 @Entity
