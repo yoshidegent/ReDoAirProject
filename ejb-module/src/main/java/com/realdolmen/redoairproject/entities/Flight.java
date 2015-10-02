@@ -10,20 +10,20 @@ public class Flight extends AbstractEntity {
     /**
      * Class fields
      */
-    private String airline;                 //enums van maken?
+    private Airline airline;
 
-    private String origin;
-    private String destination;
+    private Airport origin;
+    private Airport destination;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime departureTime;
     private double duration;
+
     private int seatsAvailable;
 
-    private Double price;
+    private double price;
     private double discountVolumeSales;
     private int seatsThresholdForDiscount;
-
 
 
     /**
@@ -32,10 +32,23 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, LocalDateTime departureTime, double duration, int seatsAvailable, double price, double discountVolumeSales, int seatsThresholdForDiscount) {
+        super(id);
+        this.airline = airline;
+        this.origin = origin;
+        this.destination = destination;
+        this.departureTime = departureTime;
+        this.duration = duration;
+        this.seatsAvailable = seatsAvailable;
+        this.price = price;
+        this.discountVolumeSales = discountVolumeSales;
+        this.seatsThresholdForDiscount = seatsThresholdForDiscount;
+    }
+
     /**
      * Bussiness Logic
      */
-    public LocalDateTime getArrivalTime(LocalDateTime departure, double duration )  {
+    public LocalDateTime calculateArrivalTime(LocalDateTime departure, double duration )  {
 //        this.departureTime;
 //        this.duration;
         return null;

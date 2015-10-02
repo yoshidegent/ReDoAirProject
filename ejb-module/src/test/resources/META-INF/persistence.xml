@@ -45,12 +45,13 @@
     <persistence-unit name="MyTestPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.realdolmen.course.domain.Book</class>
         <class>com.realdolmen.redoairproject.entities.Passenger</class>
-        <class>com.realdolmen.ex.domain.Ticket</class>
         <class>com.realdolmen.redoairproject.entities.Flight</class>
-        <class>com.realdolmen.ex.domain.DomesticFlight</class>
-        <class>com.realdolmen.ex.domain.InternationalFlight</class>
+        <class>com.realdolmen.redoairproject.entities.Trip</class>
+        <class>com.realdolmen.redoairproject.entities.Airline</class>
+        <class>com.realdolmen.redoairproject.entities.Airport</class>
+        <class>com.realdolmen.redoairproject.entities.Partner</class>
+        <class>com.realdolmen.redoairproject.entities.ReDoEmployees</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

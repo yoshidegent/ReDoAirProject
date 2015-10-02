@@ -1,6 +1,4 @@
 <dataset>
-    <book id="1000" author="George Orwell" title="Nineteen Eighty Four" genre="fiction"/>
-    <book id="2000" author="Aldous Huxley" title="Brave New World" genre="fiction"/>
-    <book id="3000" author="Bram Stoker" title="Dracula" genre="fiction"/>
+
     <!--<passenger firstName="Yoshi" lastName="Degent" ssn="ssnTest2" id="1000" dateOfBirth="1993-10-19" flightTime="2015-12-31 15:53:15" frequentFlyerMiles="0" passengerType="REGULAR"/>-->
 </dataset>

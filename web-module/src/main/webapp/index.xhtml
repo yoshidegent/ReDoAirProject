@@ -12,15 +12,15 @@
     <h1>Home</h1>
 
     <p>Landing page.</p>
-    <h:link outcome="/books.xhtml">List of books</h:link><br/>
+    <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
 
-    <h:outputLabel value="Flight ID:"/>
-    <h:form>
-        <h:inputText value="#{flightController.flightId}"/><br/>
-        <h:commandButton value="FlightDetails" action="#{flightController.showFlightDetails}"/>
-    </h:form>
+    <!--<h:outputLabel value="Flight ID:"/>-->
+    <!--<h:form>-->
+        <!--<h:inputText value="#{flightController.flightId}"/><br/>-->
+        <!--<h:commandButton value="FlightDetails" action="#{flightController.showFlightDetails}"/>-->
+    <!--</h:form>-->
 
-    <h:form><h:commandLink value="All passengers" action="#{passengerConversationController.navigateToAllPassengers}"/></h:form>
+    <!--<h:form><h:commandLink value="All passengers" action="#{passengerConversationController.navigateToAllPassengers}"/></h:form>-->
 
 </h:body>
 </html>
