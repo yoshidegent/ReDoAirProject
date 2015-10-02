@@ -1,4 +1,5 @@
 <dataset>
 
-    <!--<passenger firstName="Yoshi" lastName="Degent" ssn="ssnTest2" id="1000" dateOfBirth="1993-10-19" flightTime="2015-12-31 15:53:15" frequentFlyerMiles="0" passengerType="REGULAR"/>-->
+    <flight id="1" price="500" seatsAvailable="3"  />
+
 </dataset>

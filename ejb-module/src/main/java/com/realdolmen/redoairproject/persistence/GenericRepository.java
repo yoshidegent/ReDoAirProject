@@ -12,6 +12,10 @@ public abstract class GenericRepository<T extends AbstractEntity> implements IGe
 
     private Class<T> persistentClass;
 
+
+    public GenericRepository() {
+    }
+
     public GenericRepository(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
     }
