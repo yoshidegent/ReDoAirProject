@@ -5,4 +5,8 @@ import javax.persistence.*;
 @Entity
 public abstract class Flight extends AbstractEntity {
 
+
+
+
+
 }
