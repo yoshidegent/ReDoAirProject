@@ -1,6 +1,5 @@
 package com.realdolmen.redoairproject.persistence;
 
-import com.realdolmen.redoairproject.persistence.config.DatabaseEngine;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.persistence.config;
+package com.realdolmen.redoairproject.persistence;
 
 public enum DatabaseEngine {
     mysql("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/test", "root", "root"),
