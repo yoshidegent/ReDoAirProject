@@ -3,10 +3,14 @@ package com.realdolmen.redoairproject.persistence;
 import com.realdolmen.redoairproject.entities.AbstractEntity;
 import com.realdolmen.redoairproject.persistence.interfaces.IGenericRepository;
 
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+
 
 public abstract class GenericRepository<T extends AbstractEntity> implements IGenericRepository<T> {
 
