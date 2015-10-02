@@ -1,7 +1,6 @@
 package com.realdolmen.redoairproject.repositories;
 
-import com.realdolmen.redoairproject.redoairproject.entities.Flight;
-import com.realdolmen.redoairproject.redoairproject.repositories.FlightRepository;
+import com.realdolmen.redoairproject.entities.Flight;
 import org.junit.*;
 
 import javax.inject.Inject;
