@@ -6,7 +6,7 @@ import com.realdolmen.redoairproject.redoairproject.repositories.interfaces.IFli
 import javax.ejb.Stateless;
 
 public class FlightRepository extends GenericRepository<Flight> implements IFlightRepository{
-    public FlightRepository(Class<Flight> persistentClass) {
+    public FlightRepository() {
         super(Flight.class);
     }
 }

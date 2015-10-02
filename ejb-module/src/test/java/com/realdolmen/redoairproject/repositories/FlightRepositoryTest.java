@@ -13,7 +13,8 @@ public class FlightRepositoryTest
     @Before
     public void before()
     {
-        //flight = new Flight();
+        flight = new Flight();
+        flightRepository = new FlightRepository();
     }
 
     @Test
