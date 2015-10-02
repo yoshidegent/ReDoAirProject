@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.redoairproject.repositories.interfaces;
+package com.realdolmen.redoairproject.repositories.interfaces;
 
 import javax.ejb.Remote;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject.redoairproject.entities;
+package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Entity;
 
