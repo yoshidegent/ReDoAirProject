@@ -3,5 +3,5 @@ package com.realdolmen.redoairproject.redoairproject.entities;
 import javax.persistence.Entity;
 
 @Entity
-public class TravelAgency extends AbstractEntity {
+public class Partner extends AbstractEntity{
 }
