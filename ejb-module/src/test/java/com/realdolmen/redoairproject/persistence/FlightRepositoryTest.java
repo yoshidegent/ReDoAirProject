@@ -10,7 +10,6 @@ public class FlightRepositoryTest extends PersistenceTest
 
     private Flight flight;
 
-    @Inject
     private FlightRepository flightRepository;
 
     @Before
@@ -18,12 +17,13 @@ public class FlightRepositoryTest extends PersistenceTest
     {
         flight = new Flight();
         flightRepository = new FlightRepository();
+        flightRepository.entityManager = entityManager();
     }
 
     @Test
     public void testFlightPersists()
     {
-        //flight = flightRepository.createOrUpdate(flight);
+        flight = flightRepository.createOrUpdate(flight);
         Assert.assertNotNull(flight.getId());
     }
 }
