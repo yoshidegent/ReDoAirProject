@@ -43,10 +43,6 @@ public abstract class GenericRepository<T extends AbstractEntity> implements IGe
     }
 
     @Override
-    public void refresh(T t) {
-    }
-
-    @Override
     public List<T> findAll() {
         String queryString = "Select t from " + persistentClass.getSimpleName() + " t";
         TypedQuery<T> query = entityManager.createQuery(queryString, persistentClass);

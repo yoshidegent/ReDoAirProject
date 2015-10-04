@@ -1,13 +1,11 @@
 package com.realdolmen.redoairproject.persistence;
 
 import com.realdolmen.redoairproject.entities.Flight;
-import com.realdolmen.redoairproject.persistence.FlightRepository;
-import com.realdolmen.redoairproject.persistence.PersistenceTest;
-import com.realdolmen.redoairproject.persistence.interfaces.IFlightRepository;
 import org.junit.*;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
+import java.util.List;
 
 public class FlightRepositoryTest extends PersistenceTest
 {
@@ -17,7 +15,7 @@ public class FlightRepositoryTest extends PersistenceTest
     private FlightRepository flightRepository;
 
     @Before
-    public void before()
+    public void beforeClass()
     {
         flight = new Flight();
         flightRepository = new FlightRepository();
@@ -27,7 +25,70 @@ public class FlightRepositoryTest extends PersistenceTest
     @Test
     public void testFlightPersists()
     {
+        //Persist an empty flight object
         flight = flightRepository.createOrUpdate(flight);
         Assert.assertNotNull(flight.getId());
+
+        //TODO: implement other test cases
+    }
+
+    @Test
+    public void testFindAllFlights()
+    {
+        //Save a flight
+        flightRepository.createOrUpdate(flight);
+
+
+        List<Flight> flightList = flightRepository.findAll();
+        Assert.assertTrue(flightList.size() > 0);
+    }
+
+    @Test
+    public void testFlightCanBeUpdated()
+    {
+        //Save a flight
+        flight = flightRepository.createOrUpdate(flight);
+
+        //Data before update
+        Long idBeforeUpdate = flight.getId();
+        double flightPriceBeforeUpdate = flight.getPrice();
+
+        //Update the same flight
+        flight.setPrice(100);
+        flight = flightRepository.createOrUpdate(flight);
+
+        //Data after update
+        Long idAfterUpdate = flight.getId();
+        double flightPriceAfterUpdate = flight.getPrice();
+
+        //Check if id stayed the same, but updated data changed
+        Assert.assertNotEquals(flightPriceAfterUpdate, flightPriceBeforeUpdate, 1e-15);
+        Assert.assertEquals(idAfterUpdate, idBeforeUpdate);
+    }
+
+    @Test
+    public void testFindFlightById()
+    {
+        //Save a flight
+        flight = flightRepository.createOrUpdate(flight);
+
+        Long id = flight.getId();
+
+        Flight flightFoundById = flightRepository.findById(id);
+
+        Assert.assertEquals(flight, flightFoundById);
+    }
+
+    @Test
+    public void testDeleteFlight()
+    {
+        //Save a flight
+        flight = flightRepository.createOrUpdate(flight);
+
+        Long id = flight.getId();
+
+        flightRepository.delete(flight);
+
+        Assert.assertNull(flightRepository.findById(id));
     }
 }
