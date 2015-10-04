@@ -2,6 +2,8 @@ package com.realdolmen.redoairproject.persistence;
 
 import com.realdolmen.redoairproject.entities.Flight;
 import org.junit.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -9,6 +11,8 @@ import java.util.List;
 
 public class FlightRepositoryTest extends PersistenceTest
 {
+    private static final Logger LOG = LoggerFactory.getLogger(FlightRepositoryTest.class);
+
     private Flight flight;
 
     @Inject
@@ -40,6 +44,12 @@ public class FlightRepositoryTest extends PersistenceTest
 
 
         List<Flight> flightList = flightRepository.findAll();
+
+        for(Flight f : flightList)
+        {
+            LOG.debug(f.toString());
+        }
+
         Assert.assertTrue(flightList.size() > 0);
     }
 
