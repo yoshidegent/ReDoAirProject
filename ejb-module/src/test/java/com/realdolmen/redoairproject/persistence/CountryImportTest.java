@@ -18,14 +18,16 @@ import java.util.List;
 import java.util.Map;
 
 
-public class CountryImportTest extends PersistenceTest{
+public class CountryImportTest extends PersistenceTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CountryImportTest.class);
 
     @Inject
     private CountryRepository countryRepository;
 
-    @Test
+
+
+
     public void importCountries()
     {
         countryRepository = new CountryRepository();

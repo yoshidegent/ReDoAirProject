@@ -21,6 +21,10 @@ public abstract class DataSetPersistenceTest extends PersistenceTest {
     @Before
     public void loadDataSet() throws Exception {
         logger.info("Loading dataset");
+
+        CountryImportTest countryImportTest = new CountryImportTest();
+        countryImportTest.importCountries();
+
         IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 
         IDatabaseConnection connection = new DatabaseConnection(newConnection());

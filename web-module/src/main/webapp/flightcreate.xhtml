@@ -30,9 +30,15 @@
                     <f:selectItems value="#{airlineController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.name}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
+                <h:outputLabel class="control-label col-md-4" value="origin"/>
+                <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
+                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{airport.name}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
 
-                <h:outputLabel class="control-label col-md-4"  value="origin"/>
-                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+                <h:outputLabel class="control-label col-md-4" value="destination"/>
+                <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
+                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{airport.name}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
 
                 <h:outputLabel class="control-label col-md-4"  value="price per seat"/>
                 <h:inputText value="#{flightController.flight.pricePerSeat}"/>

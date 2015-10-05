@@ -2,6 +2,7 @@ package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -12,7 +13,7 @@ public class Airport extends AbstractEntity {
      */
     private String name;
 
-    @OneToOne
+    @ManyToOne
     private Address address;
 
     /**
