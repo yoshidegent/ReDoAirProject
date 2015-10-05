@@ -52,6 +52,8 @@
         <class>com.realdolmen.redoairproject.entities.Airport</class>
         <class>com.realdolmen.redoairproject.entities.Partner</class>
         <class>com.realdolmen.redoairproject.entities.ReDoEmployees</class>
+        <class>com.realdolmen.redoairproject.entities.Country</class>
+        <class>com.realdolmen.redoairproject.entities.Address</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
