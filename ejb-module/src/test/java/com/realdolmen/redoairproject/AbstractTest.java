@@ -1,6 +1,5 @@
 package com.realdolmen.redoairproject;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
 /**

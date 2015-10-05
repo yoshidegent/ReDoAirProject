@@ -1,4 +1,4 @@
-package com.realdolmen.redoairproject;
+package com.realdolmen.redoairproject.controller;
 
 import com.realdolmen.redoairproject.entities.Flight;
 import com.realdolmen.redoairproject.persistence.FlightRepository;
@@ -10,13 +10,14 @@ import javax.inject.Named;
 import java.util.List;
 
 @Named
+@RequestScoped
 public class FlightController {
 
         @Inject
         FlightRepositoryEvelyne repository;
 
 
-        public List<Flight> getAllFlights() {
+        public List<Flight> retrieveAllFlights() {
             List<Flight> all = repository.findAll();
             System.out.println(all.size());
             return all;
