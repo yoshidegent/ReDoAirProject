@@ -11,24 +11,31 @@ import java.util.List;
 @Named
 @RequestScoped
 public class FlightController {
-
-        @Inject
-        FlightRepository repository;
+    Flight flight = new Flight();
 
 
-        public List<Flight> retrieveAllFlights() {
-            List<Flight> all = repository.findAll();
-            System.out.println(all.size());
-            return all;
-        }
+    @Inject
+    FlightRepository repository;
 
 
-    public void removeFlight(Flight flight)  {
-        repository.delete(flight);
+    public List<Flight> retrieveAllFlights() {
+        return repository.findAll();
     }
 
-    public void createOrUpdateFlight(Flight flight)  {
-        repository.createOrUpdate(flight);
+    public void removeFlight(Flight flightToBeRemoved) {
+        repository.delete(flightToBeRemoved);
+    }
 
+    public void createOrUpdateFlight() {
+        repository.createOrUpdate(flight);
+    }
+
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }

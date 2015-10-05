@@ -15,11 +15,16 @@
 
 </h:head>
 <h:body>
-<div class="container">
+
+    <ui:include src="/navbar.xhtml" />
+
+    <div class="container">
     <h1>Home</h1>
 
     <p>Landing page.</p>
     <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
+    <h:link outcome="/airlinesall.xhtml">See all airlines</h:link><br/>
+
 </div>
 </h:body>
 </html>
