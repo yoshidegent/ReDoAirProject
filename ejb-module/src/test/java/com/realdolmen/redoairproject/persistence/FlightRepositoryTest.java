@@ -5,7 +5,6 @@ import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ejb.EJB;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -61,15 +60,15 @@ public class FlightRepositoryTest extends PersistenceTest
 
         //Data before update
         Long idBeforeUpdate = flight.getId();
-        double flightPriceBeforeUpdate = flight.getPrice();
+        double flightPriceBeforeUpdate = flight.getPricePerSeat();
 
         //Update the same flight
-        flight.setPrice(100);
+        flight.setPricePerSeat(100);
         flight = flightRepository.createOrUpdate(flight);
 
         //Data after update
         Long idAfterUpdate = flight.getId();
-        double flightPriceAfterUpdate = flight.getPrice();
+        double flightPriceAfterUpdate = flight.getPricePerSeat();
 
         //Check if id stayed the same, but updated data changed
         Assert.assertNotEquals(flightPriceAfterUpdate, flightPriceBeforeUpdate, 1e-15);

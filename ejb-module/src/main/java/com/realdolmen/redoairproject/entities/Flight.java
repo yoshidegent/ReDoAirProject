@@ -25,7 +25,7 @@ public class Flight extends AbstractEntity {
 
     private int seatsAvailable;
 
-    private double price;
+    private double pricePerSeat;
     private double discountVolumeSales;
     private int seatsThresholdForDiscount;
 
@@ -36,7 +36,7 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
-    public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureTime, double duration, int seatsAvailable, double price, double discountVolumeSales, int seatsThresholdForDiscount) {
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureTime, double duration, int seatsAvailable, double pricePerSeat, double discountVolumeSales, int seatsThresholdForDiscount) {
         super(id);
         this.airline = airline;
         this.origin = origin;
@@ -44,7 +44,7 @@ public class Flight extends AbstractEntity {
         this.departureTime = departureTime;
         this.duration = duration;
         this.seatsAvailable = seatsAvailable;
-        this.price = price;
+        this.pricePerSeat = pricePerSeat;
         this.discountVolumeSales = discountVolumeSales;
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
     }
@@ -58,8 +58,14 @@ public class Flight extends AbstractEntity {
         return null;
     }
 
-    public Double calculatePrice()  {
-        return this.price * PROFIT_MARGIN;
+    public Double calculatePrice(int numberOfRequestedSeats)  {
+        double priceWithProfitMargin = this.pricePerSeat * PROFIT_MARGIN;
+
+        if(numberOfRequestedSeats > this.seatsThresholdForDiscount) {
+            return priceWithProfitMargin * discountVolumeSales;
+        } else {
+            return priceWithProfitMargin;
+        }
     }
 
     /**
@@ -109,12 +115,12 @@ public class Flight extends AbstractEntity {
         this.seatsAvailable = seatsAvailable;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPricePerSeat() {
+        return pricePerSeat;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPricePerSeat(double price) {
+        this.pricePerSeat = price;
     }
 
     public double getDiscountVolumeSales() {

@@ -35,6 +35,11 @@ public class Trip extends AbstractEntity {
      * Bussiness Methods
      */
 
+    public double calculateTotalPrice() {
+
+        return 0;
+    }
+
     public double calculateDurationOfTrip() {
         return 0;
     }
