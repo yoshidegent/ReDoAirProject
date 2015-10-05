@@ -12,8 +12,8 @@ public class Airport extends AbstractEntity {
      */
     private String name;
 
-    //@OneToOne
-   // private Address address;
+    @OneToOne
+    private Address address;
 
     /**
      * Constructor
@@ -21,9 +21,9 @@ public class Airport extends AbstractEntity {
     public Airport() {
     }
 
-    public Airport(String name/*, Address address*/) {
+    public Airport(String name, Address address) {
         this.name = name;
-        //this.address = address;
+        this.address = address;
     }
 
     /**

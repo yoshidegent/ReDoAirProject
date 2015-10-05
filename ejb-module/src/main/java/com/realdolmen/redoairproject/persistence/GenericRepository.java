@@ -9,10 +9,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.List;
 
 
-public abstract class GenericRepository<T extends AbstractEntity> implements IGenericRepository<T> {
+public abstract class GenericRepository<T extends Serializable> implements IGenericRepository<T> {
 
     private Class<T> persistentClass;
 

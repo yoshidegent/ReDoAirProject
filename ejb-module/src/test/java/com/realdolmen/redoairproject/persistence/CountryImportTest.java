@@ -9,6 +9,7 @@ import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,13 +18,18 @@ import java.util.List;
 import java.util.Map;
 
 
-public class CountryXmlSessionBeanTest extends PersistenceTest{
+public class CountryImportTest extends PersistenceTest{
 
-    private static final Logger LOG = LoggerFactory.getLogger(CountryXmlSessionBeanTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CountryImportTest.class);
+
+    @Inject
+    private CountryRepository countryRepository;
 
     @Test
     public void importCountries()
     {
+        countryRepository = new CountryRepository();
+
         Map<String, String> countryCodeMap = fetchAllCountriesWithCountryCode();
         int count = 0;
         for(Map.Entry<String, String> e : countryCodeMap.entrySet())
@@ -33,9 +39,12 @@ public class CountryXmlSessionBeanTest extends PersistenceTest{
             Country country = new Country();
             country.setCountry(e.getValue());
             country.setCountryCode(e.getKey());
-            entityManager.persist(country);
+            countryRepository.entityManager = entityManager();
+            countryRepository.createOrUpdate(country);
             System.out.println(e.getKey() + ", " + e.getValue());
         }
+
+        Assert.assertTrue(countryRepository.findAll().size() == count);
     }
 
 
