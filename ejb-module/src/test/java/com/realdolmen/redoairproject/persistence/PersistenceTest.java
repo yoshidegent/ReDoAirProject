@@ -1,5 +1,12 @@
 package com.realdolmen.redoairproject.persistence;
 
+import org.dbunit.database.DatabaseConfig;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.dbunit.operation.DatabaseOperation;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +22,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PersistenceTest {
+public class PersistenceTest{
 
     public static final String DRIVER = "javax.persistence.jdbc.driver";
     public static final String URL = "javax.persistence.jdbc.url";
@@ -34,6 +41,17 @@ public class PersistenceTest {
     public static void initializeEntityManagerFactory() {
         logger.info("Creating EntityManagerFactory");
         entityManagerFactory = Persistence.createEntityManagerFactory("MyTestPersistenceUnit", properties());
+    }
+
+    @Before
+    public void loadDataSet() throws Exception {
+        logger.info("Loading dataset");
+        IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
+
+        IDatabaseConnection connection = new DatabaseConnection(newConnection());
+        connection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory()); // Set factorytype in dbconfig to remove warning
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        connection.close();
     }
 
     /**

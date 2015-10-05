@@ -1,3 +1,22 @@
 <dataset>
+    <airline id="1" name="SN Brussels Airline"/>
+    <airline id="2" name="Qatar Airlines"/>
+    <airline id="3" name="Aer Lingus"/>
+    <airline id="4" name="Easyjet"/>
+    <airline id="5" name="British Airways"/>
 
+    <airport id="1" name="Brussels Airport" city="Zaventem" country="Belgium"/>
+    <airport id="2" name="Brussels South" city="Charleroi" country="Belgium"/>
+    <airport id="3" name="Orly" city="Paris" country="France"/>
+    <airport id="4" name="Charles De Gaulle" city="Paris" country="France"/>
+    <airport id="5" name="Malaga" city="Malaga" country="Spain"/>
+    <airport id="6" name="JFK" city="New York City" country="New York"/>
+    <airport id="7" name="Dublin Airport" city="Dublin" country="Ireland"/>
+
+   <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888" departureTime="2015-10-09" duration="450" seatsAvailable="300" discountVolumeSales="0.03" seatsThresholdForDiscount="5"/>
+   <flight id="501" airline_id="2" origin_id="2" destination_id="4" pricePerSeat="199" departureTime="2015-10-15" duration="70" seatsAvailable="300" discountVolumeSales="0.05" seatsThresholdForDiscount="10"/>
+   <flight id="502" airline_id="3" origin_id="1" destination_id="7" pricePerSeat="99" departureTime="2015-10-16" duration="120" seatsAvailable="300" discountVolumeSales="0.03" seatsThresholdForDiscount="5"/>
+   <flight id="503" airline_id="4" origin_id="3" destination_id="2" pricePerSeat="119" departureTime="2015-10-30" duration="70" seatsAvailable="300" discountVolumeSales="0.05" seatsThresholdForDiscount="5"/>
+   <flight id="504" airline_id="5" origin_id="6" destination_id="5" pricePerSeat="799" departureTime="2015-10-12" duration="550" seatsAvailable="300" discountVolumeSales="0.10" seatsThresholdForDiscount="5"/>
 </dataset>
+

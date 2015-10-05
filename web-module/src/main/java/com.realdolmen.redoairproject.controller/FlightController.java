@@ -21,4 +21,14 @@ public class FlightController {
             System.out.println(all.size());
             return all;
         }
+
+
+    public void removeFlight(Flight flight)  {
+        repository.delete(flight);
+    }
+
+    public void createOrUpdateFlight(Flight flight)  {
+        repository.createOrUpdate(flight);
+
+    }
 }
