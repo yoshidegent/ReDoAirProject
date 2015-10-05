@@ -8,23 +8,25 @@
     <meta charset="UTF-8"/>
     <title>Home</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
 </h:head>
 <h:body>
 
-    <ui:include src="/navbar.xhtml" />
+    <ui:include src="/navbar.xhtml"/>
 
     <div class="container">
-    <h1>Home</h1>
+        <h1>Home</h1>
 
-    <p>Landing page.</p>
-    <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
-    <h:link outcome="/airlinesall.xhtml">See all airlines</h:link><br/>
-
-</div>
+        <p>Landing page.</p>
+        <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
+        <h:link outcome="/airlinesall.xhtml">See all airlines</h:link><br/>
+        <h:link outcome="/worldmap.xhtml">View worldmap</h:link><br/>
+    </div>
 </h:body>
 </html>
