@@ -11,17 +11,17 @@ public class Flight extends AbstractEntity {
     /**
      * Class fields
      */
-    @ManyToOne
-    private Airline airline;
+//    @ManyToOne
+//    private Airline airline;
+//
+//    @OneToOne
+//    private Airport origin;
+//    @OneToOne
+//    private Airport destination;
 
-    @OneToOne
-    private Airport origin;
-    @OneToOne
-    private Airport destination;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date departureTime;
-    private double duration;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private Date departureTime;
+//    private double duration;
 
     private int seatsAvailable;
 
@@ -36,13 +36,13 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
-    public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureTime, double duration, int seatsAvailable, double pricePerSeat, double discountVolumeSales, int seatsThresholdForDiscount) {
-        super(id);
-        this.airline = airline;
-        this.origin = origin;
-        this.destination = destination;
-        this.departureTime = departureTime;
-        this.duration = duration;
+    public Flight(Long flightId, Airline airline, Airport origin, Airport destination, Date departureTime, double duration, int seatsAvailable, double pricePerSeat, double discountVolumeSales, int seatsThresholdForDiscount) {
+        super(flightId);
+//        this.airline = airline;
+//        this.origin = origin;
+//        this.destination = destination;
+//        this.departureTime = departureTime;
+//        this.duration = duration;
         this.seatsAvailable = seatsAvailable;
         this.pricePerSeat = pricePerSeat;
         this.discountVolumeSales = discountVolumeSales;
@@ -75,37 +75,37 @@ public class Flight extends AbstractEntity {
         return PROFIT_MARGIN;
     }
 
-    public Airline getAirline() {
-        return airline;
-    }
+//    public Airline getAirline() {
+//        return airline;
+//    }
+//
+//    public void setAirline(Airline airline) {
+//        this.airline = airline;
+//    }
+//
+//    public Airport getOrigin() {
+//        return origin;
+//    }
+//
+//    public void setOrigin(Airport origin) {
+//        this.origin = origin;
+//    }
+//
+//    public Airport getDestination() {
+//        return destination;
+//    }
+//
+//    public void setDestination(Airport destination) {
+//        this.destination = destination;
+//    }
 
-    public void setAirline(Airline airline) {
-        this.airline = airline;
-    }
-
-    public Airport getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(Airport origin) {
-        this.origin = origin;
-    }
-
-    public Airport getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Airport destination) {
-        this.destination = destination;
-    }
-
-    public double getDuration() {
-        return duration;
-    }
-
-    public void setDuration(double duration) {
-        this.duration = duration;
-    }
+//    public double getDuration() {
+//        return duration;
+//    }
+//
+//    public void setDuration(double duration) {
+//        this.duration = duration;
+//    }
 
     public int getSeatsAvailable() {
         return seatsAvailable;
