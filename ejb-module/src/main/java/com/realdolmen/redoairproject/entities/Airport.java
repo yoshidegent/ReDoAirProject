@@ -2,6 +2,7 @@ package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Airport extends AbstractEntity {
@@ -10,8 +11,9 @@ public class Airport extends AbstractEntity {
      * Class fields
      */
     private String name;
-    private String city;
-    private String country;
+
+    //@OneToOne
+   // private Address address;
 
     /**
      * Constructor
@@ -19,11 +21,9 @@ public class Airport extends AbstractEntity {
     public Airport() {
     }
 
-    public Airport(Long id, String name, String city, String country) {
-        super(id);
+    public Airport(String name/*, Address address*/) {
         this.name = name;
-        this.city = city;
-        this.country = country;
+        //this.address = address;
     }
 
     /**
@@ -41,21 +41,5 @@ public class Airport extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 }
