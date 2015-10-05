@@ -25,6 +25,12 @@ public class Address extends AbstractEntity
     public Address() {
     }
 
+    public Address(Country country, String city)
+    {
+        this.country = country;
+        this.city = city;
+    }
+
     public void setCountryCodeViaCountry(String country) {
     }
 
