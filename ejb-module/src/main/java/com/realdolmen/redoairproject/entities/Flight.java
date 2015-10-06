@@ -1,8 +1,9 @@
 package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalTime;
 
 @Entity
 public class Flight extends AbstractEntity {
@@ -20,10 +21,8 @@ public class Flight extends AbstractEntity {
     private Airport destination;
 
 
-    @Temporal(TemporalType.DATE)
-    private Date departureDate;
-    @Temporal(TemporalType.TIME)
-    private Date departureTime;
+    private LocalDate departureDate;
+    private LocalTime departureTime;
     private int flightDurationInMinutes;
 
     private int seatsAvailable;
@@ -56,7 +55,7 @@ public class Flight extends AbstractEntity {
         this.pricePerSeat = pricePerSeat;
     }
 
-    public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureDate, Date departureTime, int flightDurationInMinutes, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, LocalDate departureDate, LocalTime departureTime, int flightDurationInMinutes, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
         super(id);
         this.airline = airline;
         this.origin = origin;
@@ -155,19 +154,19 @@ public class Flight extends AbstractEntity {
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
     }
 
-    public Date getDepartureTime() {
+    public LocalTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Date departureTime) {
+    public void setDepartureTime(LocalTime departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Date getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDay) {
+    public void setDepartureDate(LocalDate departureDay) {
         this.departureDate = departureDay;
     }
 

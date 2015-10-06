@@ -7,10 +7,8 @@ import com.realdolmen.redoairproject.entities.Trip;
 
 import java.util.List;
 
-/**
- * Created by YDEAX41 on 6/10/2015.
- */
+
 public interface IAddressRepository extends IGenericRepository<Address>
 {
-    List<Address> findAddressesByCountry(Country country);
+//    List<Address> findAddressesByCountry(Country country);
 }

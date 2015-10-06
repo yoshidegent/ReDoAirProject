@@ -91,6 +91,8 @@ public class DataImporter
     private void importFlights()
     {
 
+
+
         flights.add(new Flight(1l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(5l), 500,130,15));
         flights.add(new Flight(2l, airlineRepository.findById(1l), airportRepository.findById(5l), airportRepository.findById(1l), 500,130,15));
         flights.add(new Flight(3l, airlineRepository.findById(3l), airportRepository.findById(1l), airportRepository.findById(6l), 500,130,15));
