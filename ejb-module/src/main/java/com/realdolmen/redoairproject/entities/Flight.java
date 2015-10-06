@@ -52,6 +52,10 @@ public class Flight extends AbstractEntity {
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
     }
 
+    public Flight(double pricePerSeat) {
+        this.pricePerSeat = pricePerSeat;
+    }
+
     public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureDate, Date departureTime, int flightDurationInMinutes, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
         super(id);
         this.airline = airline;
@@ -63,7 +67,7 @@ public class Flight extends AbstractEntity {
         this.seatsAvailable = seatsAvailable;
         this.pricePerSeat = pricePerSeat;
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
-        this.pricePerSeatForPassenger = this.calculatePriceforEndUser();
+        this.pricePerSeatForPassenger = this.calculatePriceforPassenger();
     }
 
     /**
@@ -75,7 +79,7 @@ public class Flight extends AbstractEntity {
         return null;
     }
 
-    public double calculatePriceforEndUser()  {
+    public double calculatePriceforPassenger()  {
         return this.pricePerSeatForPassenger = this.pricePerSeat * PROFIT_MARGIN;
     }
 
@@ -143,10 +147,6 @@ public class Flight extends AbstractEntity {
         return pricePerSeat;
     }
 
-    public void setPricePerSeat(double price) {
-        this.pricePerSeat = price;
-    }
-
     public int getSeatsThresholdForDiscount() {
         return seatsThresholdForDiscount;
     }
@@ -169,5 +169,9 @@ public class Flight extends AbstractEntity {
 
     public void setDepartureDate(Date departureDay) {
         this.departureDate = departureDay;
+    }
+
+    public double getPricePerSeatForPassenger() {
+        return this.pricePerSeatForPassenger;
     }
 }

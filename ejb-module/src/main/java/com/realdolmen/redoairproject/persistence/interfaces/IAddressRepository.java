@@ -1,9 +1,16 @@
 package com.realdolmen.redoairproject.persistence.interfaces;
 
 import com.realdolmen.redoairproject.entities.Address;
+import com.realdolmen.redoairproject.entities.Airport;
+import com.realdolmen.redoairproject.entities.Country;
+import com.realdolmen.redoairproject.entities.Trip;
+
+import java.util.List;
 
 /**
- * Created by EWTAX45 on 6/10/2015.
+ * Created by YDEAX41 on 6/10/2015.
  */
-public interface IAddressRepository extends IGenericRepository<Address> {
+public interface IAddressRepository extends IGenericRepository<Address>
+{
+    List<Address> findAddressesByCountry(Country country);
 }
