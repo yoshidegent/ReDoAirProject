@@ -25,8 +25,8 @@ public class Address extends AbstractEntity
     public Address() {
     }
 
-    public Address(Country country, String city)
-    {
+    public Address(Long id, Country country, String city) {
+        super(id);
         this.country = country;
         this.city = city;
     }

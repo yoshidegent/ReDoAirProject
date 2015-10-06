@@ -22,12 +22,13 @@ public class Airport extends AbstractEntity {
     public Airport() {
     }
 
-    public Airport(String name, Address address) {
+    public Airport(Long id, String name, Address address) {
+        super(id);
         this.name = name;
         this.address = address;
     }
 
-    /**
+/**
      * Bussiness Methods
      */
 
