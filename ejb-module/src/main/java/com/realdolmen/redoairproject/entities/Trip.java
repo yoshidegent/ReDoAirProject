@@ -92,4 +92,14 @@ public class Trip extends AbstractEntity {
     public void setEndDestination(Airport endDestination) {
         this.endDestination = endDestination;
     }
+
+    @Override public String toString() {
+        return "Trip{" +
+            "flightList=" + flightList +
+            ", hotel='" + hotel + '\'' +
+            ", priceHotelPerNightPerPerson=" + priceHotelPerNightPerPerson +
+            ", numberOfNights=" + numberOfNights +
+            ", endDestination=" + endDestination +
+            '}';
+    }
 }

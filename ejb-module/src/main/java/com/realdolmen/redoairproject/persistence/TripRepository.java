@@ -4,9 +4,14 @@ import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.interfaces.ITripRepository;
 
 import com.realdolmen.redoairproject.entities.Country;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@LocalBean
+@Stateless
 public class TripRepository extends GenericRepository<Trip> implements ITripRepository {
 
     public TripRepository() {
@@ -18,6 +23,7 @@ public class TripRepository extends GenericRepository<Trip> implements ITripRepo
         query.setParameter("country", country);
         return query.getResultList();
     }
+
 
     @Override public List<Country> findAllCountriesFromTrips() {
         TypedQuery<Country> query = entityManager.createQuery("SELECT t.endDestination.address.country FROM Trip t", Country.class);
