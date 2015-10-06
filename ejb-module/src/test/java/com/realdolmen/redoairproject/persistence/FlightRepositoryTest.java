@@ -60,18 +60,18 @@ public class FlightRepositoryTest extends PersistenceTest
 
         //Data before update
         Long idBeforeUpdate = flight.getId();
-        double flightPriceBeforeUpdate = flight.getPricePerSeat();
+        int seatsAvailableBeforeUpdate = flight.getSeatsAvailable();
 
         //Update the same flight
-        flight.setPricePerSeat(100);
+        flight.setSeatsAvailable(100);
         flight = flightRepository.createOrUpdate(flight);
 
         //Data after update
         Long idAfterUpdate = flight.getId();
-        double flightPriceAfterUpdate = flight.getPricePerSeat();
+        int seatsAvailableAfterUpdate = flight.getSeatsAvailable();
 
         //Check if id stayed the same, but updated data changed
-        Assert.assertNotEquals(flightPriceAfterUpdate, flightPriceBeforeUpdate, 1e-15);
+        Assert.assertNotEquals(seatsAvailableAfterUpdate, seatsAvailableBeforeUpdate);
         Assert.assertEquals(idAfterUpdate, idBeforeUpdate);
     }
 

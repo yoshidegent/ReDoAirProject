@@ -137,10 +137,6 @@ public class Flight extends AbstractEntity {
         return pricePerSeat;
     }
 
-    public void setPricePerSeat(double price) {
-        this.pricePerSeat = price;
-    }
-
     public int getSeatsThresholdForDiscount() {
         return seatsThresholdForDiscount;
     }
@@ -163,5 +159,9 @@ public class Flight extends AbstractEntity {
 
     public void setDepartureDate(Date departureDay) {
         this.departureDate = departureDay;
+    }
+
+    public double getPricePerSeatForPassenger() {
+        return this.pricePerSeatForPassenger;
     }
 }
