@@ -12,12 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.*;
+import java.util.*;
 
 public class PersistenceTest{
 
@@ -45,8 +41,8 @@ public class PersistenceTest{
     public void loadTestData() throws Exception {
         logger.info("Clearing data");
         entityManager().createQuery("DELETE from Address a").executeUpdate();
-        entityManager().createQuery("DELETE from Address a").executeUpdate();
-        entityManager().createQuery("DELETE from Address a").executeUpdate();
+        entityManager().createQuery("DELETE from Country c").executeUpdate();
+        entityManager().createQuery("DELETE from Flight f").executeUpdate();
 
 
         logger.info("Loading dataset");
@@ -134,4 +130,7 @@ public class PersistenceTest{
         return DriverManager
             .getConnection(properties.get(URL), properties.get(USER), properties.get(PASSWORD));
     }
+
+
+
 }

@@ -9,6 +9,7 @@ public class Airline extends AbstractEntity {
      * Class fields
      */
     private String name;
+    private double discountVolumeSales;
 
 
     /**
@@ -19,9 +20,10 @@ public class Airline extends AbstractEntity {
     }
 
 
-    public Airline(Long id, String name) {
+    public Airline(Long id, String name, double discountVolumeSales) {
         super(id);
         this.name = name;
+        this.discountVolumeSales = discountVolumeSales;
     }
 
     /**
@@ -39,5 +41,13 @@ public class Airline extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getDiscountVolumeSales() {
+        return discountVolumeSales;
+    }
+
+    public void setDiscountVolumeSales(double discountVolumeSales) {
+        this.discountVolumeSales = discountVolumeSales;
     }
 }
