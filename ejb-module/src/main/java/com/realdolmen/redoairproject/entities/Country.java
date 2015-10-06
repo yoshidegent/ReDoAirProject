@@ -8,9 +8,8 @@ import java.io.Serializable;
 public class Country implements Serializable{
 
     @Id
-    String countryCode;
-    String country;
-
+    String countryCode = "";
+    String country = "";
 
     public String getCountryCode() {
         return countryCode;
