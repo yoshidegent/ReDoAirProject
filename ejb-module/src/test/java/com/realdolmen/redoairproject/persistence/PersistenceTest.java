@@ -40,8 +40,13 @@ public class PersistenceTest{
         entityManagerFactory = Persistence.createEntityManagerFactory("MyTestPersistenceUnit", properties());
     }
 
+
     @Before
     public void loadTestData() throws Exception {
+        logger.info("Clearing data");
+        entityManager().createQuery("DELETE from Address a").executeUpdate();
+
+
         logger.info("Loading dataset");
         //IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 
@@ -99,6 +104,7 @@ public class PersistenceTest{
         if(entityManager != null) {
             entityManager.close();
         }
+
     }
 
     @AfterClass

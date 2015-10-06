@@ -37,4 +37,5 @@ public class Address extends AbstractEntity
     public void setCity(String city) {
         this.city = city;
     }
+
 }

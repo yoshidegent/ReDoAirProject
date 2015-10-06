@@ -32,10 +32,16 @@ public class DataImporter
     private void importAddresses()
     {
         addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("BE"), "Brussels"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("BE"), "Charleroi"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("FR"), "Paris"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("FR"), "Lyon"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("GB"), "London"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("IE"), "Dublin"));
+        addresses.add(new Address(countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
 
         for(Address a : addresses)
         {
-            entityManager.merge(a);
+              entityManager.merge(a);
         }
     }
 

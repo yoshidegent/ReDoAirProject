@@ -1,6 +1,6 @@
 package com.realdolmen.redoairproject.entities;
 
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
 /**
@@ -11,10 +11,11 @@ public class Trip extends AbstractEntity {
     /**
      * Class fields
      */
-    @ManyToOne
+    @ManyToMany
     private List<Flight> flightList;
     private String hotel;
-    private int priceHotelPerNight;
+    private int priceHotelPerNightPerPerson;
+    private int numberOfNights;
 
 
     /**
@@ -24,18 +25,19 @@ public class Trip extends AbstractEntity {
     }
 
 
-    public Trip(Long id, List<Flight> flightList, String hotel, int priceHotelPerNight) {
+    public Trip(Long id, List<Flight> flightList, String hotel, int priceHotelPerNightPerPerson, int numberOfNights) {
         super(id);
         this.flightList = flightList;
         this.hotel = hotel;
-        this.priceHotelPerNight = priceHotelPerNight;
+        this.priceHotelPerNightPerPerson = priceHotelPerNightPerPerson;
+        this.numberOfNights = numberOfNights;
     }
 
     /**
      * Bussiness Methods
      */
 
-    public double calculateTotalPrice() {
+    public double calculateTotalPrice(int numberOfPersons) {
 
         return 0;
     }

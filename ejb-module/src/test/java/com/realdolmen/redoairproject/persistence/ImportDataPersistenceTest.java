@@ -4,6 +4,7 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ public class ImportDataPersistenceTest extends PersistenceTest {
     private static final Logger logger = LoggerFactory.getLogger(ImportDataPersistenceTest.class);
 
     @Test
+    @Ignore
     public void loadTestData() throws Exception {
         logger.info("Loading dataset");
 
