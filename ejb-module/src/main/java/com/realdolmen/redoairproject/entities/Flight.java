@@ -70,7 +70,7 @@ public class Flight extends AbstractEntity {
         return this.pricePerSeatForPassenger = this.pricePerSeat * PROFIT_MARGIN;
     }
 
-    public void overridePriceForEndUser(double price)   {
+    public void overridePriceForPassenger(double price)   {
         this.pricePerSeatForPassenger = price;
     }
 
