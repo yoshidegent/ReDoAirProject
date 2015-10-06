@@ -1,9 +1,9 @@
 <dataset>
-    <airline id="1" name="SN Brussels Airline"/>
-    <airline id="2" name="Qatar Airlines"/>
-    <airline id="3" name="Aer Lingus"/>
-    <airline id="4" name="Easyjet"/>
-    <airline id="5" name="British Airways"/>
+    <!--<airline id="1" name="SN Brussels Airline"/>-->
+    <!--<airline id="2" name="Qatar Airlines"/>-->
+    <!--<airline id="3" name="Aer Lingus"/>-->
+    <!--<airline id="4" name="Easyjet"/>-->
+    <!--<airline id="5" name="British Airways"/>-->
 
 
     <!--<address id="1" city="Zaventem" country_countryCode="BE"/>-->
@@ -25,15 +25,13 @@
 
 
 
-    <airport id="1" name="Brussels Airport" />
-    <airport id="2" name="Brussels South"/>
-    <airport id="3" name="Orly"/>
+    <!--<airport id="1" name="Brussels Airport" address_id="1"/>-->
+    <!--<airport id="2" name="Brussels South" address_id="2"/>-->
+    <!--<airport id="3" name="Orly" address_id="3"/>-->
     <!--<airport id="4" name="Charles De Gaulle" address_id="3"/>-->
     <!--<airport id="5" name="Malaga" address_id="6"/>-->
     <!--<airport id="6" name="JFK" address_id="8"/>-->
     <!--<airport id="7" name="Dublin Airport" address_id="5"/>-->
-
-
 
 
 
