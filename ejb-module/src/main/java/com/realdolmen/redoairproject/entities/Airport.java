@@ -13,7 +13,7 @@ public class Airport extends AbstractEntity {
      */
     private String name;
 
-    @ManyToOne
+    @OneToOne
     private Address address;
 
     /**
