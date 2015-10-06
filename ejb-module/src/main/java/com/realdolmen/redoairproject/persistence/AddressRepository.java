@@ -11,4 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class AddressRepository extends GenericRepository<Address> implements IAddressRepository {
+    public AddressRepository() {
+        super(Address.class);
+    }
 }

@@ -17,10 +17,6 @@ public abstract class GenericRepository<T extends Serializable> implements IGene
 
     private Class<T> persistentClass;
 
-
-    public GenericRepository() {
-    }
-
     public GenericRepository(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
     }
