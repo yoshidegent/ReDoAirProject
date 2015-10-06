@@ -6,32 +6,34 @@
     <airline id="5" name="British Airways"/>
 
 
-    <address id="1" city="Zaventem" country_countryCode="BE"/>
-    <address id="2" city="Charleroi" country_countryCode="BE"/>
-    <address id="3" city="Paris" country_countryCode="FR"/>
-    <address id="4" city="Rome" country_countryCode="IT"/>
-    <address id="5" city="Dublin" country_countryCode="IE"/>
-    <address id="6" city="Malaga" country_countryCode="ES"/>
-    <address id="7" city="London" country_countryCode="GB"/>
-    <address id="8" city="New York City" country_countryCode="US"/>
-    <address id="9" city="Berlijn" country_countryCode="DE"/>
-    <address id="10" city="Kopenhagen" country_countryCode="DK"/>
-    <address id="11" city="Frankfurt" country_countryCode="DE"/>
-    <address id="12" city="Dresden" country_countryCode="DE"/>
-    <address id="13" city="Hawaii" country_countryCode="US"/>
-    <address id="14" city="Sydney" country_countryCode="AU"/>
-    <address id="15" city="Perth" country_countryCode="AU"/>
-    <address id="16" city="Hong Kong" country_countryCode="CN"/>
+    <!--<address id="1" city="Zaventem" country_countryCode="BE"/>-->
+    <!--<address id="2" city="Charleroi" country_countryCode="BE"/>-->
+    <!--<address id="3" city="Paris" country_countryCode="FR"/>-->
+    <!--<address id="4" city="Rome" country_countryCode="IT"/>-->
+    <!--<address id="5" city="Dublin" country_countryCode="IE"/>-->
+    <!--<address id="6" city="Malaga" country_countryCode="ES"/>-->
+    <!--<address id="7" city="London" country_countryCode="GB"/>-->
+    <!--<address id="8" city="New York City" country_countryCode="US"/>-->
+    <!--<address id="9" city="Berlijn" country_countryCode="DE"/>-->
+    <!--<address id="10" city="Kopenhagen" country_countryCode="DK"/>-->
+    <!--<address id="11" city="Frankfurt" country_countryCode="DE"/>-->
+    <!--<address id="12" city="Dresden" country_countryCode="DE"/>-->
+    <!--<address id="13" city="Hawaii" country_countryCode="US"/>-->
+    <!--<address id="14" city="Sydney" country_countryCode="AU"/>-->
+    <!--<address id="15" city="Perth" country_countryCode="AU"/>-->
+    <!--<address id="16" city="Hong Kong" country_countryCode="CN"/>-->
 
 
 
-    <!--<airport id="1" name="Brussels Airport" address_id="1"/>-->
-    <!--<airport id="2" name="Brussels South" address_id="2"/>-->
-    <!--<airport id="3" name="Orly" address_id="3"/>-->
+    <airport id="1" name="Brussels Airport" />
+    <airport id="2" name="Brussels South"/>
+    <airport id="3" name="Orly"/>
     <!--<airport id="4" name="Charles De Gaulle" address_id="3"/>-->
     <!--<airport id="5" name="Malaga" address_id="6"/>-->
     <!--<airport id="6" name="JFK" address_id="8"/>-->
     <!--<airport id="7" name="Dublin Airport" address_id="5"/>-->
+
+
 
 
 

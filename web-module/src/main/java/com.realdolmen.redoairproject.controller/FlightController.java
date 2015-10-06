@@ -26,8 +26,10 @@ public class FlightController {
         repository.delete(flightToBeRemoved);
     }
 
-    public void createOrUpdateFlight() {
+    public String createOrUpdateFlight() {
+
         repository.createOrUpdate(flight);
+        return "/flightsall.faces";
     }
 
 

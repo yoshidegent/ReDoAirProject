@@ -19,7 +19,9 @@ public class Flight extends AbstractEntity {
     @ManyToOne
     private Airport destination;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIME)
+    private Date departureDate;
+    @Temporal(TemporalType.TIME)
     private Date departureTime;
     private double duration;
 
@@ -36,11 +38,12 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
-    public Flight(Long flightId, Airline airline, Airport origin, Airport destination, Date departureTime, double duration, int seatsAvailable, double pricePerSeat, double discountVolumeSales, int seatsThresholdForDiscount) {
-        super(flightId);
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, Date departureDate, Date departureTime, double duration, int seatsAvailable, double pricePerSeat, double discountVolumeSales, int seatsThresholdForDiscount) {
+        super(id);
         this.airline = airline;
         this.origin = origin;
         this.destination = destination;
+        this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.duration = duration;
         this.seatsAvailable = seatsAvailable;
@@ -145,5 +148,13 @@ public class Flight extends AbstractEntity {
 
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
+    }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDay) {
+        this.departureDate = departureDay;
     }
 }

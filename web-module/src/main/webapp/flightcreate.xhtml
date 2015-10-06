@@ -27,27 +27,41 @@
 
                 <h:outputLabel class="control-label col-md-4" value="airline"/>
                 <h:selectOneMenu value="#{airlineController.retrieveAllAirlines()}">
-                    <f:selectItems value="#{airlineController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.name}" itemLabel="#{airline.name}" />
+                    <f:selectItems value="#{airlineController.retrieveAllAirlines()}" var="airline" itemValue="#{airline}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
                 <h:outputLabel class="control-label col-md-4" value="origin"/>
                 <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
-                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{airport.name}" itemLabel="#{airport.name}" />
+                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{flightController.flight.origin}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
                 <h:outputLabel class="control-label col-md-4" value="destination"/>
                 <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
-                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{airport.name}" itemLabel="#{airport.name}" />
+                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{flightController.flight.destination}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
-                <h:outputLabel class="control-label col-md-4"  value="price per seat"/>
-                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+
+                <h:outputLabel class="control-label col-md-4"  value="Departure Time"/>
+                <h:inputText value="#{flightController.flight.departureTime}"/>
 
                 <h:outputLabel class="control-label col-md-4"  value="duration"/>
                 <h:inputText value="#{flightController.flight.duration}"/>
 
+
+                <h:outputLabel class="control-label col-md-4"  value="price per seat"/>
+                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+
+                <h:outputLabel class="control-label col-md-4"  value="number of available seats"/>
+                <h:inputText value="#{flightController.flight.seatsAvailable}"/>
+
+                <h:outputLabel class="control-label col-md-4"  value="discount for volume sales"/>
+                <h:inputText value="#{flightController.flight.discountVolumeSales}"/>
+
+                <h:outputLabel class="control-label col-md-4"  value="threshold for volume sales"/>
+                <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
+
                 <h:outputLabel value=""/>
-                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight}"/>
+                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>
             </h:panelGrid>
             </div>
         </h:form>

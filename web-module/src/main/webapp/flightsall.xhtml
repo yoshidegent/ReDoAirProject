@@ -32,6 +32,13 @@
 
             <h:column>
                 <f:facet name="header">
+                    <h:outputText value="On"/>
+                </f:facet>
+                <h:outputText value="#{flight.departureDate}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
                     <h:outputText value="From"/>
                 </f:facet>
                 <h:outputText value="#{flight.origin.name}"/>
