@@ -26,7 +26,9 @@
         <p>Landing page.</p>
         <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
         <h:link outcome="/airlinesall.xhtml">See all airlines</h:link><br/>
-        <h:link outcome="/worldmap.xhtml">View worldmap</h:link><br/>
+        <h:form>
+            <h:commandLink action="#{worldmapController.getAvailableCountries()}">View worldmap</h:commandLink><br/>
+        </h:form>
     </div>
 </h:body>
 </html>
