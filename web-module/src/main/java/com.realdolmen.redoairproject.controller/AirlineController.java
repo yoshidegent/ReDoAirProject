@@ -15,12 +15,25 @@ import java.util.List;
 @RequestScoped
 public class AirlineController {
 
+    Airline airline = new Airline();
+
     @Inject
     AirlineRepository repository;
 
-    public List<Airline> retrieveAllAirlines()   {
-        return repository.findAll();
+//    public List<Airline> retrieveAllAirlines()   {
+//        return repository.findAll();
+//    }
+
+    public Airline retrieveAirlineForTesting()  {
+        return repository.findById(2l);
     }
 
 
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
 }

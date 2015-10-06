@@ -64,7 +64,7 @@ public class Flight extends AbstractEntity {
         this.departureTime = departureTime;
         this.flightDurationInMinutes = flightDurationInMinutes;
         this.seatsAvailable = seatsAvailable;
-        this.pricePerSeat = pricePerSeat;
+        this.setPricePerSeat(pricePerSeat);
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
         this.pricePerSeatForPassenger = this.calculatePriceforPassenger();
     }
@@ -78,6 +78,19 @@ public class Flight extends AbstractEntity {
         return null;
     }
 
+//    private void setPricePerSeat(double pricePerSeat)
+//    {
+//        if(pricePerSeat < 0)
+//            this.pricePerSeat = 0;
+//        else
+//            this.pricePerSeat = pricePerSeat;
+//    }
+
+
+    public void setPricePerSeat(double pricePerSeat) {
+        this.pricePerSeat = pricePerSeat;
+    }
+
     public double calculatePriceforPassenger()  {
         return this.pricePerSeatForPassenger = this.pricePerSeat * PROFIT_MARGIN;
     }
@@ -88,7 +101,7 @@ public class Flight extends AbstractEntity {
 
 
     public double calculateTotalProfitMargin(int numberOfBookings)  {
-        if(numberOfBookings > this.getSeatsThresholdForDiscount())  {
+        if(numberOfBookings >= this.getSeatsThresholdForDiscount() && this.getAirline() != null)  {
             return numberOfBookings * (this.pricePerSeatForPassenger - (this.pricePerSeat * (1-this.getAirline().getDiscountVolumeSales())));
         } else {
             return numberOfBookings * (this.pricePerSeatForPassenger - this.pricePerSeat);
@@ -126,12 +139,12 @@ public class Flight extends AbstractEntity {
         this.destination = destination;
     }
 
-    public double getFlightDurationInMinutes() {
+    public int getFlightDurationInMinutes() {
         return flightDurationInMinutes;
     }
 
-    public void setFlightDurationInMinutes(int duration) {
-        this.flightDurationInMinutes = duration;
+    public void setFlightDurationInMinutes(int flightDurationInMinutes) {
+        this.flightDurationInMinutes = flightDurationInMinutes;
     }
 
     public int getSeatsAvailable() {
@@ -173,4 +186,5 @@ public class Flight extends AbstractEntity {
     public double getPricePerSeatForPassenger() {
         return this.pricePerSeatForPassenger;
     }
+
 }

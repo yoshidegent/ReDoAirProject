@@ -3,6 +3,8 @@ package com.realdolmen.redoairproject.persistence;
 import com.realdolmen.redoairproject.entities.*;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class DataImporter
@@ -53,6 +55,8 @@ public class DataImporter
         addresses.add(new Address(5l, countryRepository.findCountryByCountryCodeCaseInsensitive("GB"), "London"));
         addresses.add(new Address(6l, countryRepository.findCountryByCountryCodeCaseInsensitive("IE"), "Dublin"));
         addresses.add(new Address(7l, countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
+        addresses.add(new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Sydney"));
+        addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("USA"), "New York City"));
 
         for(Address a : addresses)
         {
@@ -82,6 +86,8 @@ public class DataImporter
         airports.add(new Airport(6l, "Heathrow", addressRepository.findById(5l)));
         airports.add(new Airport(7l, "Dublin", addressRepository.findById(6l)));
         airports.add(new Airport(8l, "Schiphol", addressRepository.findById(7l)));
+        airports.add(new Airport(9l, "Kingsford Smith International Airport", addressRepository.findById(8l)));
+        airports.add(new Airport(10l, "JFK", addressRepository.findById(9l)));
 
         for (Airport airport : airports) {
             entityManager.merge(airport);
@@ -90,12 +96,17 @@ public class DataImporter
 
     private void importFlights()
     {
+        flights.add(new Flight(1l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(5l), LocalDate.of(2015,10,16), LocalTime.of(21,00), 200, 500,130,15));
+        flights.add(new Flight(2l, airlineRepository.findById(1l), airportRepository.findById(5l), airportRepository.findById(1l), LocalDate.of(2015, 10, 18), LocalTime.of(11, 00), 120,500,130,15));
 
+        flights.add(new Flight(3l, airlineRepository.findById(3l), airportRepository.findById(1l), airportRepository.findById(7l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
+        flights.add(new Flight(4l, airlineRepository.findById(3l), airportRepository.findById(7l), airportRepository.findById(1l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
 
+        flights.add(new Flight(5l, airlineRepository.findById(2l), airportRepository.findById(1l), airportRepository.findById(9l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
+        flights.add(new Flight(6l, airlineRepository.findById(2l), airportRepository.findById(9l), airportRepository.findById(1l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
 
-        flights.add(new Flight(1l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(5l), 500,130,15));
-        flights.add(new Flight(2l, airlineRepository.findById(1l), airportRepository.findById(5l), airportRepository.findById(1l), 500,130,15));
-        flights.add(new Flight(3l, airlineRepository.findById(3l), airportRepository.findById(1l), airportRepository.findById(6l), 500,130,15));
+        flights.add(new Flight(7l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(10l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
+        flights.add(new Flight(8l, airlineRepository.findById(1l), airportRepository.findById(10l), airportRepository.findById(6l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,130,15));
 
 
         for (Flight f : flights)
@@ -111,6 +122,27 @@ public class DataImporter
         flightsTrip1.add(flightRepository.findById(2l));
 
         trips.add(new Trip(1l, flightsTrip1,"Le Méridien", 80, 8, airportRepository.findById(5l)));
+
+        List<Flight> flightsTrip2 = new ArrayList<>();
+        flightsTrip1.add(flightRepository.findById(3l));
+        flightsTrip1.add(flightRepository.findById(4l));
+
+        trips.add(new Trip(1l, flightsTrip2,"Le Méridien", 80, 10, airportRepository.findById(7l)));
+
+
+        List<Flight> flightsTrip3 = new ArrayList<>();
+        flightsTrip1.add(flightRepository.findById(5l));
+        flightsTrip1.add(flightRepository.findById(6l));
+
+        trips.add(new Trip(1l, flightsTrip3,"Le Méridien", 80, 20, airportRepository.findById(9l)));
+
+
+        List<Flight> flightsTrip4 = new ArrayList<>();
+        flightsTrip1.add(flightRepository.findById(7l));
+        flightsTrip1.add(flightRepository.findById(8l));
+
+        trips.add(new Trip(1l, flightsTrip4,"Le Méridien", 80, 12, airportRepository.findById(10l)));
+
 
         for (Trip t : trips) {
             entityManager.merge(t);

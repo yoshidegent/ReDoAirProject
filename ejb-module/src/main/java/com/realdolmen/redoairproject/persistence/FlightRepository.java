@@ -10,11 +10,7 @@ import javax.ejb.Stateless;
 @Stateless
 @LocalBean
 public class FlightRepository extends GenericRepository<Flight> implements IFlightRepository {
-
-
     public FlightRepository() {
         super(Flight.class);
     }
-
-
 }

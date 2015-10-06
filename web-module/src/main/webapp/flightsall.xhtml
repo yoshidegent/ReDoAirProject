@@ -34,7 +34,15 @@
                 <f:facet name="header">
                     <h:outputText value="On"/>
                 </f:facet>
-                <h:outputText value="#{flight.id}"/>
+                <h:outputText value="#{flight.departureDate}"/>
+            </h:column>
+
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="At"/>
+                </f:facet>
+                <h:outputText value="#{flight.departureTime}"/>
             </h:column>
 
             <h:column>
@@ -65,13 +73,13 @@
                 <h:outputText value="€ #{flight.pricePerSeat}"/>
             </h:column>
 
-            <h:column>
-                <h:form>
-                    <h:commandLink  class="glyphicon glyphicon-trash">
-                        <f:ajax render="flights" execute="@all" event="click" listener="#{flightController.removeFlight(flight)}"/>
-                    </h:commandLink>
-                </h:form>
-            </h:column>
+            <!--<h:column>-->
+                <!--<h:form>-->
+                    <!--<h:commandLink  class="glyphicon glyphicon-trash">-->
+                        <!--<f:ajax render="flights" execute="@all" event="click" listener="#{flightController.removeFlight(flight)}"/>-->
+                    <!--</h:commandLink>-->
+                <!--</h:form>-->
+            <!--</h:column>-->
         </h:dataTable>
 
     </div>
