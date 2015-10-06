@@ -40,9 +40,16 @@ public class PersistenceTest{
     @Before
     public void loadTestData() throws Exception {
         logger.info("Clearing data");
+        entityManager().createQuery("DELETE from Trip t").executeUpdate();
+        entityManager().createQuery("DELETE from Flight f").executeUpdate();
+        entityManager().createQuery("DELETE from Airline a").executeUpdate();
+        entityManager().createQuery("DELETE from Airport a").executeUpdate();
         entityManager().createQuery("DELETE from Address a").executeUpdate();
         entityManager().createQuery("DELETE from Country c").executeUpdate();
-        entityManager().createQuery("DELETE from Flight f").executeUpdate();
+        entityManager().createQuery("DELETE from Partner p").executeUpdate();
+        entityManager().createQuery("DELETE from Passenger p").executeUpdate();
+        entityManager().createQuery("DELETE from ReDoEmployees r").executeUpdate();
+        entityManager().createQuery("DELETE from Partner p").executeUpdate();
 
 
         logger.info("Loading dataset");
