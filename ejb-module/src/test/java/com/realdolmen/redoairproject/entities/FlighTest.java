@@ -24,7 +24,10 @@ public class FlighTest {
         Assert.assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
         double overriddenPrice = 200.0;
         flight.overridePriceForPassenger(overriddenPrice);
+        //Check the price for the passenger has changed
         Assert.assertEquals(overriddenPrice, flight.getPricePerSeatForPassenger(), GAMMA);
+        //Check if original price is not overridden
+        Assert.assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
     }
 
     @Test
