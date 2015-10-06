@@ -14,20 +14,36 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <h:outputScript>
         $( document ).ready(function() {
+            #{worldmapController.getAvailableCountries()};
             var countries = #{worldmapController.getGsonCountries()};
             console.log(countries);
-            var x = countries.length;
 
             /* <![CDATA[ */
-            for(i=0; i < x; i++){
+            for(i=0; i < countries.length; i++){
                 console.log(countries[i]);
-                $('#' + countries[i].toLowerCase()).css("fill", "black");
+
+                var countryPath = $('#' + countries[i].toLowerCase());
+                countryPath.css("fill", "black");
+                countryPath.hover(function(){
+                    countryPath.css("fill", "greenyellow");
+                    countryPath.css("cursor", "pointer");
+                },
+                function(){
+                    countryPath.css("fill", "black");
+                });
+                /* ]]> */
+
+                countryPath.click(function(e){
+                    window.location.href = "/destinations.xhtml?country=" + countryPath.attr("id");
+                    //$('#countryHiddenIput').val(countryPath.attr("id"));
+                });
             }
-            /* ]]> */
+
         });
     </h:outputScript>
 </h:head>
 <h:body>
+    <h:form id="countryForm"><h:inputHidden id="countryHiddenInput" value="" /></h:form>
     <div id="fullscreen">
         <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 950 620" xml:space="preserve">
             <path id="kalimantan" d="M781.68,324.4l-2.31,8.68l-12.53,4.23l-3.75-4.4l-1.82,0.5l3.4,13.12l5.09,0.57l6.79,2.57v2.57l3.11-0.57l4.53-6.27v-5.13l2.55-5.13l2.83,0.57l-3.4-7.13l-0.52-4.59L781.68,324.4L781.68,324.4z"/>

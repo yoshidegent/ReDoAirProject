@@ -20,14 +20,13 @@ public class WorldmapController
 
     private List<String> countryNameList = new ArrayList<>();
 
-    public String getAvailableCountries()
+    public void getAvailableCountries()
     {
         List<Country> countries = tripRepository.findAllCountriesFromTrips();
         for(Country c : countries)
         {
             countryNameList.add(c.getCountry());
         }
-        return "worldmap";
     }
 
     public List<String> getCountryNameList() {
@@ -41,5 +40,10 @@ public class WorldmapController
     public String getGsonCountries()
     {
         return new Gson().toJson(countryNameList);
+    }
+
+    public String goToDestinations(String countryName)
+    {
+        return "destinations";
     }
 }
