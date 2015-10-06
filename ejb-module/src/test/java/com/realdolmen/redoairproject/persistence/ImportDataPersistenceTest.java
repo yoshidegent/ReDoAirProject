@@ -17,7 +17,6 @@ public class ImportDataPersistenceTest extends PersistenceTest {
     private static final Logger logger = LoggerFactory.getLogger(ImportDataPersistenceTest.class);
 
     @Test
-    @Ignore
     public void loadTestData() throws Exception {
         logger.info("Loading dataset");
 

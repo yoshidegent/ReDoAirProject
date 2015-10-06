@@ -45,6 +45,8 @@ public class PersistenceTest{
     public void loadTestData() throws Exception {
         logger.info("Clearing data");
         entityManager().createQuery("DELETE from Address a").executeUpdate();
+        entityManager().createQuery("DELETE from Address a").executeUpdate();
+        entityManager().createQuery("DELETE from Address a").executeUpdate();
 
 
         logger.info("Loading dataset");
