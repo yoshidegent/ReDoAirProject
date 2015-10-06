@@ -42,6 +42,16 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
+        super(id);
+        this.airline = airline;
+        this.origin = origin;
+        this.destination = destination;
+        this.seatsAvailable = seatsAvailable;
+        this.pricePerSeat = pricePerSeat;
+        this.seatsThresholdForDiscount = seatsThresholdForDiscount;
+    }
+
     public Flight(double pricePerSeat) {
         this.pricePerSeat = pricePerSeat;
     }

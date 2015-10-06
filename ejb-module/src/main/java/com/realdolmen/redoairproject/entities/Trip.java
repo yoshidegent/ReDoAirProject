@@ -1,12 +1,11 @@
 package com.realdolmen.redoairproject.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
-/**
- * Created by YDEAX41 on 2/10/2015.
- */
+@Entity
 public class Trip extends AbstractEntity {
 
     /**

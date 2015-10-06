@@ -1,13 +1,9 @@
 package com.realdolmen.redoairproject.persistence;
 
-import com.realdolmen.redoairproject.entities.Address;
-import com.realdolmen.redoairproject.entities.Airline;
-import com.realdolmen.redoairproject.entities.Airport;
-import com.realdolmen.redoairproject.entities.Flight;
+import com.realdolmen.redoairproject.entities.*;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DataImporter
 {
@@ -17,13 +13,23 @@ public class DataImporter
     private List<Address> addresses = new ArrayList<>();
     private List<Airline> airlines = new ArrayList<>();
     private List<Airport> airports = new ArrayList<>();
+    private List<Trip> trips = new ArrayList<>();
 
     private CountryRepository countryRepository = new CountryRepository();
     private AddressRepository addressRepository = new AddressRepository();
+    private AirlineRepository airlineRepository = new AirlineRepository();
+    private AirportRepository airportRepository = new AirportRepository();
+    private TripRepository tripRepository = new TripRepository();
+    private FlightRepository flightRepository = new FlightRepository();
 
     public DataImporter(EntityManager entityManager) {
         this.entityManager = entityManager;
         countryRepository.entityManager = entityManager;
+        addressRepository.entityManager = entityManager;
+        airlineRepository.entityManager = entityManager;
+        airportRepository.entityManager = entityManager;
+        tripRepository.entityManager = entityManager;
+        flightRepository.entityManager = entityManager;
     }
 
     public void importData()
@@ -33,6 +39,9 @@ public class DataImporter
 
         importAddresses();
         importAirlines();
+        importAirports();
+        importFlights();
+        importTrips();
     }
 
     private void importAddresses()
@@ -66,24 +75,43 @@ public class DataImporter
     private void importAirports()
     {
         airports.add(new Airport(1l, "Zaventem", addressRepository.findById(1l)));
-        airports.add(new Airport(1l, "Zaventem", addressRepository.findById(1l)));
-        airports.add(new Airport(1l, "Zaventem", addressRepository.findById(1l)));
-        airports.add(new Airport(1l, "Zaventem", addressRepository.findById(1l)));
+        airports.add(new Airport(2l, "Brussels South", addressRepository.findById(2l)));
+        airports.add(new Airport(3l, "Orly", addressRepository.findById(3l)));
+        airports.add(new Airport(4l, "Charles De Gaulle", addressRepository.findById(3l)));
+        airports.add(new Airport(5l, "Lyon-Saint Exupéry", addressRepository.findById(4l)));
+        airports.add(new Airport(6l, "Heathrow", addressRepository.findById(5l)));
+        airports.add(new Airport(7l, "Dublin", addressRepository.findById(6l)));
+        airports.add(new Airport(8l, "Schiphol", addressRepository.findById(7l)));
 
+        for (Airport airport : airports) {
+            entityManager.merge(airport);
+        }
     }
 
     private void importFlights()
     {
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
-        flights.add(new Flight());
+
+        flights.add(new Flight(1l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(5l), 500,130,15));
+        flights.add(new Flight(2l, airlineRepository.findById(1l), airportRepository.findById(5l), airportRepository.findById(1l), 500,130,15));
+        flights.add(new Flight(3l, airlineRepository.findById(3l), airportRepository.findById(1l), airportRepository.findById(6l), 500,130,15));
+
 
         for (Flight f : flights)
         {
             entityManager.merge(f);
+        }
+    }
+
+    private void importTrips()
+    {
+        List<Flight> flightsTrip1 = new ArrayList<>();
+        flightsTrip1.add(flightRepository.findById(1l));
+        flightsTrip1.add(flightRepository.findById(2l));
+
+        trips.add(new Trip(1l, flightsTrip1,"Le Méridien", 80, 8, airportRepository.findById(5l)));
+
+        for (Trip t : trips) {
+            entityManager.merge(t);
         }
     }
 }
