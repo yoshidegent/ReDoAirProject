@@ -75,10 +75,13 @@ public class Flight extends AbstractEntity {
     /**
      * Bussiness Logic
      */
-    public LocalDateTime calculateArrivalTime(LocalDateTime departure, double duration )  {
-//        this.departureTime;
-//        this.duration;
-        return null;
+    public LocalTime calculateArrivalTime()  {
+        int hours = this.flightDurationInMinutes / 60;
+        int minutes = this.flightDurationInMinutes % 60;
+
+        LocalTime arrivalTime = departureTime.plusHours(hours).plusMinutes(minutes);
+
+        return arrivalTime;
     }
 
 //    private void setPricePerSeat(double pricePerSeat)
@@ -103,7 +106,8 @@ public class Flight extends AbstractEntity {
     }
 
 
-    public double calculateTotalProfitMargin(int numberOfBookings)  {
+    public double calculateTotalProfitMargin()  {
+        int numberOfBookings = seatCapacity - seatsAvailable;
         if(numberOfBookings >= this.getSeatsThresholdForDiscount() && this.getAirline() != null)  {
             return numberOfBookings * (this.pricePerSeatForPassenger - (this.pricePerSeat * (1-this.getAirline().getDiscountVolumeSales())));
         } else {

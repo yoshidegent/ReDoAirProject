@@ -10,6 +10,7 @@ public class Airline extends AbstractEntity {
      */
     private String name;
     private double discountVolumeSales;
+    private String imageUrl;
 
 
     /**
@@ -19,6 +20,13 @@ public class Airline extends AbstractEntity {
     public Airline() {
     }
 
+
+    public Airline(Long id, String name, double discountVolumeSales, String imageUrl) {
+        super(id);
+        this.name = name;
+        this.discountVolumeSales = discountVolumeSales;
+        this.imageUrl = imageUrl;
+    }
 
     public Airline(Long id, String name, double discountVolumeSales) {
         super(id);
@@ -49,5 +57,13 @@ public class Airline extends AbstractEntity {
 
     public void setDiscountVolumeSales(double discountVolumeSales) {
         this.discountVolumeSales = discountVolumeSales;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

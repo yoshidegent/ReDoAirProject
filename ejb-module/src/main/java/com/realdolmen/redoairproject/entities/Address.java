@@ -38,4 +38,16 @@ public class Address extends AbstractEntity
         this.city = city;
     }
 
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }

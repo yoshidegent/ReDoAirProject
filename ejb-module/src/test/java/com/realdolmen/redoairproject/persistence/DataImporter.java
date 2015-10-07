@@ -66,9 +66,13 @@ public class DataImporter
 
     private void importAirlines()
     {
-        airlines.add(new Airline(1l, "SN Brussels Airlines", 0.03));
-        airlines.add(new Airline(2l, "Aer Lingus", 0.08));
-        airlines.add(new Airline(3l, "Qatar Airlines", 0.10));
+        airlines.add(new Airline(1l, "SN Brussels Airlines", 0.03, "http://logos.skyscnr.com/images/airlines/small/SN.png"));
+        airlines.add(new Airline(2l, "Aer Lingus", 0.08, "http://logos.skyscnr.com/images/airlines/small/EI.png"));
+        airlines.add(new Airline(3l, "Qatar Airlines", 0.10, "http://logos.skyscnr.com/images/airlines/small/QR.png"));
+        airlines.add(new Airline(4l, "Iberia", 0.08, "http://logos.skyscnr.com/images/airlines/small/IB.png"));
+        airlines.add(new Airline(5l, "Emirates", 0.03, "http://logos.skyscnr.com/images/airlines/small/EK.png"));
+        airlines.add(new Airline(6l, "KLM", 0.08, "http://logos.skyscnr.com/images/airlines/small/KL.png"));
+        airlines.add(new Airline(7l, "British Airways", 0.08, "http://logos.skyscnr.com/images/airlines/small/BA.png"));
 
         for (Airline a : airlines) {
             entityManager.merge(a);
@@ -86,7 +90,7 @@ public class DataImporter
         airports.add(new Airport(6l, "Heathrow", addressRepository.findById(5l)));
         airports.add(new Airport(7l, "Dublin", addressRepository.findById(6l)));
         airports.add(new Airport(8l, "Schiphol", addressRepository.findById(7l)));
-        airports.add(new Airport(9l, "Kingsford Smith International Airport", addressRepository.findById(8l)));
+        airports.add(new Airport(9l, "Kingsford Smith", addressRepository.findById(8l)));
         airports.add(new Airport(10l, "JFK", addressRepository.findById(9l)));
 
         for (Airport airport : airports) {
