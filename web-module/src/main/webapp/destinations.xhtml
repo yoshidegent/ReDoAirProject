@@ -22,9 +22,9 @@
     <ui:include src="/navbar.xhtml"/>
 
     <div class="container">
-        <h1>Trips for destination: #{destinationsController.getDestinationFromCountry()}</h1>
+        <h1>Trips for #{destinationsController.getDestinationFromCountry()}</h1>
 
-        <h:dataTable class="table table-hover" id="trips" value="#{destinationsController.tripsForDestination()}" var="trip">
+        <h:dataTable class="table table-hover" id="trips" value="#{destinationsController.tripsForDestination}" var="trip">
 
             <h:column>
                 <f:facet name="header">
