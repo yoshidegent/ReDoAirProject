@@ -30,7 +30,6 @@
                     <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
-
                 <h:outputLabel value="origin"/>
                 <h:selectOneMenu value="#{flightController.airportOriginId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
@@ -54,14 +53,24 @@
                 <h:outputLabel value="duration in minutes"/>
                 <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
 
-                <h:outputLabel value="that f date"/>
-                <h:inputText value="#{flightController.departureDate}"/>
-
+                <p:outputLabel for="popup" value="Popup:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
 
                 <h:outputLabel value=""/>
-                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight}"/>
+                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>
             </h:panelGrid>
         </h:form>
+
+        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+        <h:outputText value="Popup:" />
+        <h:outputText value="#{flightController.departureDate}">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+        </h:outputText>
+        </p:panelGrid>
+        </p:dialog>
+
     </div>
 
 </h:body>

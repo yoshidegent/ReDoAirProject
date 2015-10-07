@@ -6,12 +6,14 @@ import com.realdolmen.redoairproject.entities.Flight;
 import com.realdolmen.redoairproject.persistence.AirlineRepository;
 import com.realdolmen.redoairproject.persistence.AirportRepository;
 import com.realdolmen.redoairproject.persistence.FlightRepository;
+import org.primefaces.event.SelectEvent;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +23,6 @@ public class FlightController {
     /**
      * Class fields
      */
-
     Flight flight = new Flight();
     long airlineId;
     long airportDestinationId;
@@ -32,7 +33,6 @@ public class FlightController {
     /**
      * Inject repositories
      */
-
     @Inject
     FlightRepository flightRepository;
 
@@ -46,17 +46,14 @@ public class FlightController {
     /**
      * Methods
      */
-
     public List<Flight> retrieveAllFlights() {
         return flightRepository.findAll();
     }
 
 
     public List<Airline> retrieveAllAirlines() {
-        List<Airline> all = airlineRepository.findAll();
-        return all;
+        return airlineRepository.findAll();
     }
-
 
     public List<Airport> retrieveAllAirports() {
         return airportRepository.findAll();
@@ -66,12 +63,16 @@ public class FlightController {
         flight.setAirline(airlineRepository.findById(airlineId));
         flight.setOrigin(airportRepository.findById(airportOriginId));
         flight.setDestination(airportRepository.findById(airportDestinationId));
-
-        LocalDate date = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        flight.setDepartureDate(date);
-
+        flight.setTestDate(departureDate);
         flightRepository.createOrUpdate(flight);
         return "flightsall";
+    }
+
+
+    public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
 
     /**

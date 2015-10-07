@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
 public class Flight extends AbstractEntity {
@@ -20,10 +21,11 @@ public class Flight extends AbstractEntity {
     @ManyToOne
     private Airport destination;
 
-
     private LocalDate departureDate;
     private LocalTime departureTime;
     private int flightDurationInMinutes;
+
+    private Date testDate;
 
     private int seatsAvailable;
 
@@ -187,4 +189,12 @@ public class Flight extends AbstractEntity {
         return this.pricePerSeatForPassenger;
     }
 
+
+    public Date getTestDate() {
+        return testDate;
+    }
+
+    public void setTestDate(Date testDate) {
+        this.testDate = testDate;
+    }
 }
