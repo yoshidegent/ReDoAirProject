@@ -12,7 +12,8 @@ import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
 
-
+@LocalBean
+@Stateless
 public abstract class GenericRepository<T extends Serializable> implements IGenericRepository<T> {
 
     private Class<T> persistentClass;
@@ -24,6 +25,12 @@ public abstract class GenericRepository<T extends Serializable> implements IGene
     @PersistenceContext
     protected EntityManager entityManager;
 
+    /**
+     * Using the default constructor is not type-safe in these repositories
+     *
+     * @deprecated use {@link #GenericRepository(Class)}} instead.
+     */
+    @Deprecated
     protected GenericRepository() {
     }
 

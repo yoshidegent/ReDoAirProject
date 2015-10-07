@@ -4,9 +4,13 @@ import com.realdolmen.redoairproject.entities.Country;
 import com.realdolmen.redoairproject.entities.Flight;
 import com.realdolmen.redoairproject.persistence.interfaces.ICountryRepository;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+@LocalBean
+@Stateless
 public class CountryRepository extends GenericRepository<Country> implements ICountryRepository
 {
     public CountryRepository() {

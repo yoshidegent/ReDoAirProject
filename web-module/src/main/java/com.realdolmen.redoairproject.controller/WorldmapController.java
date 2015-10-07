@@ -15,19 +15,18 @@ import java.util.List;
 @RequestScoped
 public class WorldmapController
 {
-    @Inject
     private TripRepository tripRepository;
 
     private List<String> countryNameList = new ArrayList<>();
 
-    public String getAvailableCountries()
+    public void getAvailableCountries()
     {
+        tripRepository = new TripRepository();
         List<Country> countries = tripRepository.findAllCountriesFromTrips();
         for(Country c : countries)
         {
             countryNameList.add(c.getCountry());
         }
-        return "worldmap";
     }
 
     public List<String> getCountryNameList() {
@@ -41,5 +40,10 @@ public class WorldmapController
     public String getGsonCountries()
     {
         return new Gson().toJson(countryNameList);
+    }
+
+    public String goToDestinations(String countryName)
+    {
+        return "destinations";
     }
 }
