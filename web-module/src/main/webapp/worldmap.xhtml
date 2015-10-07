@@ -36,7 +36,7 @@
                 /* ]]> */
 
                 countryPath.click(function(e){
-                    window.location.href = "/destinations.xhtml";//?country=" + countryPath.attr("id");
+                    window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id");
                     //$('#countryHiddenIput').val(countryPath.attr("id"));
                 });
             }
