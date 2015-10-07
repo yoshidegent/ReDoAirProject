@@ -21,7 +21,7 @@ public class AirlineController {
     AirlineRepository repository;
 
 //    public List<Airline> retrieveAllAirlines()   {
-//        return repository.findAll();
+//        return flightRepository.findAll();
 //    }
 
     public Airline retrieveAirlineForTesting()  {

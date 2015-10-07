@@ -24,6 +24,9 @@ public abstract class GenericRepository<T extends Serializable> implements IGene
     @PersistenceContext
     protected EntityManager entityManager;
 
+    protected GenericRepository() {
+    }
+
     @Override
     public T createOrUpdate(T t)
     {

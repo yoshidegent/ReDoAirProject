@@ -14,6 +14,10 @@
 </h:head>
 
 <h:body style="padding:2rem;">
+
+    <ui:include src="/navbar.xhtml"/>
+
+
     <div class="container">
 
         <h1>Add a new flight</h1>
@@ -35,24 +39,20 @@
 
 
                 <h:outputLabel value="airline"/>
-                <h:selectOneMenu value="#{flightController.airline}">
-                    <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline}" itemLabel="#{airline.name}" />
+                <h:selectOneMenu value="#{flightController.airlineId}">
+                <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
-<!--dit pikken!!-->
-                <!--<h:selectOneMenu id="departure" value="#{FlightController.departure_id}">-->
-                    <!--<f:selectItems value="#{addFlightController.getAirports()}" var="a"-->
-                                   <!--itemLabel="#{a.getName()}" itemValue="#{a.getId()}"/>-->
-                <!--</h:selectOneMenu>-->
 
+                <h:outputLabel value="origin"/>
+                <h:selectOneMenu value="#{flightController.airportOriginId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
 
-                <!--<h:outputLabel value="test"/>-->
-                <!--<h:selectOneMenu value="#{flightController.flight.pricePerSeat}">-->
-                    <!--<f:selectItem itemLabel="testthis" itemValue="999" />-->
-                    <!--<f:selectItem itemLabel="testthistoo" itemValue="888" />-->
-                <!--</h:selectOneMenu>-->
-
-
+                <h:outputLabel value="destination"/>
+                <h:selectOneMenu value="#{flightController.airportDestinationId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
 
                 <h:outputLabel value=""/>
                 <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight}"/>

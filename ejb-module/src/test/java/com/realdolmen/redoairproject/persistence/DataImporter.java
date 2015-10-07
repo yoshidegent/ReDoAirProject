@@ -56,7 +56,7 @@ public class DataImporter
         addresses.add(new Address(6l, countryRepository.findCountryByCountryCodeCaseInsensitive("IE"), "Dublin"));
         addresses.add(new Address(7l, countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
         addresses.add(new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Sydney"));
-        addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("USA"), "New York City"));
+        addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"), "New York City"));
 
         for(Address a : addresses)
         {
@@ -127,21 +127,21 @@ public class DataImporter
         flightsTrip1.add(flightRepository.findById(3l));
         flightsTrip1.add(flightRepository.findById(4l));
 
-        trips.add(new Trip(1l, flightsTrip2,"Le Méridien", 80, 10, airportRepository.findById(7l)));
+        trips.add(new Trip(2l, flightsTrip2,"Le Méridien", 80, 10, airportRepository.findById(7l)));
 
 
         List<Flight> flightsTrip3 = new ArrayList<>();
         flightsTrip1.add(flightRepository.findById(5l));
         flightsTrip1.add(flightRepository.findById(6l));
 
-        trips.add(new Trip(1l, flightsTrip3,"Le Méridien", 80, 20, airportRepository.findById(9l)));
+        trips.add(new Trip(3l, flightsTrip3,"Le Méridien", 80, 20, airportRepository.findById(9l)));
 
 
         List<Flight> flightsTrip4 = new ArrayList<>();
         flightsTrip1.add(flightRepository.findById(7l));
         flightsTrip1.add(flightRepository.findById(8l));
 
-        trips.add(new Trip(1l, flightsTrip4,"Le Méridien", 80, 12, airportRepository.findById(10l)));
+        trips.add(new Trip(4l, flightsTrip4,"Le Méridien", 80, 12, airportRepository.findById(10l)));
 
 
         for (Trip t : trips) {

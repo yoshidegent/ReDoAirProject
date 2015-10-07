@@ -1,8 +1,10 @@
 package com.realdolmen.redoairproject.controller;
 
 import com.realdolmen.redoairproject.entities.Airline;
+import com.realdolmen.redoairproject.entities.Airport;
 import com.realdolmen.redoairproject.entities.Flight;
 import com.realdolmen.redoairproject.persistence.AirlineRepository;
+import com.realdolmen.redoairproject.persistence.AirportRepository;
 import com.realdolmen.redoairproject.persistence.FlightRepository;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,27 +16,22 @@ import java.util.List;
 @RequestScoped
 public class FlightController {
     Flight flight = new Flight();
-    Airline airline = new Airline();
+    long airlineId;
+    long airportDestinationId;
+    long airportOriginId;
 
     @Inject
-    FlightRepository repository;
+    FlightRepository flightRepository;
 
     @Inject
     AirlineRepository airlineRepository;
 
+    @Inject
+    AirportRepository airportRepository;
+
 
     public List<Flight> retrieveAllFlights() {
-        return repository.findAll();
-    }
-
-    public void removeFlight(Flight flightToBeRemoved) {
-        repository.delete(flightToBeRemoved);
-    }
-
-    public String createOrUpdateFlight() {
-        flight.setAirline(airline);
-        repository.createOrUpdate(flight);
-        return "flightsall";
+        return flightRepository.findAll();
     }
 
 
@@ -42,6 +39,21 @@ public class FlightController {
         List<Airline> all = airlineRepository.findAll();
         return all;
     }
+
+
+    public List<Airport> retrieveAllAirports()  {
+        return airportRepository.findAll();
+    }
+
+    public String createOrUpdateFlight() {
+        flight.setAirline(airlineRepository.findById(airlineId));
+        flight.setOrigin(airportRepository.findById(airportOriginId));
+        flight.setDestination(airportRepository.findById(airportDestinationId));
+        flightRepository.createOrUpdate(flight);
+        return "flightsall";
+    }
+
+
 
     public Flight getFlight() {
         return flight;
@@ -51,11 +63,27 @@ public class FlightController {
         this.flight = flight;
     }
 
-    public Airline getAirline() {
-        return airline;
+    public long getAirlineId() {
+        return airlineId;
     }
 
-    public void setAirline(Airline airline) {
-        this.airline = airline;
+    public void setAirlineId(long airlineId) {
+        this.airlineId = airlineId;
+    }
+
+    public long getAirportDestinationId() {
+        return airportDestinationId;
+    }
+
+    public void setAirportDestinationId(long airportDestinationId) {
+        this.airportDestinationId = airportDestinationId;
+    }
+
+    public long getAirportOriginId() {
+        return airportOriginId;
+    }
+
+    public void setAirportOriginId(long airportOriginId) {
+        this.airportOriginId = airportOriginId;
     }
 }
