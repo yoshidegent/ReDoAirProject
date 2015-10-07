@@ -14,6 +14,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class FlightController {
     long airportDestinationId;
     long airportOriginId;
     Date departureDate;
+    String departureTime;
 
 
     /**
@@ -63,9 +67,21 @@ public class FlightController {
         flight.setAirline(airlineRepository.findById(airlineId));
         flight.setOrigin(airportRepository.findById(airportOriginId));
         flight.setDestination(airportRepository.findById(airportDestinationId));
-        flight.setTestDate(departureDate);
+
+        LocalDate date = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        String[] split = departureTime.split(":");
+        LocalTime time = LocalTime.of(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+
+        flight.setDepartureTime(time);
+        flight.setDepartureDate(date);
         flightRepository.createOrUpdate(flight);
         return "flightsall";
+    }
+
+    public Flight getFlight(int id)   {
+        long longId = id;
+        return flightRepository.findById(longId);
     }
 
 
@@ -116,5 +132,13 @@ public class FlightController {
 
     public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 }

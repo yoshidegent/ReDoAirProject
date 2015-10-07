@@ -18,17 +18,12 @@
     <ui:include src="/navbar.xhtml" />
 
 
-    <div class="container" style="padding-top: 7rem">
+    <div class="container">
 
         <h1>Available flights</h1>
 
         <h:dataTable class="table table-hover" id="flights" value="#{flightController.retrieveAllFlights()}" var="flight">
-            <!--<p:column>-->
-            <!--<f:facet name="header">-->
-            <!--<h:outputText value="Id"/>-->
-            <!--</f:facet>-->
-            <!--<h:outputText value="#{flight.id}"/>-->
-            <!--</p:column>-->
+
 
             <h:column>
                 <f:facet name="header">
@@ -72,6 +67,19 @@
                 </f:facet>
                 <h:outputText value="€ #{flight.pricePerSeat}"/>
             </h:column>
+
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="details"/>
+                </f:facet>
+
+                <h:link outcome="flightdetail">
+                    <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
+                    <f:param name="id" value="#{flight.id}"/>
+                </h:link>
+            </h:column>
+
 
             <!--<h:column>-->
                 <!--<h:form>-->

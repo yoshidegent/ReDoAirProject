@@ -13,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </h:head>
 
-<h:body style="padding:2rem;">
+<h:body>
 
     <ui:include src="/navbar.xhtml"/>
 
@@ -50,11 +50,17 @@
                 <h:outputLabel value="seats threshold for discount"/>
                 <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
+                <p:outputLabel for="popup" value="departure date:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
+
+                <h:outputLabel value="departure time:"/>
+                <h:inputText value="#{flightController.departureTime}"/>
+
                 <h:outputLabel value="duration in minutes"/>
                 <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
 
-                <p:outputLabel for="popup" value="Popup:" />
-                <p:calendar id="popup" value="#{flightController.departureDate}" />
+
+
 
                 <h:outputLabel value=""/>
                 <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>

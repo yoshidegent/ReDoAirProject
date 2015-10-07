@@ -1,75 +1,85 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 <h:head>
-    <meta charset="UTF-8"/>
-    <title>Add a new flight</title>
+    <title>New passenger</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 </h:head>
 
 <h:body>
-    <ui:include src="/navbar.xhtml" />
 
-    <div class="container" style="padding-top: 7rem">
+    <ui:include src="/navbar.xhtml"/>
+
+
+    <div class="container">
 
         <h1>Add a new flight</h1>
 
         <h:form style="margin: auto" class="form-horizontal">
-            <div class="form-group">
             <h:panelGrid columns="2">
 
-                <h:outputLabel class="control-label col-md-4" value="airline"/>
-                <h:selectOneMenu value="#{airlineController.retrieveAllAirlines()}">
-                    <f:selectItems value="#{airlineController.retrieveAllAirlines()}" var="airline" itemValue="#{airline}" itemLabel="#{airline.name}" />
+                <h:outputLabel value="airline"/>
+                <h:selectOneMenu value="#{flightController.airlineId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
-                <h:outputLabel class="control-label col-md-4" value="origin"/>
-                <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
-                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{flightController.flight.origin}" itemLabel="#{airport.name}" />
+                <h:outputLabel value="origin"/>
+                <h:selectOneMenu value="#{flightController.airportOriginId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
-                <h:outputLabel class="control-label col-md-4" value="destination"/>
-                <h:selectOneMenu value="#{airportController.retrieveAllAirports()}">
-                    <f:selectItems value="#{airportController.retrieveAllAirports()}" var="airport" itemValue="#{flightController.flight.destination}" itemLabel="#{airport.name}" />
+                <h:outputLabel value="destination"/>
+                <h:selectOneMenu value="#{flightController.airportDestinationId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
+                <h:outputLabel value="seat capacity"/>
+                <h:inputText value="#{flightController.flight.seatCapacity}"/>
 
-                <h:outputLabel class="control-label col-md-4"  value="Departure Time"/>
-                <h:inputText value="#{flightController.flight.departureTime}"/>
-
-                <h:outputLabel class="control-label col-md-4"  value="duration"/>
-                <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
-
-
-                <h:outputLabel class="control-label col-md-4"  value="price per seat"/>
-                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
-
-                <h:outputLabel class="control-label col-md-4"  value="number of available seats"/>
+                <h:outputLabel value="seats available"/>
                 <h:inputText value="#{flightController.flight.seatsAvailable}"/>
 
-                <h:outputLabel class="control-label col-md-4"  value="threshold for volume sales"/>
+                <h:outputLabel value="price per seat"/>
+                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+
+                <h:outputLabel value="seats threshold for discount"/>
                 <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
+                <p:outputLabel for="popup" value="departure date:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
 
+                <h:outputLabel value="departure time:"/>
+                <h:inputText value="#{flightController.departureTime}"/>
 
-                <div class="form-group">
-                    <h:inputHidden value="#{flightController.flight.id}" class="form-control"></h:inputHidden>
-                </div>
+                <h:outputLabel value="duration in minutes"/>
+                <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
+
 
 
 
                 <h:outputLabel value=""/>
-                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight}"/>
+                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>
             </h:panelGrid>
-            </div>
         </h:form>
+
+        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+            <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+                <h:outputText value="Popup:" />
+                <h:outputText value="#{flightController.departureDate}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:panelGrid>
+        </p:dialog>
+
     </div>
+
 </h:body>
 </html>

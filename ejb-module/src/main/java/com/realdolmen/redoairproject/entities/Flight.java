@@ -25,8 +25,7 @@ public class Flight extends AbstractEntity {
     private LocalTime departureTime;
     private int flightDurationInMinutes;
 
-    private Date testDate;
-
+    private int seatCapacity;
     private int seatsAvailable;
 
     private double pricePerSeat;
@@ -43,11 +42,12 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
-    public Flight(Long id, Airline airline, Airport origin, Airport destination, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, int seatCapacity, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
         super(id);
         this.airline = airline;
         this.origin = origin;
         this.destination = destination;
+        this.seatCapacity = seatCapacity;
         this.seatsAvailable = seatsAvailable;
         this.pricePerSeat = pricePerSeat;
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
@@ -57,7 +57,7 @@ public class Flight extends AbstractEntity {
         this.pricePerSeat = pricePerSeat;
     }
 
-    public Flight(Long id, Airline airline, Airport origin, Airport destination, LocalDate departureDate, LocalTime departureTime, int flightDurationInMinutes, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
+    public Flight(Long id, Airline airline, Airport origin, Airport destination, LocalDate departureDate, LocalTime departureTime, int flightDurationInMinutes, int seatCapacity, int seatsAvailable, double pricePerSeat, int seatsThresholdForDiscount) {
         super(id);
         this.airline = airline;
         this.origin = origin;
@@ -65,6 +65,7 @@ public class Flight extends AbstractEntity {
         this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.flightDurationInMinutes = flightDurationInMinutes;
+        this.seatCapacity = seatCapacity;
         this.seatsAvailable = seatsAvailable;
         this.setPricePerSeat(pricePerSeat);
         this.seatsThresholdForDiscount = seatsThresholdForDiscount;
@@ -189,12 +190,11 @@ public class Flight extends AbstractEntity {
         return this.pricePerSeatForPassenger;
     }
 
-
-    public Date getTestDate() {
-        return testDate;
+    public int getSeatCapacity() {
+        return seatCapacity;
     }
 
-    public void setTestDate(Date testDate) {
-        this.testDate = testDate;
+    public void setSeatCapacity(int seatCapacity) {
+        this.seatCapacity = seatCapacity;
     }
 }
