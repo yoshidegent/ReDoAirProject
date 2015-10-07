@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+
 </h:head>
 
 <h:body>
@@ -42,8 +43,6 @@
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
-                <h:outputLabel value="seat capacity"/>
-                <h:inputText value="#{flightController.flight.seatCapacity}"/>
 
                 <h:outputLabel value="seats available"/>
                 <h:inputText value="#{flightController.flight.seatsAvailable}"/>
@@ -54,8 +53,7 @@
                 <h:outputLabel value="seats threshold for discount"/>
                 <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
-                <p:outputLabel for="popup" value="departure date:" />
-                <p:calendar id="popup" value="#{flightController.departureDate}" />
+
 
                 <h:outputLabel value="departure time:"/>
                 <h:inputText value="#{flightController.departureTime}"/>
@@ -64,22 +62,24 @@
                 <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
 
 
-
+                <p:outputLabel for="popup" value="departure date:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
 
                 <h:outputLabel value=""/>
                 <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>
             </h:panelGrid>
+
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+                    <h:outputText value="Popup:" />
+                    <h:outputText value="#{flightController.departureDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:panelGrid>
+            </p:dialog>
         </h:form>
 
-        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-            <p:panelGrid id="display" columns="2" columnClasses="label,value">
-
-                <h:outputText value="Popup:" />
-                <h:outputText value="#{flightController.departureDate}">
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                </h:outputText>
-            </p:panelGrid>
-        </p:dialog>
 
     </div>
 

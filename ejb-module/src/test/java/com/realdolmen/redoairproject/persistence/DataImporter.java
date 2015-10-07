@@ -57,6 +57,7 @@ public class DataImporter
         addresses.add(new Address(7l, countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
         addresses.add(new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Sydney"));
         addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"), "New York City"));
+        addresses.add(new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("UA"), "Melbourne"));
 
         for(Address a : addresses)
         {
@@ -92,6 +93,7 @@ public class DataImporter
         airports.add(new Airport(8l, "Schiphol", addressRepository.findById(7l)));
         airports.add(new Airport(9l, "Kingsford Smith", addressRepository.findById(8l)));
         airports.add(new Airport(10l, "JFK", addressRepository.findById(9l)));
+        airports.add(new Airport(11l, "Melbourne Airport", addressRepository.findById(10l)));
 
         for (Airport airport : airports) {
             entityManager.merge(airport);
@@ -104,13 +106,17 @@ public class DataImporter
         flights.add(new Flight(2l, airlineRepository.findById(1l), airportRepository.findById(5l), airportRepository.findById(1l), LocalDate.of(2015, 10, 18), LocalTime.of(11, 00), 120,800, 200, 130,15));
 
         flights.add(new Flight(3l, airlineRepository.findById(3l), airportRepository.findById(1l), airportRepository.findById(7l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500, 350, 99,15));
-        flights.add(new Flight(4l, airlineRepository.findById(3l), airportRepository.findById(7l), airportRepository.findById(1l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 500,350, 150,15));
+        flights.add(new Flight(4l, airlineRepository.findById(3l), airportRepository.findById(7l), airportRepository.findById(1l), LocalDate.of(2015, 11, 22), LocalTime.of(8, 30),110, 500,350, 150,15));
 
         flights.add(new Flight(5l, airlineRepository.findById(2l), airportRepository.findById(1l), airportRepository.findById(9l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 250, 100,199,15));
-        flights.add(new Flight(6l, airlineRepository.findById(2l), airportRepository.findById(9l), airportRepository.findById(1l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 250, 88, 155, 20));
+        flights.add(new Flight(6l, airlineRepository.findById(2l), airportRepository.findById(9l), airportRepository.findById(1l), LocalDate.of(2015, 10, 28), LocalTime.of(8, 30),110, 250, 88, 155, 20));
 
-        flights.add(new Flight(7l, airlineRepository.findById(1l), airportRepository.findById(1l), airportRepository.findById(10l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 450, 300, 170,15));
-        flights.add(new Flight(8l, airlineRepository.findById(1l), airportRepository.findById(10l), airportRepository.findById(6l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 450, 301, 165,15));
+        flights.add(new Flight(7l, airlineRepository.findById(4l), airportRepository.findById(1l), airportRepository.findById(10l), LocalDate.of(2015, 10, 22), LocalTime.of(8, 30),110, 450, 300, 170,15));
+        flights.add(new Flight(8l, airlineRepository.findById(4l), airportRepository.findById(10l), airportRepository.findById(6l), LocalDate.of(2015, 10, 19), LocalTime.of(8, 30),110, 450, 301, 165,15));
+
+        flights.add(new Flight(9l, airlineRepository.findById(5l), airportRepository.findById(1l), airportRepository.findById(11l), LocalDate.of(2015, 11, 22), LocalTime.of(8, 30),110, 450, 301, 165,15));
+        flights.add(new Flight(10l, airlineRepository.findById(5l), airportRepository.findById(11l), airportRepository.findById(1l), LocalDate.of(2015, 12, 22), LocalTime.of(8, 30),110, 450, 301, 165,15));
+
 
 
         for (Flight f : flights)
@@ -146,6 +152,13 @@ public class DataImporter
         flightsTrip1.add(flightRepository.findById(8l));
 
         trips.add(new Trip(4l, flightsTrip4,"Le Méridien", 80, 12, airportRepository.findById(10l)));
+
+
+        List<Flight> flightsTrip5 = new ArrayList<>();
+        flightsTrip1.add(flightRepository.findById(9l));
+        flightsTrip1.add(flightRepository.findById(10l));
+
+        trips.add(new Trip(5l, flightsTrip5,"Another hotel :p", 130, 30, airportRepository.findById(11l)));
 
 
         for (Trip t : trips) {

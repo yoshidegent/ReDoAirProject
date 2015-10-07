@@ -9,20 +9,7 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-    <c:set var="flight" value="#{flightController.getFlight(param['id'])}"/>
 
-    <h:outputScript>
-        $( document ).ready(function(){
-        var availableSeats = #{flight.seatsAvailable};
-        console.log("Available seats: " + availableSeats);
-        var capacitySeats = #{flight.seatCapacity};
-        console.log("Capacity seats: " + capacitySeats);
-        var percentageUnavailable = 100 - ((availableSeats/capacitySeats) * 100);
-        console.log("Percentage unavailable: " + percentageUnavailable);
-
-        $('#F1gst1').attr('offset', percentageUnavailable);
-        });
-    </h:outputScript>
     <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
