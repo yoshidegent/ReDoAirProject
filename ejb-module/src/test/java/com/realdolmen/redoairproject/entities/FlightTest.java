@@ -46,6 +46,7 @@ public class FlightTest {
             flight.setSeatsThresholdForDiscount(threshold[i]);
             flight.overridePriceForPassenger(overridenPrice[i]);
             flight.setAirline(new Airline(0l, "test", discount[i]));
+            flight.setSeatCapacity(seatsSold[i]);
 
             if(threshold[i] > seatsSold[i])
                 discount[i] = 0;
@@ -54,7 +55,7 @@ public class FlightTest {
             LOG.debug("Profit: " + profit);
 
             //Checkif the calculation is right
-            Assert.assertEquals(profit, flight.calculateTotalProfitMargin(seatsSold[i]), GAMMA);
+            Assert.assertEquals(profit, flight.calculateTotalProfitMargin(), GAMMA);
         }
     }
 

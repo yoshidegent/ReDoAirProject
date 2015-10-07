@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 </h:head>
 
@@ -23,6 +25,13 @@
         <h1>Available flights</h1>
 
         <h:dataTable class="table table-hover" id="flights" value="#{flightController.retrieveAllFlights()}" var="flight">
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="airline"/>
+                </f:facet>
+                <img src="#{flight.airline.imageUrl}" alt="airline logo" style="height: 30px"/>
+            </h:column>
 
 
             <h:column>
@@ -44,22 +53,24 @@
                 <f:facet name="header">
                     <h:outputText value="From"/>
                 </f:facet>
-                <h:outputText value="#{flight.origin.name}"/>
+                <h:outputText value="#{flight.origin.address.city}"/>
             </h:column>
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="To"/>
                 </f:facet>
-                <h:outputText value="#{flight.destination.name}"/>
+                <h:outputText value="#{flight.destination.address.city}"/>
             </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Airline"/>
-                </f:facet>
-                <h:outputText value="#{flight.airline.name}"/>
-            </h:column>
+            <!--<h:column>-->
+                <!--<f:facet name="header">-->
+                    <!--<h:outputText value="Airline"/>-->
+                <!--</f:facet>-->
+                <!--<h:outputText value="#{flight.airline.name}"/>-->
+            <!--</h:column>-->
+
+
 
             <h:column>
                 <f:facet name="header">
