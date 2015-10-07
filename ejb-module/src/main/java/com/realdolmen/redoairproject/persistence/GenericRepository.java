@@ -25,6 +25,11 @@ public abstract class GenericRepository<T extends Serializable> implements IGene
     @PersistenceContext
     protected EntityManager entityManager;
 
+    /**
+     * Using the default constructor is not type-safe in these repositories
+     *
+     * @deprecated use {@link #GenericRepository(Class)}} instead.
+     */
     @Deprecated
     protected GenericRepository() {
     }
