@@ -15,13 +15,13 @@ import java.util.List;
 @RequestScoped
 public class WorldmapController
 {
-    @Inject
     private TripRepository tripRepository;
 
     private List<String> countryNameList = new ArrayList<>();
 
     public void getAvailableCountries()
     {
+        tripRepository = new TripRepository();
         List<Country> countries = tripRepository.findAllCountriesFromTrips();
         for(Country c : countries)
         {
