@@ -10,15 +10,28 @@ import com.realdolmen.redoairproject.persistence.FlightRepository;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @Named
 @RequestScoped
 public class FlightController {
+    /**
+     * Class fields
+     */
+
     Flight flight = new Flight();
     long airlineId;
     long airportDestinationId;
     long airportOriginId;
+    Date departureDate;
+
+
+    /**
+     * Inject repositories
+     */
 
     @Inject
     FlightRepository flightRepository;
@@ -29,6 +42,10 @@ public class FlightController {
     @Inject
     AirportRepository airportRepository;
 
+
+    /**
+     * Methods
+     */
 
     public List<Flight> retrieveAllFlights() {
         return flightRepository.findAll();
@@ -41,7 +58,7 @@ public class FlightController {
     }
 
 
-    public List<Airport> retrieveAllAirports()  {
+    public List<Airport> retrieveAllAirports() {
         return airportRepository.findAll();
     }
 
@@ -49,12 +66,17 @@ public class FlightController {
         flight.setAirline(airlineRepository.findById(airlineId));
         flight.setOrigin(airportRepository.findById(airportOriginId));
         flight.setDestination(airportRepository.findById(airportDestinationId));
+
+        LocalDate date = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        flight.setDepartureDate(date);
+
         flightRepository.createOrUpdate(flight);
         return "flightsall";
     }
 
-
-
+    /**
+     * Getters & setters
+     */
     public Flight getFlight() {
         return flight;
     }
@@ -85,5 +107,13 @@ public class FlightController {
 
     public void setAirportOriginId(long airportOriginId) {
         this.airportOriginId = airportOriginId;
+    }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
     }
 }
