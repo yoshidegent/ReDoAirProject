@@ -39,7 +39,7 @@
 
         <c:set var="flight" value="#{flightController.getFlight(param['id'])}"/>
 
-        <h1><h:outputText value="#{flight.origin.name} -  #{flight.destination.name}"/></h1>
+        <h1><h:outputText value="Flight #{flight.origin.address.city} -  #{flight.destination.address.city}"/></h1>
 
         <div>
             <h4>from airport</h4>
@@ -110,17 +110,33 @@
                 <h:outputText value="#{flight.seatsThresholdForDiscount}"/>
             </h:column>
 
-        <ui:include src="/airplaneimage.xhtml" />
+            <h:column>
+            <f:facet name="header">
+                <h:outputText value="Discount for volume sales"/>
+            </f:facet>
+            <h:outputText value="#{flight.airline.discountVolumeSales}"/>
+        </h:column>
+
+
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Discount for volume sales"/>
+                    <h:outputText value="details"/>
                 </f:facet>
-                <h:outputText value="#{flight.airline.discountVolumeSales}"/>
+
+                <h:link outcome="flightcreate">
+                    <span class="btn btn-info btn-sm glyphicon glyphicon-penci"/>
+                    <f:param name="id" value="#{flight.id}"/>
+                </h:link>
             </h:column>
+
+
+
+
         </h:dataTable>
 
 
-        <!--<ui:include src="/airplaneimage.xhtml" />-->
+        <ui:include src="/airplaneimage.xhtml" />
+
 
     </div>
 </h:body>

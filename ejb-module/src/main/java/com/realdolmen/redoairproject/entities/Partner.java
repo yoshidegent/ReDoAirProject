@@ -3,7 +3,7 @@ package com.realdolmen.redoairproject.entities;
 import javax.persistence.Entity;
 
 @Entity
-public class Partner extends AbstractEntity{
+public class Partner extends User{
     /**
      * Class fields
      */

@@ -33,37 +33,63 @@
                     <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
+
                 <h:outputLabel value="origin"/>
                 <h:selectOneMenu value="#{flightController.airportOriginId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
 
                 <h:outputLabel value="destination"/>
                 <h:selectOneMenu value="#{flightController.airportDestinationId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
+                <p:outputLabel for="popup" value="departure date:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
                 <h:outputLabel value="seats available"/>
                 <h:inputText value="#{flightController.flight.seatsAvailable}"/>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
                 <h:outputLabel value="price per seat"/>
                 <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
                 <h:outputLabel value="seats threshold for discount"/>
                 <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
-
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
                 <h:outputLabel value="departure time:"/>
                 <h:inputText value="#{flightController.departureTime}"/>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
                 <h:outputLabel value="duration in minutes"/>
                 <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
-                <p:outputLabel for="popup" value="departure date:" />
-                <p:calendar id="popup" value="#{flightController.departureDate}" />
 
                 <h:outputLabel value=""/>
                 <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>

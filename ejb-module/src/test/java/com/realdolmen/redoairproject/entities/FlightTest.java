@@ -63,6 +63,37 @@ public class FlightTest {
     @Test
     public void testPricesCantBeNegative()
     {
-        Assert.fail("To be implemented");
+        final double price = 50;
+        flight.setPricePerSeat(-price);
+        Assert.assertEquals(price, flight.getPricePerSeat(), GAMMA);
+    }
+
+
+    @Test
+    public void testPriceForPassengerCantBeNegative()
+    {
+        final double price = 50;
+        flight.overridePriceForPassenger(-price);
+        Assert.assertEquals(price, flight.getPricePerSeatForPassenger(), GAMMA);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

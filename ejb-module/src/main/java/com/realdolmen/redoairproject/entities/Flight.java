@@ -94,7 +94,7 @@ public class Flight extends AbstractEntity {
 
 
     public void setPricePerSeat(double pricePerSeat) {
-        this.pricePerSeat = pricePerSeat;
+        this.pricePerSeat = Math.abs(pricePerSeat);
     }
 
     public double calculatePriceforPassenger()  {
@@ -102,7 +102,7 @@ public class Flight extends AbstractEntity {
     }
 
     public void overridePriceForPassenger(double price)   {
-        this.pricePerSeatForPassenger = price;
+        this.pricePerSeatForPassenger = Math.abs(price);
     }
 
 

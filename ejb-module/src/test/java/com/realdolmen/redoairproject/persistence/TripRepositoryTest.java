@@ -13,7 +13,6 @@ public class TripRepositoryTest extends PersistenceTest{
 
     private static final Logger LOG = LoggerFactory.getLogger(TripRepositoryTest.class);
 
-    @Inject
     private TripRepository tripRepository = new TripRepository();
 
     private CountryRepository countryRepository = new CountryRepository();
@@ -25,12 +24,13 @@ public class TripRepositoryTest extends PersistenceTest{
     {
         countryRepository.entityManager = entityManager();
         tripRepository.entityManager = entityManager();
-        country = countryRepository.findCountryCodeByCountryCaseInsensitive("France");
     }
 
     @Test
     public void testFindTripsByCountry()
     {
+        country = countryRepository.findCountryCodeByCountryCaseInsensitive("France");
+
         List<Trip> allTripsForCountry = tripRepository.findTripsByCountry(country);
 
         Assert.assertTrue(allTripsForCountry.size() > 0);
@@ -40,9 +40,13 @@ public class TripRepositoryTest extends PersistenceTest{
     }
 
     @Test
-    @Ignore
-    public void testFind()
+    public void testFindAllCountriesFromTrips()
     {
-        Assert.fail("To be implemented");
+        List<Country> countries = tripRepository.findAllCountriesFromTrips();
+        for (Country country1 : countries) {
+            List<Trip> tripsByCountry = tripRepository.findTripsByCountry(country1);
+            Assert.assertNotNull(tripsByCountry);
+        }
+
     }
 }
