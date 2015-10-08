@@ -28,7 +28,7 @@ public class Airport extends AbstractEntity {
         this.address = address;
     }
 
-/**
+    /**
      * Bussiness Methods
      */
 
@@ -44,7 +44,6 @@ public class Airport extends AbstractEntity {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Address getAddress() {
         return address;

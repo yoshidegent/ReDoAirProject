@@ -43,9 +43,10 @@ public class TripRepositoryTest extends PersistenceTest{
     public void testFindAllCountriesFromTrips()
     {
         List<Country> countries = tripRepository.findAllCountriesFromTrips();
+
         for (Country country1 : countries) {
             List<Trip> tripsByCountry = tripRepository.findTripsByCountry(country1);
-            Assert.assertNotNull(tripsByCountry);
+            Assert.assertTrue(tripsByCountry.size() > 0);
         }
 
     }

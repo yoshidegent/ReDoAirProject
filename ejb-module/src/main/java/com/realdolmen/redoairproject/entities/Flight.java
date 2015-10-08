@@ -84,14 +84,6 @@ public class Flight extends AbstractEntity {
         return arrivalTime;
     }
 
-//    private void setPricePerSeat(double pricePerSeat)
-//    {
-//        if(pricePerSeat < 0)
-//            this.pricePerSeat = 0;
-//        else
-//            this.pricePerSeat = pricePerSeat;
-//    }
-
 
     public void setPricePerSeat(double pricePerSeat) {
         this.pricePerSeat = Math.abs(pricePerSeat);

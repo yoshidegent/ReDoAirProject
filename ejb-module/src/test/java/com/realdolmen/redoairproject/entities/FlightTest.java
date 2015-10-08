@@ -4,6 +4,8 @@ import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalTime;
+
 public class FlightTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(FlightTest.class);
@@ -75,6 +77,15 @@ public class FlightTest {
         final double price = 50;
         flight.overridePriceForPassenger(-price);
         Assert.assertEquals(price, flight.getPricePerSeatForPassenger(), GAMMA);
+    }
+
+
+    @Test
+    public void testCalculateArrivalTime()
+    {
+        flight.setDepartureTime(LocalTime.of(23, 00));
+        flight.setFlightDurationInMinutes(120);
+        Assert.assertEquals(LocalTime.of(01,00), flight.calculateArrivalTime());
     }
 }
 
