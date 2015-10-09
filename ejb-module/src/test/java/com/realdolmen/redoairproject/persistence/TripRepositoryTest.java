@@ -43,7 +43,7 @@ public class TripRepositoryTest extends PersistenceTest{
     @Test
     public void testFindTripsByCountry()
     {
-        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive("France");
+        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive("Belgium");
 
         List<Trip> allTripsForCountry = tripRepository.findTripsByCountry(country);
 

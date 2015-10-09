@@ -26,12 +26,12 @@
     <address id="16" city="Hong Kong" country_countryCode="CN"/>
 
     <airport id="1" name="Brussels Airport" address_id="1"/>
-    <airport id="2" name="Brussels South" address_id="1"/>
-    <airport id="3" name="Orly" address_id="1"/>
-    <airport id="4" name="Charles De Gaulle" address_id="1"/>
-    <airport id="5" name="Malaga" address_id="1"/>
-    <airport id="6" name="JFK" address_id="1"/>
-    <airport id="7" name="Dublin Airport" address_id="1"/>
+    <airport id="2" name="Brussels South" address_id="14"/>
+    <airport id="3" name="Orly" address_id="15"/>
+    <airport id="4" name="Charles De Gaulle" address_id="16"/>
+    <airport id="5" name="Malaga" address_id="11"/>
+    <airport id="6" name="JFK" address_id="7"/>
+    <airport id="7" name="Dublin Airport" address_id="3"/>
 
     <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
             flightDurationInMinutes="200"
@@ -54,7 +54,17 @@
             departureTime="2015-10-12" seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
-    <trip hotel="Hotel Evelyne is leuk" numberOfNights="10" priceHotelPerNightPerPerson="100"
+    <trip hotel="Hotel Evelyne is leuk" numberOfNights="5" priceHotelPerNightPerPerson="100"
           endDestination_id="1"/>
+    <trip hotel="Hotel Evelyne is leuk 2" numberOfNights="5" priceHotelPerNightPerPerson="100"
+          endDestination_id="1"/>
+    <trip hotel="Hotel Evelyne is tof" numberOfNights="20" priceHotelPerNightPerPerson="100"
+          endDestination_id="2"/>
+    <trip hotel="Hotel Evelyne is fantastisch" numberOfNights="30" priceHotelPerNightPerPerson="100"
+          endDestination_id="3"/>
+    <trip hotel="Hotel Evelyne is awesome" numberOfNights="100" priceHotelPerNightPerPerson="100"
+          endDestination_id="4"/>
+    <trip hotel="Hotel Evelyne is cool" numberOfNights="7" priceHotelPerNightPerPerson="200"
+          endDestination_id="5"/>
 </dataset>
 
