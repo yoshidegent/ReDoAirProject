@@ -1,10 +1,7 @@
 package com.realdolmen.redoairproject.entities;
 
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +14,7 @@ public class Address extends AbstractEntity
     @Transient
     private final int COUNTRY_INDEX = 1;
 
-    @OneToOne
+    @ManyToOne
     private Country country;
 
     private String city;

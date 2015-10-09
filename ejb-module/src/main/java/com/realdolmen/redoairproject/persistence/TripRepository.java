@@ -19,8 +19,8 @@ public class TripRepository extends GenericRepository<Trip> implements ITripRepo
     }
 
     @Override public List<Trip> findTripsByCountry(Country country) {
-        TypedQuery<Trip> query = entityManager.createQuery("SELECT t FROM Trip t WHERE (t.endDestination.address.country) = :country", Trip.class);
-        query.setParameter("country", country);
+        TypedQuery<Trip> query = entityManager.createQuery("SELECT t FROM Trip t WHERE t.endDestination.address.country.countryCode = :countryCode", Trip.class);
+        query.setParameter("countryCode", country.getCountryCode());
         return query.getResultList();
     }
 

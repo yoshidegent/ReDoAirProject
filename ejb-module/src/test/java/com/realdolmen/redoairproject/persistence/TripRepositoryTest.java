@@ -17,26 +17,12 @@ public class TripRepositoryTest extends PersistenceTest{
 
     private CountryRepository countryRepository = new CountryRepository();
 
-    private Country country;
-
     @Before
     public void before()
     {
+        LOG.debug("*****************************************************************************************************************************************");
         countryRepository.entityManager = entityManager();
         tripRepository.entityManager = entityManager();
-    }
-
-    @Test
-    public void testFindTripsByCountry()
-    {
-        country = countryRepository.findCountryCodeByCountryCaseInsensitive("France");
-
-        List<Trip> allTripsForCountry = tripRepository.findTripsByCountry(country);
-
-        Assert.assertTrue(allTripsForCountry.size() > 0);
-
-        for(Trip t : allTripsForCountry)
-            LOG.debug(t.toString());
     }
 
     @Test
@@ -44,10 +30,28 @@ public class TripRepositoryTest extends PersistenceTest{
     {
         List<Country> countries = tripRepository.findAllCountriesFromTrips();
 
+        Assert.assertTrue(countries.size() > 0);
+
         for (Country country1 : countries) {
             List<Trip> tripsByCountry = tripRepository.findTripsByCountry(country1);
             Assert.assertTrue(tripsByCountry.size() > 0);
         }
 
+        entityManager().clear();
+    }
+
+    @Test
+    public void testFindTripsByCountry()
+    {
+        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive("France");
+
+        List<Trip> allTripsForCountry = tripRepository.findTripsByCountry(country);
+
+        Assert.assertTrue(allTripsForCountry.size() > 0);
+
+        for(Trip t : allTripsForCountry)
+            LOG.debug(t.toString());
+
+        entityManager().clear();
     }
 }

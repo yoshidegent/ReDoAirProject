@@ -3,7 +3,10 @@ package com.realdolmen.redoairproject.persistence;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.dbunit.operation.DatabaseOperation;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,30 +42,32 @@ public class PersistenceTest{
 
     @Before
     public void loadTestData() throws Exception {
+        this.initialize();
+
         logger.info("Clearing data");
-        entityManager().createQuery("DELETE from Trip t").executeUpdate();
-        entityManager().createQuery("DELETE from Flight f").executeUpdate();
-        entityManager().createQuery("DELETE from Airline a").executeUpdate();
-        entityManager().createQuery("DELETE from Airport a").executeUpdate();
-        entityManager().createQuery("DELETE from Address a").executeUpdate();
-        entityManager().createQuery("DELETE from Country c").executeUpdate();
-        entityManager().createQuery("DELETE from Partner p").executeUpdate();
-        entityManager().createQuery("DELETE from Passenger p").executeUpdate();
-        entityManager().createQuery("DELETE from ReDoEmployees r").executeUpdate();
-        entityManager().createQuery("DELETE from Partner p").executeUpdate();
+//        entityManager().createQuery("DELETE from Trip t").executeUpdate();
+//        entityManager().createQuery("DELETE from Flight f").executeUpdate();
+//        entityManager().createQuery("DELETE from Airline a").executeUpdate();
+//        entityManager().createQuery("DELETE from Airport a").executeUpdate();
+//        entityManager().createQuery("DELETE from Address a").executeUpdate();
+//        entityManager().createQuery("DELETE from Country c").executeUpdate();
+//        entityManager().createQuery("DELETE from Partner p").executeUpdate();
+//        entityManager().createQuery("DELETE from Passenger p").executeUpdate();
+//        entityManager().createQuery("DELETE from ReDoEmployees r").executeUpdate();
+//        entityManager().createQuery("DELETE from Partner p").executeUpdate();
 
-
-        logger.info("Loading dataset");
-        //IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 
         DataImporter dataImporter = new DataImporter(entityManager());
         dataImporter.importData();
+
+        logger.info("Loading dataset");
+        IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 
         IDatabaseConnection connection = new DatabaseConnection(newConnection());
         connection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY,
             new MySqlDataTypeFactory()); // Set factorytype in dbconfig to remove warning
 
-        //DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
         connection.close();
     }
 
@@ -87,7 +92,6 @@ public class PersistenceTest{
         return engine;
     }
 
-    @Before
     public void initialize() {
         logger.info("Creating transacted EntityManager");
         entityManager = entityManagerFactory.createEntityManager();

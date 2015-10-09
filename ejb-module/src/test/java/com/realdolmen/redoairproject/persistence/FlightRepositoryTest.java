@@ -41,7 +41,6 @@ public class FlightRepositoryTest extends PersistenceTest
         //Save a flight
         flightRepository.createOrUpdate(flight);
 
-
         List<Flight> flightList = flightRepository.findAll();
 
         for(Flight f : flightList)

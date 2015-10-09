@@ -20,8 +20,8 @@ public class ImportDataPersistenceTest extends PersistenceTest {
     public void loadTestData() throws Exception {
         logger.info("Loading dataset");
 
-        DataImporter dataImporter = new DataImporter(entityManager());
-        dataImporter.importData();
+        //DataImporter dataImporter = new DataImporter(entityManager());
+        //dataImporter.importData();
 
         //IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 

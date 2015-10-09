@@ -1,44 +1,60 @@
 <dataset>
-    <!--<airline id="1" name="SN Brussels Airline"/>-->
-    <!--<airline id="2" name="Qatar Airlines"/>-->
-    <!--<airline id="3" name="Aer Lingus"/>-->
-    <!--<airline id="4" name="Easyjet"/>-->
-    <!--<airline id="5" name="British Airways"/>-->
+    <airline id="1" name="SN Brussels Airline" discountVolumeSales="0.08"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/SN.png"/>
+    <airline id="2" name="Qatar Airlines" discountVolumeSales="0.05"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/QR.png"/>
+    <airline id="3" name="Aer Lingus" discountVolumeSales="0.03"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/EI.png"/>
+    <airline id="4" name="British Airways" discountVolumeSales="0.1"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/BA.png"/>
 
+    <address id="1" city="Zaventem" country_countryCode="BE"/>
+    <address id="2" city="Charleroi" country_countryCode="BE"/>
+    <address id="3" city="Paris" country_countryCode="FR"/>
+    <address id="4" city="Rome" country_countryCode="IT"/>
+    <address id="5" city="Dublin" country_countryCode="IE"/>
+    <address id="6" city="Malaga" country_countryCode="ES"/>
+    <address id="7" city="London" country_countryCode="GB"/>
+    <address id="8" city="New York City" country_countryCode="US"/>
+    <address id="9" city="Berlijn" country_countryCode="DE"/>
+    <address id="10" city="Kopenhagen" country_countryCode="DK"/>
+    <address id="11" city="Frankfurt" country_countryCode="DE"/>
+    <address id="12" city="Dresden" country_countryCode="DE"/>
+    <address id="13" city="Hawaii" country_countryCode="US"/>
+    <address id="14" city="Sydney" country_countryCode="AU"/>
+    <address id="15" city="Perth" country_countryCode="AU"/>
+    <address id="16" city="Hong Kong" country_countryCode="CN"/>
 
-    <!--<address id="1" city="Zaventem" country_countryCode="BE"/>-->
-    <!--<address id="2" city="Charleroi" country_countryCode="BE"/>-->
-    <!--<address id="3" city="Paris" country_countryCode="FR"/>-->
-    <!--<address id="4" city="Rome" country_countryCode="IT"/>-->
-    <!--<address id="5" city="Dublin" country_countryCode="IE"/>-->
-    <!--<address id="6" city="Malaga" country_countryCode="ES"/>-->
-    <!--<address id="7" city="London" country_countryCode="GB"/>-->
-    <!--<address id="8" city="New York City" country_countryCode="US"/>-->
-    <!--<address id="9" city="Berlijn" country_countryCode="DE"/>-->
-    <!--<address id="10" city="Kopenhagen" country_countryCode="DK"/>-->
-    <!--<address id="11" city="Frankfurt" country_countryCode="DE"/>-->
-    <!--<address id="12" city="Dresden" country_countryCode="DE"/>-->
-    <!--<address id="13" city="Hawaii" country_countryCode="US"/>-->
-    <!--<address id="14" city="Sydney" country_countryCode="AU"/>-->
-    <!--<address id="15" city="Perth" country_countryCode="AU"/>-->
-    <!--<address id="16" city="Hong Kong" country_countryCode="CN"/>-->
+    <airport id="1" name="Brussels Airport" address_id="1"/>
+    <airport id="2" name="Brussels South" address_id="1"/>
+    <airport id="3" name="Orly" address_id="1"/>
+    <airport id="4" name="Charles De Gaulle" address_id="1"/>
+    <airport id="5" name="Malaga" address_id="1"/>
+    <airport id="6" name="JFK" address_id="1"/>
+    <airport id="7" name="Dublin Airport" address_id="1"/>
 
+    <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
+            flightDurationInMinutes="200"
+            departureTime="2015-10-09" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+    <flight id="501" airline_id="1" origin_id="2" destination_id="4" pricePerSeat="199"
+            flightDurationInMinutes="160"
+            departureTime="2015-10-15" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+    <flight id="502" airline_id="1" origin_id="1" destination_id="7" pricePerSeat="99"
+            flightDurationInMinutes="60"
+            departureTime="2015-10-16" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+    <flight id="503" airline_id="1" origin_id="3" destination_id="2" pricePerSeat="119"
+            flightDurationInMinutes="320"
+            departureTime="2015-10-30" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+    <flight id="504" airline_id="1" origin_id="6" destination_id="5" pricePerSeat="799"
+            flightDurationInMinutes="30"
+            departureTime="2015-10-12" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
 
-
-    <!--<airport id="1" name="Brussels Airport" address_id="1"/>-->
-    <!--<airport id="2" name="Brussels South" address_id="2"/>-->
-    <!--<airport id="3" name="Orly" address_id="3"/>-->
-    <!--<airport id="4" name="Charles De Gaulle" address_id="3"/>-->
-    <!--<airport id="5" name="Malaga" address_id="6"/>-->
-    <!--<airport id="6" name="JFK" address_id="8"/>-->
-    <!--<airport id="7" name="Dublin Airport" address_id="5"/>-->
-
-
-
-   <!--<flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888" departureTime="2015-10-09" duration="450" seatsAvailable="300" discountVolumeSales="0.03" seatsThresholdForDiscount="5"/>-->
-   <!--<flight id="501" airline_id="2" origin_id="2" destination_id="4" pricePerSeat="199" departureTime="2015-10-15" duration="70" seatsAvailable="300" discountVolumeSales="0.05" seatsThresholdForDiscount="10"/>-->
-   <!--<flight id="502" airline_id="3" origin_id="1" destination_id="7" pricePerSeat="99" departureTime="2015-10-16" duration="120" seatsAvailable="300" discountVolumeSales="0.03" seatsThresholdForDiscount="5"/>-->
-   <!--<flight id="503" airline_id="4" origin_id="3" destination_id="2" pricePerSeat="119" departureTime="2015-10-30" duration="70" seatsAvailable="300" discountVolumeSales="0.05" seatsThresholdForDiscount="5"/>-->
-   <!--<flight id="504" airline_id="5" origin_id="6" destination_id="5" pricePerSeat="799" departureTime="2015-10-12" duration="550" seatsAvailable="300" discountVolumeSales="0.10" seatsThresholdForDiscount="5"/>-->
+    <trip hotel="Hotel Evelyne is leuk" numberOfNights="10" priceHotelPerNightPerPerson="100"
+          endDestination_id="1"/>
 </dataset>
 
