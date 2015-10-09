@@ -57,7 +57,7 @@ public class DataImporter
         addresses.add(new Address(7l, countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
         addresses.add(new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Sydney"));
         addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"), "New York City"));
-        addresses.add(new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("UA"), "Melbourne"));
+//        addresses.add(new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Melbourne"));
 
         for(Address a : addresses)
         {

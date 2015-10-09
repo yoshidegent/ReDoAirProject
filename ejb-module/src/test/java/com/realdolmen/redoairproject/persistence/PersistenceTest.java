@@ -40,6 +40,7 @@ public class PersistenceTest{
     @Before
     public void loadTestData() throws Exception {
         logger.info("Clearing data");
+        initialize();
         entityManager().createQuery("DELETE from Trip t").executeUpdate();
         entityManager().createQuery("DELETE from Flight f").executeUpdate();
         entityManager().createQuery("DELETE from Airline a").executeUpdate();
@@ -51,19 +52,23 @@ public class PersistenceTest{
         entityManager().createQuery("DELETE from ReDoEmployees r").executeUpdate();
         entityManager().createQuery("DELETE from Partner p").executeUpdate();
 
-
         logger.info("Loading dataset");
         //IDataSet dataSet = new FlatXmlDataSetBuilder().build(getClass().getResource("/data.xml"));
 
-        DataImporter dataImporter = new DataImporter(entityManager());
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+
+        DataImporter dataImporter = new DataImporter(entityManager1);
         dataImporter.importData();
 
-        IDatabaseConnection connection = new DatabaseConnection(newConnection());
+        entityManager1.flush();
+        entityManager1.close();
+
+        /*IDatabaseConnection connection = new DatabaseConnection(newConnection());
         connection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY,
             new MySqlDataTypeFactory()); // Set factorytype in dbconfig to remove warning
 
         //DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
-        connection.close();
+        connection.close();*/
     }
 
     /**
@@ -87,7 +92,6 @@ public class PersistenceTest{
         return engine;
     }
 
-    @Before
     public void initialize() {
         logger.info("Creating transacted EntityManager");
         entityManager = entityManagerFactory.createEntityManager();
@@ -106,9 +110,9 @@ public class PersistenceTest{
             }
         }
 
-        if(entityManager != null) {
+      /*  if(entityManager != null) {
             entityManager.close();
-        }
+        }*/
 
     }
 

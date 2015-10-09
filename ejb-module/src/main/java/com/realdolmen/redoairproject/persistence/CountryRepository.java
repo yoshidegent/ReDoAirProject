@@ -8,10 +8,11 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 
 @LocalBean
 @Stateless
-public class CountryRepository extends GenericRepository<Country> implements ICountryRepository
+public class CountryRepository extends GenericRepository<Country> implements ICountryRepository, Serializable
 {
     public CountryRepository() {
         super(Country.class);

@@ -5,23 +5,26 @@ import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
 
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Named
 @RequestScoped
-public class DestinationsController {
+public class DestinationsController implements Serializable{
 
     @Inject
     private CountryRepository countryRepository;
 
     @Inject
     private TripRepository tripRepository;
+
 
 
     private List<Trip> tripsForDestination = new ArrayList<>();
