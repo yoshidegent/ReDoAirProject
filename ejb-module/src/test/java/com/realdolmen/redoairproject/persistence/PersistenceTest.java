@@ -53,7 +53,7 @@ public class PersistenceTest{
 //        entityManager().createQuery("DELETE from Country c").executeUpdate();
 //        entityManager().createQuery("DELETE from Partner p").executeUpdate();
 //        entityManager().createQuery("DELETE from Passenger p").executeUpdate();
-//        entityManager().createQuery("DELETE from ReDoEmployees r").executeUpdate();
+//        entityManager().createQuery("DELETE from ReDoEmployee r").executeUpdate();
 //        entityManager().createQuery("DELETE from Partner p").executeUpdate();
 
 

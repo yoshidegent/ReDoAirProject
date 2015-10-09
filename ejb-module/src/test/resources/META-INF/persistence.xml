@@ -51,7 +51,7 @@
         <class>com.realdolmen.redoairproject.entities.Airline</class>
         <class>com.realdolmen.redoairproject.entities.Airport</class>
         <class>com.realdolmen.redoairproject.entities.Partner</class>
-        <class>com.realdolmen.redoairproject.entities.ReDoEmployees</class>
+        <class>com.realdolmen.redoairproject.entities.ReDoEmployee</class>
         <class>com.realdolmen.redoairproject.entities.Country</class>
         <class>com.realdolmen.redoairproject.entities.Address</class>
 
