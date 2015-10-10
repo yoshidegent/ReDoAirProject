@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -51,22 +52,30 @@ public class Trip extends AbstractEntity {
         double pricePerPerson = priceHotelPerNightPerPerson*numberOfNights + priceForAllFlights;
         return pricePerPerson*numberOfPersons;
     }
-
     public int calculateDurationOfTrip() {
         LocalDate departureDate = flightList.get(0).getDepartureDate();
         LocalDate backHomeDate = flightList.get(0).getDepartureDate();
 
-        LocalDate test = flightList.get(0).getDepartureDate();
-
-
         for (Flight flight : flightList) {
-            if(flight.getDepartureDate().isBefore(test))    {
+            if(flight.getDepartureDate().isBefore(departureDate))    {
                 departureDate = flight.getDepartureDate();
             }
-            if(flight.getDepartureDate().isAfter(test)) {
+        }
+
+        for (Flight flight : flightList) {
+            if(flight.getDepartureDate().isAfter(backHomeDate)) {
                 backHomeDate = flight.getDepartureDate();
+
+                LocalDateTime arrivalDateCheck =  LocalDateTime.of(backHomeDate.getYear(), backHomeDate.getMonthValue(), backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(), flight.getDepartureTime().getMinute());
+                arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
+
+                if(arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear())   {
+                    backHomeDate.plusDays(1);
+                }
+
             }
         }
+
         long l = backHomeDate.toEpochDay() - departureDate.toEpochDay();
         return (int) l;
     }
