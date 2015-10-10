@@ -3,6 +3,7 @@ package com.realdolmen.redoairproject.persistence;
 import com.realdolmen.redoairproject.entities.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -26,24 +27,12 @@ public class DataImporter
 
     public DataImporter(EntityManager entityManager) {
         this.entityManager = entityManager;
-        countryRepository.entityManager = entityManager;
-        addressRepository.entityManager = entityManager;
-        airlineRepository.entityManager = entityManager;
-        airportRepository.entityManager = entityManager;
-        tripRepository.entityManager = entityManager;
-        flightRepository.entityManager = entityManager;
     }
 
     public void importData()
     {
         CountryImporter countryImporter = new CountryImporter();
         countryImporter.importCountries(entityManager);
-
-        importAddresses();
-        importAirlines();
-        importAirports();
-        importFlights();
-        importTrips();
     }
 
     private void importAddresses()
@@ -55,9 +44,15 @@ public class DataImporter
         addresses.add(new Address(5l, countryRepository.findCountryByCountryCodeCaseInsensitive("GB"), "London"));
         addresses.add(new Address(6l, countryRepository.findCountryByCountryCodeCaseInsensitive("IE"), "Dublin"));
         addresses.add(new Address(7l, countryRepository.findCountryByCountryCodeCaseInsensitive("NL"), "Amsterdam"));
-        addresses.add(new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Sydney"));
-        addresses.add(new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"), "New York City"));
-//        addresses.add(new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"), "Melbourne"));
+        addresses.add(
+            new Address(8l, countryRepository.findCountryByCountryCodeCaseInsensitive("AU"),
+                "Sydney"));
+        addresses.add(
+            new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"),
+                "New York City"));
+        addresses.add(
+                new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("UA"),
+                        "Melbourne"));
 
         for(Address a : addresses)
         {
@@ -117,8 +112,6 @@ public class DataImporter
         flights.add(new Flight(9l, airlineRepository.findById(5l), airportRepository.findById(1l), airportRepository.findById(11l), LocalDate.of(2015, 11, 22), LocalTime.of(8, 30),110, 450, 301, 165,15));
         flights.add(new Flight(10l, airlineRepository.findById(5l), airportRepository.findById(11l), airportRepository.findById(1l), LocalDate.of(2015, 12, 22), LocalTime.of(8, 30),110, 450, 301, 165,15));
 
-
-
         for (Flight f : flights)
         {
             entityManager.merge(f);
@@ -165,4 +158,5 @@ public class DataImporter
             entityManager.merge(t);
         }
     }
+
 }

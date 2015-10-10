@@ -17,26 +17,33 @@ public class TripRepositoryTest extends PersistenceTest{
 
     private CountryRepository countryRepository = new CountryRepository();
 
-    private Country country;
-
     @Before
     public void before()
     {
-        LOG.debug("*****************************************************************************************");
+        LOG.debug("*****************************************************************************************************************************************");
+        countryRepository.entityManager = entityManager();
         tripRepository.entityManager = entityManager();
     }
 
+    @Test
+    public void testFindAllCountriesFromTrips()
+    {
+        List<Country> countries = tripRepository.findAllCountriesFromTrips();
 
-    @After
-    public void after() {
-        tripRepository.entityManager.clear();
+        Assert.assertTrue(countries.size() > 0);
+
+        for (Country country1 : countries) {
+            List<Trip> tripsByCountry = tripRepository.findTripsByCountry(country1);
+            Assert.assertTrue(tripsByCountry.size() > 0);
+        }
+
+        entityManager().clear();
     }
-
 
     @Test
     public void testFindTripsByCountry()
     {
-        country = new Country("AU", "Australia");
+        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive("Belgium");
 
         List<Trip> allTripsForCountry = tripRepository.findTripsByCountry(country);
 
@@ -45,49 +52,6 @@ public class TripRepositoryTest extends PersistenceTest{
         for(Trip t : allTripsForCountry)
             LOG.debug(t.toString());
 
-    }
-
-    @Test
-    public void testFindAllCountriesFromTrips()
-    {
-        List<Country> countries = tripRepository.findAllCountriesFromTrips();
-
-//        for (Country c : countries) {
-//            List<Trip> tripsByCountry = tripRepository.findTripsByCountry(c);
-//            Assert.assertTrue(tripsByCountry.size() > 0);
-//        }
-
-        LOG.debug("i'm the endpoint of test findAllCountriesFromTrips");
-
+        entityManager().clear();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

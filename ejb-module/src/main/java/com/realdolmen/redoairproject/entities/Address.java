@@ -14,7 +14,7 @@ public class Address extends AbstractEntity
     @Transient
     private final int COUNTRY_INDEX = 1;
 
-    @OneToOne
+    @ManyToOne
     private Country country;
 
     private String city;

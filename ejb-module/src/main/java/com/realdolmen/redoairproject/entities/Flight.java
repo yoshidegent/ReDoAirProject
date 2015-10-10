@@ -23,10 +23,9 @@ public class Flight extends AbstractEntity {
     @ManyToOne
     private Airport destination;
 
-    @Future
     private LocalDate departureDate;
-    @Future
     private LocalTime departureTime;
+
     private int flightDurationInMinutes;
 
 

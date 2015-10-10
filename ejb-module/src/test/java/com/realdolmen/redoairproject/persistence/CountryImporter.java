@@ -42,6 +42,9 @@ public class CountryImporter {
             numberOfCountriesImported++;
             LOG.debug("Number of countries imported: " + numberOfCountriesImported);
         }
+
+        entityManager.getTransaction().commit();
+        entityManager.getTransaction().begin();
     }
 
 

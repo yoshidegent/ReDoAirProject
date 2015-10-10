@@ -33,6 +33,8 @@ public class FlightController {
     Date departureDate;
     String departureTime;
 
+//ON LOAD FUNCTIE
+
 
     /**
      * Inject repositories

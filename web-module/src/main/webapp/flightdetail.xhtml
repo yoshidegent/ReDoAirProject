@@ -120,11 +120,11 @@
 
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="details"/>
+                    <h:outputText value="edit"/>
                 </f:facet>
 
-                <h:link outcome="createtest">
-                    <span class="btn btn-info glyphicon glyphicon-penci"/>
+                <h:link outcome="flightupdate">
+                    <span class="glyphicon glyphicon-pencil"/>
                     <f:param name="id" value="#{flight.id}"/>
                 </h:link>
             </h:column>

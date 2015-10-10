@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
-public class FlightRepositoryTest extends PersistenceTest
+public class
+        FlightRepositoryTest extends PersistenceTest
 {
     private static final Logger LOG = LoggerFactory.getLogger(FlightRepositoryTest.class);
 
@@ -40,7 +43,6 @@ public class FlightRepositoryTest extends PersistenceTest
     {
         //Save a flight
         flightRepository.createOrUpdate(flight);
-
 
         List<Flight> flightList = flightRepository.findAll();
 
@@ -99,5 +101,31 @@ public class FlightRepositoryTest extends PersistenceTest
         flightRepository.delete(flight);
 
         Assert.assertNull(flightRepository.findById(id));
+    }
+
+    @Test
+    public void departureDatesAndTimesCanBeUpdated() {
+        Flight flight500 = flightRepository.findById(500l);
+        flight500.setDepartureDate(LocalDate.of(2015, 10, 24));
+        flight500.setDepartureTime(LocalTime.of(21, 50));
+
+        Flight flight501 = flightRepository.findById(501l);
+        flight501.setDepartureDate(LocalDate.of(2015,10,24));
+        flight501.setDepartureTime(LocalTime.of(21,50));
+
+        Flight flight502 = flightRepository.findById(502l);
+        flight502.setDepartureDate(LocalDate.of(2015,10,24));
+        flight502.setDepartureTime(LocalTime.of(21,50));
+
+        Flight flight503 = flightRepository.findById(503l);
+        flight503.setDepartureDate(LocalDate.of(2015,10,24));
+        flight503.setDepartureTime(LocalTime.of(21,50));
+
+        Flight flight504 = flightRepository.findById(504l);
+        flight504.setDepartureDate(LocalDate.of(2015,10,24));
+        flight504.setDepartureTime(LocalTime.of(21,50));
+
+        flightRepository.createOrUpdate(flight500);
+        Assert.assertEquals(flight500.getDepartureDate() ,flightRepository.findById(500l).getDepartureDate());
     }
 }
