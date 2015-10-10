@@ -9,12 +9,11 @@
 <h:head>
     <meta charset="UTF-8"/>
     <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
 
 </h:head>
 <h:body>
@@ -24,45 +23,83 @@
     <div class="container">
         <h1>Trips for #{destinationsController.getDestinationFromCountry()}</h1>
 
-        <h:dataTable class="table table-hover" id="trips" value="#{destinationsController.tripsForDestination}" var="trip">
+        <h:panelGrid columns="2">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true"/>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="ID"/>
-                </f:facet>
-                <h:outputText value="#{trip.id}"/>
-            </h:column>
+                <h:panelGrid columns="2" cellpadding="5">
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="hotel"/>
-                </f:facet>
-                <h:outputText value="#{trip.hotel}"/>
-            </h:column>
+                    <p:outputLabel for="from" value="From:"/>
+                    <p:calendar id="from" value="#{destinationsController.from}"
+                                mindate="#{destinationsController.dateToday}" mode="inline"/>
 
-            <!-- todo: implement eager loading of flightList! (otherwise errors with calculateDuration-method)-->
-            <!--<h:column>-->
+                    <p:outputLabel for="to" value="To:"/>
+                    <p:calendar id="to" value="#{destinationsController.to}"
+                                mindate="#{destinationsController.dateToday}" mode="inline"/>
+
+                </h:panelGrid>
+
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg"
+                          showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+                        <h:outputText value="From:"/>
+                        <h:outputText value="#{destinationsController.from}">
+                            <f:convertDateTime pattern="MM/dd/yyyy"/>
+                        </h:outputText>
+
+                        <h:outputText value="To:"/>
+                        <h:outputText value="#{destinationsController.to}">
+                            <f:convertDateTime pattern="MM/dd/yyyy"/>
+                        </h:outputText>
+
+                    </p:panelGrid>
+                </p:dialog>
+            </h:form>
+
+            <h:dataTable class="table table-hover" id="trips"
+                         value="#{destinationsController.tripsForDestination}" var="trip">
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.id}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="hotel"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.hotel}"/>
+                </h:column>
+
+                <!-- todo: implement eager loading of flightList! (otherwise errors with calculateDuration-method)-->
+                <!--<h:column>-->
                 <!--<f:facet name="header">-->
-                    <!--<h:outputText value="number of nights"/>-->
+                <!--<h:outputText value="number of nights"/>-->
                 <!--</f:facet>-->
                 <!--<h:outputText value="#{trip.calculateDurationOfTrip()}"/>-->
-            <!--</h:column>-->
+                <!--</h:column>-->
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="destination"/>
-                </f:facet>
-                <h:outputText value="#{trip.endDestination.address.city}"/>
-            </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="destination"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.endDestination.address.city}"/>
+                </h:column>
 
-        <h:column>
-            <h:link outcome="tripdetail">
-                <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
-                <f:param name="id" value="#{trip.id}"/>
-            </h:link>
-        </h:column>
+                <h:column>
+                    <h:link outcome="tripdetail">
+                        <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
+                        <f:param name="id" value="#{trip.id}"/>
+                    </h:link>
+                </h:column>
 
-        </h:dataTable>
+            </h:dataTable>
+
+        </h:panelGrid>
+
     </div>
 </h:body>
 </html>

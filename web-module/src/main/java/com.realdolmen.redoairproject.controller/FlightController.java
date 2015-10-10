@@ -82,15 +82,7 @@ public class FlightController {
     }
 
     public Flight getFlight(int id)   {
-        long longId = id;
-        return flightRepository.findById(longId);
-    }
-
-
-    public void onDateSelect(SelectEvent event) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+        return flightRepository.findById((long) id);
     }
 
     /**

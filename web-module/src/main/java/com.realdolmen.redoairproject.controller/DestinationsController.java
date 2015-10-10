@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +20,14 @@ import java.util.Map;
 @RequestScoped
 public class DestinationsController implements Serializable{
 
+    private Date from;
+    private Date to;
+
     @Inject
     private CountryRepository countryRepository;
 
     @Inject
     private TripRepository tripRepository;
-
-
 
     private List<Trip> tripsForDestination = new ArrayList<>();
 
@@ -54,5 +56,25 @@ public class DestinationsController implements Serializable{
 
     public void setTripsForDestination(List<Trip> tripsForDestination) {
         this.tripsForDestination = tripsForDestination;
+    }
+
+    public Date getDateToday() {
+        return new Date();
+    }
+
+    public Date getFrom() {
+        return from;
+    }
+
+    public void setFrom(Date from) {
+        this.from = from;
+    }
+
+    public Date getTo() {
+        return to;
+    }
+
+    public void setTo(Date to) {
+        this.to = to;
     }
 }
