@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,11 +21,13 @@ public class CountryImporter {
 
     private static final Logger LOG = LoggerFactory.getLogger(CountryImporter.class);
 
-    public void importCountries(EntityManager entityManager)
+    public void importCountries(EntityManagerFactory entityManagerFactory)
     {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
         //Temporary map to store the key value pairs of countries and their country code
         Map<String, String> countryCodeMap = fetchAllCountriesWithCountryCode();
-
 
         int numberOfCountriesImported = 0;
         LOG.debug("Imported countries:");
@@ -43,8 +46,15 @@ public class CountryImporter {
             LOG.debug("Number of countries imported: " + numberOfCountriesImported);
         }
 
-        entityManager.getTransaction().commit();
-        entityManager.getTransaction().begin();
+        if(entityManager.getTransaction() != null) {
+            if(entityManager.getTransaction().getRollbackOnly()) {
+                entityManager.getTransaction().rollback();
+            } else {
+                entityManager.getTransaction().commit();
+            }
+        }
+
+        entityManager.close();
     }
 
 

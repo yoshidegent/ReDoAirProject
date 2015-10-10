@@ -45,19 +45,10 @@ public class PersistenceTest{
         this.initialize();
 
         logger.info("Clearing data");
-//        entityManager().createQuery("DELETE from Trip t").executeUpdate();
-//        entityManager().createQuery("DELETE from Flight f").executeUpdate();
-//        entityManager().createQuery("DELETE from Airline a").executeUpdate();
-//        entityManager().createQuery("DELETE from Airport a").executeUpdate();
-//        entityManager().createQuery("DELETE from Address a").executeUpdate();
-//        entityManager().createQuery("DELETE from Country c").executeUpdate();
-//        entityManager().createQuery("DELETE from Partner p").executeUpdate();
-//        entityManager().createQuery("DELETE from Passenger p").executeUpdate();
-//        entityManager().createQuery("DELETE from ReDoEmployee r").executeUpdate();
-//        entityManager().createQuery("DELETE from Partner p").executeUpdate();
 
 
-        DataImporter dataImporter = new DataImporter(entityManager());
+        //Import data
+        DataImporter dataImporter = new DataImporter(entityManagerFactory);
         dataImporter.importData();
 
         logger.info("Loading dataset");
