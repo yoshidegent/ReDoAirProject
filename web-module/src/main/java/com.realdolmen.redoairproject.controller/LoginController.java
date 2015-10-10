@@ -38,14 +38,11 @@ public class LoginController {
             //liever een message throwen
         }   else    {
         //check password
+
         }
 
         return "worldmap";
     }
-
-
-
-
 
 
 

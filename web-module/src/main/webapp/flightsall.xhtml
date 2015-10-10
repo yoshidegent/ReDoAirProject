@@ -82,6 +82,14 @@
 
             <h:column>
                 <f:facet name="header">
+                    <h:outputText value="Price for passenger"/>
+                </f:facet>
+                <h:outputText value="€ #{flight.pricePerSeatForPassenger}"/>
+            </h:column>
+
+
+            <h:column>
+                <f:facet name="header">
                     <h:outputText value="details"/>
                 </f:facet>
 

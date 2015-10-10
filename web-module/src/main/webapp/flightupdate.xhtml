@@ -29,15 +29,42 @@
 
             <h:panelGrid columns="2">
 
+
+                <h:body>
+                    <ui:composition template="/resources/templates/commonFlightEditor.xhtml">
+                        <ui:param name="controller" value="#{updateFlightController}"/>
+                        <ui:define name="meta-data">
+                            <f:metadata>
+                                <f:viewParam name="flightId" value="#{updateFlightController.flightIdParam}"/>
+                                <f:event type="preRenderView" listener="#{updateFlightController.onLoad}"/>
+                            </f:metadata>
+                        </ui:define>
+                        <ui:define name="pageTitle">Update flight</ui:define>
+                        <ui:define name="action-panel">
+                            <h:panelGroup>
+                                <h:commandButton id="action-flight-button" action="#{updateFlightController.updateFlight}"
+                                                 value="Update"/>
+                            </h:panelGroup>
+                        </ui:define>
+                    </ui:composition>
+                </h:body>
+
+
+
+
+
+
                 <h:outputLabel value="airline"/>
                 <h:selectOneMenu value="#{flightController.airlineId}">
                     <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
+
                 <h:outputLabel value="origin"/>
                 <h:selectOneMenu value="#{flightController.airportOriginId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
+
 
                 <h:outputLabel value="destination"/>
                 <h:selectOneMenu value="#{flightController.airportDestinationId}">
