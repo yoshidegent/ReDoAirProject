@@ -125,6 +125,8 @@ public class
         flight504.setDepartureDate(LocalDate.of(2015,10,24));
         flight504.setDepartureTime(LocalTime.of(21,50));
 
+
+
         flightRepository.createOrUpdate(flight500);
         Assert.assertEquals(flight500.getDepartureDate() ,flightRepository.findById(500l).getDepartureDate());
     }

@@ -24,23 +24,10 @@
 
     <div class="container">
 
-        <c:set var="flight" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>
-
-        <h1>Trip Details</h1>
+        <c:set var="trip" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>
 
 
-        <div>
-            <h4>hotel</h4>
-            <h:outputText
-                    value="#{trip.hotel}, #{trip.priceHotelPerNightPerPerson}"/>
-            <br/>
-
-        </div>
-
-        <h:form>
-            <h:commandButton />
-        </h:form>
-
+        <h1><h:outputText value="Flight #{trip.hotel} -  #{trip.endDestination}"/></h1>
 
 
     </div>

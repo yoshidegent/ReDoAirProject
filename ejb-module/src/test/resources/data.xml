@@ -7,6 +7,15 @@
              imageUrl="http://logos.skyscnr.com/images/airlines/small/EI.png"/>
     <airline id="4" name="British Airways" discountVolumeSales="0.1"
              imageUrl="http://logos.skyscnr.com/images/airlines/small/BA.png"/>
+    <airline id="5" name="Iberia" discountVolumeSales="0.05"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/IB.png"/>
+    <airline id="6" name="Emirates" discountVolumeSales="0.04"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/EK.png"/>
+    <airline id="7" name="KLM" discountVolumeSales="0.03"
+             imageUrl="http://logos.skyscnr.com/images/airlines/small/KL.png"/>
+
+
+
 
     <address id="1" city="Zaventem" country_countryCode="BE"/>
     <address id="2" city="Charleroi" country_countryCode="BE"/>
@@ -24,6 +33,20 @@
     <address id="14" city="Sydney" country_countryCode="AU"/>
     <address id="15" city="Perth" country_countryCode="AU"/>
     <address id="16" city="Hong Kong" country_countryCode="CN"/>
+    <address id="17" city="Lyon" country_countryCode="FR"/>
+    <address id="18" city="Amsterdam" country_countryCode="NL"/>
+    <address id="19" city="Melbourne" country_countryCode="AU"/>
+    <address id="20" city="Lisbon" country_countryCode="PT"/>
+    <address id="21" city="Cape Town" country_countryCode="ZA"/>
+
+
+    <address id="22" city="Melbourne" country_countryCode="AU"/>
+    <address id="23" city="Melbourne" country_countryCode="AU"/>
+    <address id="24" city="Melbourne" country_countryCode="AU"/>
+    <address id="25" city="Melbourne" country_countryCode="AU"/>
+    <address id="26" city="Melbourne" country_countryCode="AU"/>
+
+
 
     <airport id="1" name="Brussels Airport" address_id="1"/>
     <airport id="2" name="Brussels South" address_id="2"/>
@@ -34,6 +57,24 @@
     <airport id="7" name="Dublin Airport" address_id="5"/>
     <airport id="8" name="Heathrow" address_id="7"/>
     <airport id="9" name="Gatwick" address_id="7"/>
+    <airport id="10" name="Lyon-Saint Exupéry" address_id="17"/>
+    <airport id="11" name="Schiphol" address_id="18"/>
+    <airport id="12" name="Kingsford Smith" address_id="14"/>
+    <airport id="13" name="Melbourne Airport" address_id="19"/>
+    <airport id="14" name="Portela Airport" address_id="20"/>
+    <airport id="15" name="Cape Town International Airport" address_id="21"/>
+
+    <airport id="16" name="Melbourne Airport" address_id="19"/>
+    <airport id="17" name="Melbourne Airport" address_id="19"/>
+    <airport id="18" name="Melbourne Airport" address_id="19"/>
+    <airport id="19" name="Melbourne Airport" address_id="19"/>
+    <airport id="20" name="Melbourne Airport" address_id="19"/>
+
+
+
+
+
+
 
     <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
             flightDurationInMinutes="200"
@@ -60,17 +101,64 @@
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
-    <trip hotel="Hotel Evelyne is leuk" numberOfNights="5" priceHotelPerNightPerPerson="100"
+    <flight id="505" airline_id="5" origin_id="2" destination_id="14" pricePerSeat="799"
+            flightDurationInMinutes="30"
+            seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+
+    <flight id="506" airline_id="5" origin_id="14" destination_id="2" pricePerSeat="799"
+            flightDurationInMinutes="30"
+            seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+
+
+    <!--trip to South Africa-->
+    <flight id="507" airline_id="1" origin_id="1" destination_id="11" pricePerSeat="129"
+            flightDurationInMinutes="55"
+            seatsAvailable="100" seatCapacity="250"
+            seatsThresholdForDiscount="5"/>
+
+    <flight id="508" airline_id="7" origin_id="11" destination_id="15" pricePerSeat="799"
+            flightDurationInMinutes="360"
+            seatsAvailable="201" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+
+    <flight id="509" airline_id="1" origin_id="15" destination_id="11" pricePerSeat="899"
+            flightDurationInMinutes="360"
+            seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
+
+    <flight id="510" airline_id="7" origin_id="11" destination_id="1" pricePerSeat="129"
+            flightDurationInMinutes="55"
+            seatsAvailable="200" seatCapacity="250"
+            seatsThresholdForDiscount="5"/>
+    <trip id="1" hotel="Yoshi Game Reservate" priceHotelPerNightPerPerson="80" endDestination_id="15"/>
+    <trip_flight Trip_id="1" flightList_id="507"/>
+    <trip_flight Trip_id="1" flightList_id="508"/>
+    <trip_flight Trip_id="1" flightList_id="509"/>
+    <trip_flight Trip_id="1" flightList_id="510"/>
+
+
+
+
+    <!--trip to ?-->
+
+    <trip id="2" hotel="Hotel Evelyne is leuk"  priceHotelPerNightPerPerson="100"
           endDestination_id="1"/>
-    <trip hotel="Hotel Evelyne is leuk 2" numberOfNights="5" priceHotelPerNightPerPerson="100"
+    <trip hotel="Hotel Evelyne is leuk 2"  priceHotelPerNightPerPerson="100"
           endDestination_id="1"/>
-    <trip hotel="Hotel Evelyne is tof" numberOfNights="20" priceHotelPerNightPerPerson="100"
+    <trip hotel="Hotel Evelyne is tof"  priceHotelPerNightPerPerson="100"
           endDestination_id="2"/>
-    <trip hotel="Hotel Evelyne is fantastisch" numberOfNights="30" priceHotelPerNightPerPerson="100"
+    <trip hotel="Hotel Evelyne is fantastisch"  priceHotelPerNightPerPerson="100"
           endDestination_id="3"/>
-    <trip hotel="Hotel Evelyne is awesome" numberOfNights="100" priceHotelPerNightPerPerson="100"
+    <trip hotel="Hotel Evelyne is awesome"  priceHotelPerNightPerPerson="100"
           endDestination_id="4"/>
-    <trip hotel="Hotel Evelyne is cool" numberOfNights="7" priceHotelPerNightPerPerson="200"
+    <trip hotel="Hotel Evelyne is cool"  priceHotelPerNightPerPerson="200"
           endDestination_id="5"/>
+    <trip hotel="Hotel Yoshi is ook pretty cool" priceHotelPerNightPerPerson="80" endDestination_id="13"/>
+
+
+
+
 </dataset>
 
