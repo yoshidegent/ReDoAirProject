@@ -71,6 +71,12 @@ public class TripTest {
     }
 
     @Test
+    public void testCalculateTotalPriceForAllFlights()  {
+        double totalPricePerPerson = FLIGHT_PRICE_1 + FLIGHT_PRICE_2 + FLIGHT_PRICE_3;
+        Assert.assertEquals(totalPricePerPerson, trip.calculatePriceForAllFlights(), GAMMA);
+    }
+
+    @Test
     public void testCalculateBeginDate()    {
         Assert.assertEquals(dateFlight1, trip.calculateBeginDate());
     }

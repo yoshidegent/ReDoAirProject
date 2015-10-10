@@ -49,15 +49,21 @@ public class Trip extends AbstractEntity {
      * Bussiness Methods
      */
     public double calculateTotalPrice(int numberOfPersons) {
+        double priceForAllFlights = calculatePriceForAllFlights();
+
+        double pricePerPerson = priceHotelPerNightPerPerson*numberOfNights + priceForAllFlights;
+        return pricePerPerson*numberOfPersons;
+    }
+
+    public double calculatePriceForAllFlights() {
         double priceForAllFlights = 0;
 
         for (Flight f : flightList) {
             priceForAllFlights = priceForAllFlights + f.getPricePerSeatForPassenger();
         }
-
-        double pricePerPerson = priceHotelPerNightPerPerson*numberOfNights + priceForAllFlights;
-        return pricePerPerson*numberOfPersons;
+        return priceForAllFlights;
     }
+
 
     public LocalDate calculateBeginDate()   {
         LocalDate departureDate = flightList.get(0).getDepartureDate();
