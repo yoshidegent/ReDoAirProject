@@ -10,23 +10,25 @@ import javax.persistence.TypedQuery;
 
 public class UserRepository extends GenericRepository<User> implements IUserRepository
 {
-    public User checkValidUser(User user)
+    public User getUserByUsername(String username)
     {
         //Check if user is a passenger
-        TypedQuery<User> query = entityManager.createQuery("SELECT p FROM Passenger p WHERE p.username = :username AND p.hashedPassword = :password", User.class);
+        TypedQuery<User> query = entityManager.createQuery("SELECT p FROM Passenger p WHERE p.username = :username", User.class);
+        query.setParameter("username", username);
 
         if(query.getResultList().size() != 0)
             return (Passenger) query.getSingleResult();
 
         //check if user is a redoemployee
-        query = entityManager.createQuery("SELECT e FROM ReDoEmployee e WHERE e.username = :username AND e.hashedPassword = :password", User.class);
-
+        query = entityManager.createQuery("SELECT e FROM ReDoEmployee e WHERE e.username = :username", User.class);
+        query.setParameter("username", username);
 
         if(query.getResultList().size() != 0)
             return (ReDoEmployee) query.getSingleResult();
 
         //check if user is a partner
-        query = entityManager.createQuery("SELECT p FROM Partner p WHERE p.username = :username AND p.hashedPassword = :password", User.class);
+        query = entityManager.createQuery("SELECT p FROM Partner p WHERE p.username = :username", User.class);
+        query.setParameter("username", username);
 
         if(query.getResultList().size() != 0)
             return (Partner) query.getSingleResult();

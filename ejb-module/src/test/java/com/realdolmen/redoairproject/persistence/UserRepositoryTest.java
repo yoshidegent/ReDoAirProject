@@ -38,22 +38,24 @@ public class UserRepositoryTest extends PersistenceTest
         Assert.assertNotNull(reDoEmployee.getId());
     }
 
-
     @Test
-    public void testPasswordIsHashed()
+    public void testGetUserByUsername()
     {
         passenger = (Passenger) userRepository.createOrUpdate(passenger);
         partner = (Partner) userRepository.createOrUpdate(partner);
         reDoEmployee = (ReDoEmployee) userRepository.createOrUpdate(reDoEmployee);
 
-        Assert.assertEquals(passenger.getHashedPassword(), passenger.hashPassword("password"));
-        Assert.assertEquals(partner.getHashedPassword(), partner.hashPassword("password"));
-        Assert.assertEquals(reDoEmployee.getHashedPassword(), reDoEmployee.hashPassword("password"));
-    }
+        User user = new Passenger("mjklqsmdj", "jqdmkldmklqsm");
 
-    @Test
-    public void testCheckUsersAreValid()
-    {
-        Assert.fail("To be implemented");
+        Assert.assertTrue(
+            userRepository.getUserByUsername(passenger.getUsername()) instanceof Passenger);
+        Assert.assertTrue(
+            userRepository.getUserByUsername(partner.getUsername()) instanceof Partner);
+        Assert.assertTrue(
+            userRepository.getUserByUsername(reDoEmployee.getUsername()) instanceof ReDoEmployee);
+        Assert.assertFalse(
+            userRepository.getUserByUsername(user.getUsername()) instanceof Passenger);
+
+
     }
 }
