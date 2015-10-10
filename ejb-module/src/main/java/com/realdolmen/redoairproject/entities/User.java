@@ -28,8 +28,17 @@ public abstract class User extends AbstractEntity {
         }
     }
 
+    public boolean checkPasswordIsValid(String password)
+    {
+        return getHashedPasswordAsString().equals(new String(this.hashPassword(password)));
+    }
+
     public byte[] getHashedPassword() {
         return hashedPassword;
+    }
+
+    public String getHashedPasswordAsString() {
+        return new String(hashedPassword);
     }
 
     public String getUsername() {
