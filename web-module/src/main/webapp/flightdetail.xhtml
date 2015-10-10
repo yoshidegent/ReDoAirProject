@@ -51,9 +51,11 @@
                     value="#{flight.destination.name}, #{flight.destination.address.city}, #{flight.destination.address.country.country}"/>
         </div>
 
+        <div class="row">
+            <div class="col-sm-4"><ui:include src="/airplaneimage.xhtml" /></div>
+            <div class="col-sm-8">
 
-
-        <h:dataTable class="table table-hover" var="flight" value="#{flightController.getFlight(param['id'])}">
+                <h:dataTable class="table table-hover" var="flight" value="#{flightController.getFlight(param['id'])}" style="vertical-align: top;">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value=""/>
@@ -130,8 +132,9 @@
             </h:column>
         </h:dataTable>
 
+            </div>
+        </div>
 
-        <ui:include src="/airplaneimage.xhtml" />
 
 
     </div>
