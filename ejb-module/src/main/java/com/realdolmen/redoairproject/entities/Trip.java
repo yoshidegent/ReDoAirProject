@@ -80,7 +80,7 @@ public class Trip extends AbstractEntity {
                 arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
 
                 if(arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear())   {
-                    backHomeDate.plusDays(1);
+                    backHomeDate = backHomeDate.plusDays(1);
                 }
             }
         }

@@ -71,9 +71,20 @@ public class TripTest {
     }
 
     @Test
+    public void testCalculateBeginDate()    {
+        Assert.assertEquals(dateFlight1, trip.calculateBeginDate());
+    }
+
+    @Test
+    public void testCalculateEndDate()  {
+        LocalDate realEndDate = dateFlight3.plusDays(1);
+        Assert.assertEquals(realEndDate, trip.calculateEndDate());
+    }
+
+    @Test
     public void testCalculateDurationOfTrip()   {
         long duration = dateFlight3.toEpochDay() - dateFlight1.toEpochDay();
-        Assert.assertEquals(duration, trip.calculateDurationOfTrip());
+        Assert.assertEquals(duration +1 , trip.calculateDurationOfTrip());
     }
 
 }
