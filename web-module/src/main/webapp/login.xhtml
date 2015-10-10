@@ -22,13 +22,52 @@
     <ui:include src="/navbar.xhtml"/>
 
     <div class="container">
-        <h:form>
-            <h:outputLabel value="username"/>
-            <h:inputText/>
-            <h:outputLabel value="password"/>
-            <h:inputSecret/>
-            <h:commandButton action="#{loginController.}">LOG IN</h:commandButton>
-        </h:form>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+               <h3> Log in </h3>
+                <h:form style="margin: auto" class="form-horizontal">
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="username"/>
+                        <h:inputText value="#{loginController.username}"/>
+
+                        <h:outputLabel value="password"/>
+                        <h:inputSecret value="#{loginController.password}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:commandButton action="#{loginController.logInUser(loginController.username)}" value="Log in"/>
+                    </h:panelGrid>
+                </h:form>
+
+
+            </div>
+            <div class="col-sm-8">
+                <h3>Register</h3>
+                <h:form style="margin: auto" class="form-horizontal">
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="username"/>
+                        <h:inputText value="#{loginController.passenger.username}"/>
+
+
+
+                        <h:outputLabel value="choose a password"/>
+                        <h:inputSecret value="#{loginController.passenger.hashedPassword}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:commandButton action="#{loginController.createUser}" value="Register"/>
+
+                    </h:panelGrid>
+                </h:form>
+
+
+            </div>
+        </div>
+
+
     </div>
 </h:body>
 </html>

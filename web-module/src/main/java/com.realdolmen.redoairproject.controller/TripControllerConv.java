@@ -9,8 +9,8 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@ConversationScoped
 @Named
+@ConversationScoped
 public class TripControllerConv implements Serializable {
 
     @Inject
@@ -21,6 +21,5 @@ public class TripControllerConv implements Serializable {
     public Trip retrieveTripById(long id)  {
         return tripRepository.findById(id);
     }
-
 
 }

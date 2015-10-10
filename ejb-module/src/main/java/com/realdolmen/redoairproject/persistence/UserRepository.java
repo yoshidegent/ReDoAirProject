@@ -6,8 +6,12 @@ import com.realdolmen.redoairproject.entities.ReDoEmployee;
 import com.realdolmen.redoairproject.entities.User;
 import com.realdolmen.redoairproject.persistence.interfaces.IUserRepository;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
+@LocalBean
+@Stateless
 public class UserRepository extends GenericRepository<User> implements IUserRepository
 {
     public User getUserByUsername(String username)
