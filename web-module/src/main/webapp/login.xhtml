@@ -38,7 +38,7 @@
                         <h:inputSecret value="#{loginController.password}"/>
 
                         <h:outputLabel value=""/>
-                        <h:commandButton action="#{loginController.logInUser(loginController.username)}" value="Log in"/>
+                        <h:commandButton action="#{loginController.logInUser()}" value="Log in"/>
                     </h:panelGrid>
                 </h:form>
 
@@ -63,7 +63,9 @@
                     </h:panelGrid>
                 </h:form>
 
-
+            </div>
+            <div>
+                <h:outputText value="#{loginController.feedbackMessage}" style="color:red"/>
             </div>
         </div>
 
