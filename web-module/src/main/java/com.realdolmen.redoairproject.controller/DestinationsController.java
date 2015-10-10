@@ -11,17 +11,14 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Named
 @RequestScoped
 public class DestinationsController implements Serializable{
 
-    private Date from;
-    private Date to;
+    private Date from = new Date();
+    private Date to = null;
 
     @Inject
     private CountryRepository countryRepository;
@@ -71,7 +68,13 @@ public class DestinationsController implements Serializable{
     }
 
     public Date getTo() {
-        return to;
+        if(this.to == null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.MONTH, 1);
+            return calendar.getTime();
+        }
+        else
+            return to;
     }
 
     public void setTo(Date to) {

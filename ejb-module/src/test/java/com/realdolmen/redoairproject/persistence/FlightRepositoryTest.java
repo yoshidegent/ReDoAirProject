@@ -34,8 +34,6 @@ public class
         //Persist an empty flight object
         flight = flightRepository.createOrUpdate(flight);
         Assert.assertNotNull(flight.getId());
-
-        //TODO: implement other test cases
     }
 
     @Test
