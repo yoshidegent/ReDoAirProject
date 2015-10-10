@@ -14,6 +14,14 @@ public class Passenger extends User {
     @ManyToMany
     private List<Trip> tripList = new ArrayList<>();
 
+    public Passenger(String username, String password) {
+        super(username, password);
+    }
+
+    public Passenger() {
+        super("","");
+    }
+
 
     /**
      * Constructor
