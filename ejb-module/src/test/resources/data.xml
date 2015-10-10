@@ -154,8 +154,8 @@
 
     <trip id="2" hotel="Hotel Alles hat ein Ende, nur die Wurst hat zwei"  priceHotelPerNightPerPerson="100"
           endDestination_id="16"/>
-    <trip_flight Trip_id="2" flightList_id="511"/>
-    <trip_flight Trip_id="2" flightList_id="512"/>
+    <trip_flight Trip_id="2" flightList_id="509"/>
+    <trip_flight Trip_id="2" flightList_id="510"/>
 
 
 

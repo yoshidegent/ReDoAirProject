@@ -39,7 +39,13 @@ public class DestinationsController implements Serializable{
         String countryName = params.get("country");
 
         Country country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
-        tripsForDestination = tripRepository.findTripsByCountry(country);
+        List<Trip> temp = tripRepository.findTripsByCountry(country);
+
+        for(Trip t : temp)
+        {
+            if(t.getFlightList().size() > 0)
+                tripsForDestination.add(t);
+        }
 
         if(country.getCountry() != null && !country.getCountry().equals(""))
             return country.getCountry();

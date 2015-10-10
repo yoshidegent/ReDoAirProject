@@ -1,10 +1,7 @@
 package com.realdolmen.redoairproject.entities;
 
 import javax.ejb.Local;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,10 +12,12 @@ public class Trip extends AbstractEntity {
     /**
      * Class fields
      */
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Flight> flightList;
+
     private String hotel;
     private double priceHotelPerNightPerPerson;
+
     @ManyToOne
     private Airport endDestination;
     @Transient

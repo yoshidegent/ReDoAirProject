@@ -74,13 +74,14 @@
                     <h:outputText value="#{trip.hotel}"/>
                 </h:column>
 
+
                 <!-- todo: implement eager loading of flightList! (otherwise errors with calculateDuration-method)-->
-                <!--<h:column>-->
-                <!--<f:facet name="header">-->
-                <!--<h:outputText value="number of nights"/>-->
-                <!--</f:facet>-->
-                <!--<h:outputText value="#{trip.calculateDurationOfTrip()}"/>-->
-                <!--</h:column>-->
+                <h:column>
+                <f:facet name="header">
+                <h:outputText value="number of nights"/>
+                </f:facet>
+                <h:outputText value="#{trip.calculateDurationOfTrip()}"/>
+                </h:column>
 
                 <h:column>
                     <f:facet name="header">
