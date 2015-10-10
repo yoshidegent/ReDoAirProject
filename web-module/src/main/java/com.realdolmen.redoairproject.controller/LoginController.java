@@ -14,44 +14,37 @@ import javax.inject.Named;
 @RequestScoped
 public class LoginController {
 
-    User passenger = new Passenger();
-    String username;
-    String password;
+    private Passenger passenger;
+    private User user;
+    private String username;
+    private String password;
 
-    @Inject
-    UserRepository userRepository;
+    @Inject UserRepository userRepository;
 
     //redirecten moet nog juister gebeuren dan gewoon return "worldmap"
 
-    public String createUser()    {
+    public String createPassenger() {
         userRepository.createOrUpdate(passenger);
         return "worldmap";
     }
 
-
-
-
     public String logInUser(String userName) {
         User user = userRepository.getUserByUsername(userName);
-        if(user == null) {
-            return"";
-            //liever een message throwen
-        }   else    {
-        //check password
 
+        if (user == null) {
+            return "";
+
+        } else {
+            return "";
         }
-
-        return "worldmap";
     }
 
-
-
-    public User getPassenger() {
-        return passenger;
+    public User getUser() {
+        return user;
     }
 
-    public void setPassenger(User passenger) {
-        this.passenger = passenger;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getUsername() {
