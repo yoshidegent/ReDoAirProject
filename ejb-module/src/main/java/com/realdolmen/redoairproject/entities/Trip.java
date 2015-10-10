@@ -19,11 +19,15 @@ public class Trip extends AbstractEntity {
     private List<Flight> flightList;
     private String hotel;
     private double priceHotelPerNightPerPerson;
-    @Transient
-    private int numberOfNights;
     @ManyToOne
     private Airport endDestination;
+    @Transient
+    private LocalDate startDate;
+    @Transient
+    private LocalDate endDate;
 
+    @Transient
+    private int numberOfNights;
 
     /**
      * Constructor
@@ -54,15 +58,19 @@ public class Trip extends AbstractEntity {
         double pricePerPerson = priceHotelPerNightPerPerson*numberOfNights + priceForAllFlights;
         return pricePerPerson*numberOfPersons;
     }
-    public int calculateDurationOfTrip() {
-        LocalDate departureDate = flightList.get(0).getDepartureDate();
-        LocalDate backHomeDate = flightList.get(0).getDepartureDate();
 
+    public LocalDate calculateBeginDate()   {
+        LocalDate departureDate = flightList.get(0).getDepartureDate();
         for (Flight flight : flightList) {
             if(flight.getDepartureDate().isBefore(departureDate))    {
                 departureDate = flight.getDepartureDate();
             }
         }
+        return departureDate;
+    }
+
+    public LocalDate calculateEndDate() {
+        LocalDate backHomeDate = flightList.get(0).getDepartureDate();
 
         for (Flight flight : flightList) {
             if(flight.getDepartureDate().isAfter(backHomeDate)) {
@@ -74,11 +82,14 @@ public class Trip extends AbstractEntity {
                 if(arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear())   {
                     backHomeDate.plusDays(1);
                 }
-
             }
         }
+        return backHomeDate;
+    }
 
-        long l = backHomeDate.toEpochDay() - departureDate.toEpochDay();
+
+    public int calculateDurationOfTrip() {
+        long l = this.calculateEndDate().toEpochDay() - this.calculateBeginDate().toEpochDay();
         return (int) l;
     }
 
@@ -134,5 +145,13 @@ public class Trip extends AbstractEntity {
             ", numberOfNights=" + numberOfNights +
             ", endDestination=" + endDestination +
             '}';
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
     }
 }
