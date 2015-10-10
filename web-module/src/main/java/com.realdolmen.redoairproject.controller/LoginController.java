@@ -19,6 +19,8 @@ public class LoginController {
     private String username;
     private String password;
 
+    private String feedbackMessage;
+
     @Inject UserRepository userRepository;
 
     //redirecten moet nog juister gebeuren dan gewoon return "worldmap"
@@ -28,23 +30,28 @@ public class LoginController {
         return "worldmap";
     }
 
-    public String logInUser(String userName) {
-        User user = userRepository.getUserByUsername(userName);
+    public String logInUser() {
+        User user = userRepository.getUserByUsername(username);
 
         if (user == null) {
+            feedbackMessage = "Username " + username + " was not found. Please register or try again.";
             return "";
 
         } else {
-            return "";
+            if(user.checkPasswordIsValid(password))
+            {
+                if(user instanceof Partner || user instanceof ReDoEmployee)
+                    return "flightsall";
+                else
+                    return "worldmap";
+            }
+            else
+            {
+                feedbackMessage = "The password and username did not match. Please register or try again.";
+                return "";
+            }
+
         }
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getUsername() {
@@ -61,5 +68,21 @@ public class LoginController {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFeedbackMessage() {
+        return feedbackMessage;
+    }
+
+    public void setFeedbackMessage(String feedbackMessage) {
+        this.feedbackMessage = feedbackMessage;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 }
