@@ -8,11 +8,12 @@ import com.realdolmen.redoairproject.entities.Country;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.List;
 
 @LocalBean
 @Stateless
-public class TripRepository extends GenericRepository<Trip> implements ITripRepository {
+public class TripRepository extends GenericRepository<Trip> implements ITripRepository, Serializable {
 
     public TripRepository() {
         super(Trip.class);

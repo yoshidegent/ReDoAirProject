@@ -1,6 +1,8 @@
 package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -23,14 +25,23 @@ public class Flight extends AbstractEntity {
 
     private LocalDate departureDate;
     private LocalTime departureTime;
+
     private int flightDurationInMinutes;
 
+
+
+    @NotNull
     private int seatCapacity;
+    @NotNull
     private int seatsAvailable;
 
+    @NotNull
     private double pricePerSeat;
 
+    @NotNull
     private int seatsThresholdForDiscount;
+
+
     @Transient
     private double pricePerSeatForPassenger;
 

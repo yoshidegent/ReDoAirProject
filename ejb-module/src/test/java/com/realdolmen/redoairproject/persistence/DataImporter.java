@@ -51,8 +51,8 @@ public class DataImporter
             new Address(9l, countryRepository.findCountryByCountryCodeCaseInsensitive("US"),
                 "New York City"));
         addresses.add(
-            new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("UA"),
-                "Melbourne"));
+                new Address(10l, countryRepository.findCountryByCountryCodeCaseInsensitive("UA"),
+                        "Melbourne"));
 
         for(Address a : addresses)
         {
@@ -158,4 +158,5 @@ public class DataImporter
             entityManager.merge(t);
         }
     }
+
 }
