@@ -18,16 +18,48 @@
 </h:head>
 
 
-
 <h:body>
     <ui:include src="/navbar.xhtml"/>
 
     <div class="container">
 
-        <c:set var="trip" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>
+        <div class="row">
+            <div class="col-md-9">
+
+                <c:set var="trip" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>
+
+                <h1><h:outputText value="Trip to #{trip.hotel} -  #{trip.endDestination.address.city}"/></h1>
+
+            </div>
+            <div class="col-md-3" style="background-color: lightgrey">
+                <h6>Price calculations</h6>
 
 
-        <h1><h:outputText value="Flight #{trip.hotel} -  #{trip.endDestination}"/></h1>
+                <h:form style="margin: auto" class="form-horizontal">
+                <h:panelGrid columns="2">
+
+                <h:outputLabel value="number of passengers"/>
+                <h:inputText id="passengercount" value="#{tripControllerConv.numberOfPassengers}">
+
+
+
+                    <f:ajax event="valueChange"
+                            execute="passengercount"
+                            listener="#{tripControllerConv.calculateTotalPriceForTrip(tripControllerConv.numberOfPassengers)}"
+                            render="totalPrice"/>
+                    </h:inputText>
+
+                    <h:outputLabel id="totalPrice"/>
+                </h:panelGrid>
+                </h:form>
+
+
+                <h:link outcome="trippayment">
+                    Continue
+                    <f:param name="id" value="#{trip.id}"/>
+                </h:link>
+            </div>
+        </div>
 
 
     </div>

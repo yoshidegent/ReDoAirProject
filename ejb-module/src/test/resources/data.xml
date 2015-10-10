@@ -63,8 +63,8 @@
     <airport id="13" name="Melbourne Airport" address_id="19"/>
     <airport id="14" name="Portela Airport" address_id="20"/>
     <airport id="15" name="Cape Town International Airport" address_id="21"/>
+    <airport id="16" name="Tegel" address_id="9"/>
 
-    <airport id="16" name="Melbourne Airport" address_id="19"/>
     <airport id="17" name="Melbourne Airport" address_id="19"/>
     <airport id="18" name="Melbourne Airport" address_id="19"/>
     <airport id="19" name="Melbourne Airport" address_id="19"/>
@@ -141,10 +141,26 @@
 
 
 
-    <!--trip to ?-->
+    <!--trip to Berlin-->
+    <flight id="511" airline_id="1" origin_id="1" destination_id="16" pricePerSeat="159"
+            flightDurationInMinutes="200"
+            seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="5"/>
 
-    <trip id="2" hotel="Hotel Evelyne is leuk"  priceHotelPerNightPerPerson="100"
-          endDestination_id="1"/>
+    <flight id="512" airline_id="1" origin_id="16" destination_id="1" pricePerSeat="159"
+            flightDurationInMinutes="160"
+            departureTime="20:00" seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="2" hotel="Hotel Alles hat ein Ende, nur die Wurst hat zwei"  priceHotelPerNightPerPerson="100"
+          endDestination_id="16"/>
+    <trip_flight Trip_id="2" flightList_id="511"/>
+    <trip_flight Trip_id="2" flightList_id="512"/>
+
+
+
+
+<!--trip to?-->
     <trip hotel="Hotel Evelyne is leuk 2"  priceHotelPerNightPerPerson="100"
           endDestination_id="1"/>
     <trip hotel="Hotel Evelyne is tof"  priceHotelPerNightPerPerson="100"

@@ -1,12 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title></title>
-</head>
-<body>
+<!DOCTYPE html>
 
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Trip detail</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <c:set var="flight" value="#{tripController.getFlight(param['id'])}"/>
+</h:head>
+
+
+<h:body>
+    <ui:include src="/navbar.xhtml"/>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <!--<c:set var="trip" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>-->
+                <h1><h:outputText value="THIS IS THE CONFIRMATION PAGE"/></h1>
+                <h3><h:outputText value="Thanks for booking with RedoAir!"/></h3>
+
+            </div>
+        </div>
+
+
+    </div>
+</h:body>
 </html>

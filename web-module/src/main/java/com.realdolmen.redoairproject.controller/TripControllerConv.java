@@ -13,6 +13,9 @@ import java.util.List;
 @ConversationScoped
 public class TripControllerConv implements Serializable {
     private Trip trip = new Trip();
+    private String cardNumber;
+    private String expiryDate;
+    private int numberOfPassengers;
 
     @Inject
     private TripRepository tripRepository;
@@ -22,8 +25,15 @@ public class TripControllerConv implements Serializable {
         return tripRepository.findById(id);
     }
 
+    public String bookTrip(long id)
+    {
+        return "tripconfirmation";
+    }
 
 
+    public double calculateTotalPriceForTrip(int count) {
+        return trip.calculateTotalPrice(count);
+    }
 
 
 
@@ -34,5 +44,29 @@ public class TripControllerConv implements Serializable {
 
     public void setTrip(Trip trip) {
         this.trip = trip;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public void setNumberOfPassengers(int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
     }
 }

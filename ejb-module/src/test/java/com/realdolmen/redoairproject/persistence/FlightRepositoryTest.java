@@ -126,6 +126,34 @@ public class
         flight504.setDepartureTime(LocalTime.of(21,50));
 
 
+        Flight flight505= flightRepository.findById(505l);
+        flight505.setDepartureDate(LocalDate.of(2015,10,24));
+        flight505.setDepartureTime(LocalTime.of(21,50));
+
+
+        Flight flight506 = flightRepository.findById(506l);
+        flight506.setDepartureDate(LocalDate.of(2015,10,24));
+        flight506.setDepartureTime(LocalTime.of(21,50));
+
+
+        Flight flight507 = flightRepository.findById(507l);
+        flight507.setDepartureDate(LocalDate.of(2015,10,24));
+        flight507.setDepartureTime(LocalTime.of(9,15));
+
+
+        Flight flight508 = flightRepository.findById(508l);
+        flight508.setDepartureDate(LocalDate.of(2015,10,25));
+        flight508.setDepartureTime(LocalTime.of(22,50));
+
+
+        Flight flight509 = flightRepository.findById(509l);
+        flight509.setDepartureDate(LocalDate.of(2015,12,23));
+        flight509.setDepartureTime(LocalTime.of(10,30));
+
+        Flight flight510 = flightRepository.findById(510l);
+        flight510.setDepartureDate(LocalDate.of(2015,12,24));
+        flight510.setDepartureTime(LocalTime.of(21,50));
+
 
         flightRepository.createOrUpdate(flight500);
         Assert.assertEquals(flight500.getDepartureDate() ,flightRepository.findById(500l).getDepartureDate());
