@@ -6,7 +6,7 @@ import com.realdolmen.redoairproject.entities.ReDoEmployee;
 import com.realdolmen.redoairproject.entities.User;
 import org.junit.*;
 
-public class testUserRepository extends PersistenceTest
+public class UserRepositoryTest extends PersistenceTest
 {
     private UserRepository userRepository;
 
