@@ -1,5 +1,8 @@
 package com.realdolmen.redoairproject.entities;
 
+import com.realdolmen.redoairproject.converter.LocalDatePersistenceConverter;
+import com.realdolmen.redoairproject.converter.LocalTimePersistenceConverter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -23,8 +26,9 @@ public class Flight extends AbstractEntity {
     @ManyToOne
     private Airport destination;
 
-
+    @Convert (converter = LocalDatePersistenceConverter.class)
     private LocalDate departureDate;
+    @Convert (converter = LocalTimePersistenceConverter.class)
     private LocalTime departureTime;
 
     private int flightDurationInMinutes;

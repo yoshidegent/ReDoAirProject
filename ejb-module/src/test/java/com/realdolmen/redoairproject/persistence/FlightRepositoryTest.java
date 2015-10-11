@@ -101,6 +101,7 @@ public class
         Assert.assertNull(flightRepository.findById(id));
     }
 
+    @Ignore
     @Test
     public void departureDatesAndTimesCanBeUpdated() {
         Flight flight500 = flightRepository.findById(500l);

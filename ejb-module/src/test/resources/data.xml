@@ -77,59 +77,70 @@
 
 
     <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
-            flightDurationInMinutes="200"
+            flightDurationInMinutes="200" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="501" airline_id="1" origin_id="2" destination_id="4" pricePerSeat="199"
-            flightDurationInMinutes="160"
-            departureTime="20:00" seatsAvailable="300" seatCapacity="400"
+            flightDurationInMinutes="160" departureDate="2015-10-11"
+            departureTime="22:00:00"
+            seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="10"/>
 
     <flight id="502" airline_id="1" origin_id="1" destination_id="7" pricePerSeat="99"
-            flightDurationInMinutes="60"
+            flightDurationInMinutes="60" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="503" airline_id="1" origin_id="3" destination_id="2" pricePerSeat="119"
-            flightDurationInMinutes="320"
-           seatsAvailable="300" seatCapacity="400"
+            flightDurationInMinutes="320" departureDate="2015-10-11"
+            departureTime="22:00:00"
+            seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="504" airline_id="1" origin_id="6" destination_id="5" pricePerSeat="799"
-            flightDurationInMinutes="30"
+            flightDurationInMinutes="30" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="505" airline_id="5" origin_id="2" destination_id="14" pricePerSeat="799"
-            flightDurationInMinutes="30"
+            flightDurationInMinutes="30" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="506" airline_id="5" origin_id="14" destination_id="2" pricePerSeat="799"
-            flightDurationInMinutes="30"
+            flightDurationInMinutes="30" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
 
     <!--trip to South Africa-->
         <flight id="507" airline_id="1" origin_id="1" destination_id="11" pricePerSeat="129"
-            flightDurationInMinutes="55"
-            seatsAvailable="100" seatCapacity="250"
+            flightDurationInMinutes="55" departureDate="2015-11-11"
+                departureTime="22:00:00"
+                seatsAvailable="100" seatCapacity="250"
             seatsThresholdForDiscount="5"/>
 
     <flight id="508" airline_id="7" origin_id="11" destination_id="15" pricePerSeat="799"
-            flightDurationInMinutes="360"
+            flightDurationInMinutes="360" departureDate="2015-11-11"
+            departureTime="22:00:00"
             seatsAvailable="201" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="509" airline_id="1" origin_id="15" destination_id="11" pricePerSeat="899"
-            flightDurationInMinutes="360"
+            flightDurationInMinutes="360" departureDate="2015-11-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="510" airline_id="7" origin_id="11" destination_id="1" pricePerSeat="129"
-            flightDurationInMinutes="55"
+            flightDurationInMinutes="55" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="200" seatCapacity="250"
             seatsThresholdForDiscount="5"/>
     <trip id="1" hotel="Yoshi Game Reservate" priceHotelPerNightPerPerson="80" endDestination_id="15"/>
@@ -143,13 +154,15 @@
 
     <!--trip to Berlin-->
     <flight id="511" airline_id="1" origin_id="1" destination_id="16" pricePerSeat="159"
-            flightDurationInMinutes="200"
+            flightDurationInMinutes="200" departureDate="2015-10-11"
+            departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="512" airline_id="1" origin_id="16" destination_id="1" pricePerSeat="159"
-            flightDurationInMinutes="160"
-            departureTime="20:00" seatsAvailable="300" seatCapacity="400"
+            flightDurationInMinutes="160" departureDate="2015-10-11"
+            departureTime="22:00:00"
+            seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="10"/>
 
     <trip id="2" hotel="Hotel Alles hat ein Ende, nur die Wurst hat zwei"  priceHotelPerNightPerPerson="100"
