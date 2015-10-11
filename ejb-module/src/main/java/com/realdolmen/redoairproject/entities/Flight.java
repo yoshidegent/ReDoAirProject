@@ -23,6 +23,7 @@ public class Flight extends AbstractEntity {
     @ManyToOne
     private Airport destination;
 
+
     private LocalDate departureDate;
     private LocalTime departureTime;
 
@@ -194,7 +195,7 @@ public class Flight extends AbstractEntity {
     }
 
     public double getPricePerSeatForPassenger() {
-        return this.pricePerSeatForPassenger;
+        return this.calculatePriceforPassenger();
     }
 
     public int getSeatCapacity() {

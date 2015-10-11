@@ -90,6 +90,7 @@ public class TripTest {
     @Test
     public void testCalculateDurationOfTrip()   {
         long duration = dateFlight3.toEpochDay() - dateFlight1.toEpochDay();
+        //the last flight will arrive the next day, so the duration is 1 day longer in reality
         Assert.assertEquals(duration +1 , trip.calculateDurationOfTrip());
     }
 

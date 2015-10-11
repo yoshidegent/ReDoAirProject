@@ -32,7 +32,7 @@
                 </h:link>
 
 
-                <c:set var="trip" value="#{tripControllerConv.retrieveTripById(param['id'])}"/>
+                <c:set var="trip" value="#{tripController.retrieveTripById(param['id'])}"/>
 
                 <h1><h:outputText value="Trip to #{trip.endDestination.address.city}"/></h1>
 
@@ -46,18 +46,18 @@
                     <h:panelGrid columns="2">
 
                         <h:outputLabel value="price for the flights"/>
-                        <h:outputText value="#{trip.}"/>
+                        <h:outputText value="#{trip.calculatePriceForAllFlights()}"/>
 
                         <h:outputLabel value="#{trip.hotel}"/>
                         <h:outputText value="€ #{trip.priceHotelPerNightPerPerson} per night"/>
 
 
                         <h:outputLabel value="number of passengers"/>
-                        <h:inputText id="passengercount" value="#{tripControllerConv.numberOfPassengers}">
+                        <h:inputText id="passengercount" value="#{tripController.numberOfPassengers}">
 
                             <f:ajax event="valueChange"
                                     execute="passengercount"
-                                    listener="#{tripControllerConv.calculateTotalPriceForTrip(tripControllerConv.numberOfPassengers)}"
+                                    listener="#{tripController.calculateTotalPriceForTrip(tripController.numberOfPassengers)}"
                                     render="totalPrice"/>
                         </h:inputText>
 

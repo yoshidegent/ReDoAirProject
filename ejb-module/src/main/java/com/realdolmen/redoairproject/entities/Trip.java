@@ -4,6 +4,7 @@ import javax.ejb.Local;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,7 @@ public class Trip extends AbstractEntity {
     @Transient
     private int numberOfNights;
 
+
     /**
      * Constructor
      */
@@ -47,6 +49,11 @@ public class Trip extends AbstractEntity {
     /**
      * Bussiness Methods
      */
+
+    public int calculateNumberOfPlacesAvailableForAllFlights()  {
+
+        return 0;
+    }
     public double calculateTotalPrice(int numberOfPersons) {
         double priceForAllFlights = calculatePriceForAllFlights();
 
@@ -76,10 +83,12 @@ public class Trip extends AbstractEntity {
 
     public LocalDate calculateEndDate() {
         LocalDate backHomeDate = flightList.get(0).getDepartureDate();
+        LocalTime backHomeTime = flightList.get(0).getDepartureTime();
 
         for (Flight flight : flightList) {
-            if(flight.getDepartureDate().isAfter(backHomeDate)) {
+            if(flight.getDepartureDate().isAfter(backHomeDate) || flight.getDepartureTime().isAfter(backHomeTime)) {
                 backHomeDate = flight.getDepartureDate();
+                backHomeTime = flight.getDepartureTime();
 
                 LocalDateTime arrivalDateCheck =  LocalDateTime.of(backHomeDate.getYear(), backHomeDate.getMonthValue(), backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(), flight.getDepartureTime().getMinute());
                 arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());

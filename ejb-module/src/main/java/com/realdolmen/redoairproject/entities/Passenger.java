@@ -2,6 +2,8 @@ package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,8 @@ public class Passenger extends User {
     /**
      * Class fields
      */
-    @ManyToMany
-    private List<Trip> tripList = new ArrayList<>();
+    @OneToMany
+    private List<Booking> booking;
 
     private String firstName;
     private String lastName;
@@ -40,16 +42,16 @@ public class Passenger extends User {
      */
 
 
+
     /**
      * Getters & Setters
      */
-
-    public List<Trip> getTripList() {
-        return tripList;
+    public List<Booking> getBooking() {
+        return booking;
     }
 
-    public void setTripList(List<Trip> tripList) {
-        this.tripList = tripList;
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
     }
 
     public String getFirstName() {
