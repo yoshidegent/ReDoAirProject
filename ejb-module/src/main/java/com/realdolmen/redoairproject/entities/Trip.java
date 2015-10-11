@@ -78,11 +78,10 @@ public class Trip extends AbstractEntity {
             LocalDate departureDate = flightList.get(0).getDepartureDate();
             for (Flight flight : flightList) {
 
-                if(flight.getDepartureDate() == null)
-                    return null;
-
-                if (flight.getDepartureDate().isBefore(departureDate)) {
-                    departureDate = flight.getDepartureDate();
+                if(flight.getDepartureDate() != null) {
+                    if (flight.getDepartureDate().isBefore(departureDate)) {
+                        departureDate = flight.getDepartureDate();
+                    }
                 }
             }
             return departureDate;
@@ -95,20 +94,21 @@ public class Trip extends AbstractEntity {
             LocalDate backHomeDate = flightList.get(0).getDepartureDate();
 
             for (Flight flight : flightList) {
-                if(flight.getDepartureDate() == null)
-                    return null;
+                if(flight.getDepartureDate() != null) {
 
-                if (flight.getDepartureDate().isAfter(backHomeDate)) {
-                    backHomeDate = flight.getDepartureDate();
+                    if (flight.getDepartureDate().isAfter(backHomeDate)) {
+                        backHomeDate = flight.getDepartureDate();
 
-                    LocalDateTime arrivalDateCheck = LocalDateTime
-                        .of(backHomeDate.getYear(), backHomeDate.getMonthValue(),
-                            backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(),
-                            flight.getDepartureTime().getMinute());
-                    arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
+                        LocalDateTime arrivalDateCheck = LocalDateTime
+                            .of(backHomeDate.getYear(), backHomeDate.getMonthValue(),
+                                backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(),
+                                flight.getDepartureTime().getMinute());
+                        arrivalDateCheck =
+                            arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
 
-                    if (arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear()) {
-                        backHomeDate = backHomeDate.plusDays(1);
+                        if (arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear()) {
+                            backHomeDate = backHomeDate.plusDays(1);
+                        }
                     }
                 }
             }
