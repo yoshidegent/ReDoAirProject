@@ -30,7 +30,6 @@ public class Flight extends AbstractEntity {
     private int flightDurationInMinutes;
 
 
-
     @NotNull
     private int seatCapacity;
     @NotNull
@@ -42,10 +41,8 @@ public class Flight extends AbstractEntity {
     @NotNull
     private int seatsThresholdForDiscount;
 
-
     @Transient
     private double pricePerSeatForPassenger;
-
 
 
     /**
@@ -195,7 +192,11 @@ public class Flight extends AbstractEntity {
     }
 
     public double getPricePerSeatForPassenger() {
-        return this.calculatePriceforPassenger();
+        if(this.pricePerSeatForPassenger == 0)  {
+            return this.calculatePriceforPassenger();
+        }   else    {
+            return this.pricePerSeatForPassenger;
+        }
     }
 
     public int getSeatCapacity() {
