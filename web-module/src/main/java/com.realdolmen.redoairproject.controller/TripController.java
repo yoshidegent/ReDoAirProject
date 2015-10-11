@@ -10,6 +10,8 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 @Named
@@ -36,7 +38,7 @@ public class TripController implements Serializable {
     {
         List<Flight> flightList = trip.getFlightList();
         for (Flight flight : flightList) {
-            flight.setSeatsAvailable(flight.getSeatsAvailable() - 1);
+            flight.setSeatsAvailable(flight.getSeatsAvailable() - numberOfPassengers);
         }
 
         Booking booking = new Booking();
@@ -46,7 +48,35 @@ public class TripController implements Serializable {
         booking.setTrip(trip);
         bookingRepository.createOrUpdate(booking);
 
-        return "tripconfirmation";
+        if(!expiryDate.isEmpty())
+        {
+            String[] dateValues = expiryDate.split("/");
+            if(dateValues.length == 2)
+            {
+                try
+                {
+                    int month = Integer.parseInt(dateValues[0]);
+                    int year = Integer.parseInt(dateValues[0]);
+
+                    LocalDate expire = LocalDate.of(year, month, 1);
+
+                    if(LocalDate.now().isBefore(expire))
+                        return "tripconfirmation";
+                    else
+                        return "";
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+
+            }
+            else
+                return "";
+
+        }
+        else
+            return "";
     }
 
     public double calculateTotalPriceForTrip() {
