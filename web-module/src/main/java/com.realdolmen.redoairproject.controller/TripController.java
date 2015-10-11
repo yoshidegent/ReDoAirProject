@@ -15,14 +15,14 @@ public class TripController implements Serializable {
     private Trip trip = new Trip();
     private String cardNumber;
     private String expiryDate;
-    private int numberOfPassengers;
+    private int numberOfPassengers = 1;
 
     @Inject
     private TripRepository tripRepository;
 
-
     public Trip retrieveTripById(long id)  {
-        return tripRepository.findById(id);
+        this.trip = tripRepository.findById(id);
+        return trip;
     }
 
     public String bookTrip(long id)
@@ -30,12 +30,9 @@ public class TripController implements Serializable {
         return "tripconfirmation";
     }
 
-
-    public double calculateTotalPriceForTrip(int count) {
-        return trip.calculateTotalPrice(count);
+    public double calculateTotalPriceForTrip() {
+        return trip.calculateTotalPrice(numberOfPassengers);
     }
-
-
 
 
     public Trip getTrip() {
@@ -62,7 +59,7 @@ public class TripController implements Serializable {
         this.expiryDate = expiryDate;
     }
 
-    public int getNumberOfPassengers() {
+    public int  getNumberOfPassengers() {
         return numberOfPassengers;
     }
 

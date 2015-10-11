@@ -13,8 +13,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+        $( document ).ready(function(){
+            $("#passengercount").change(function(){
+                console.log("change");
+            });
+        });
+    </script>
 
-    <c:set var="flight" value="#{tripController.getFlight(param['id'])}"/>
 </h:head>
 
 
@@ -45,23 +51,26 @@
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
 
-                        <h:outputLabel value="price for the flights"/>
-                        <h:outputText value="#{trip.calculatePriceForAllFlights()}"/>
+                        <h:outputLabel value="Number of passengers"/>
+                        <h:inputText id="passengercount" value="#{tripController.numberOfPassengers}" />
+
+                        <h:outputLabel value="Total price for flights"/>
+                        <h:outputText value="€ #{trip.calculatePriceForAllFlights()} / passenger"/>
 
                         <h:outputLabel value="#{trip.hotel}"/>
-                        <h:outputText value="€ #{trip.priceHotelPerNightPerPerson} per night"/>
+                        <h:outputText value="€ #{trip.priceHotelPerNightPerPerson} / night"/>
+
+                        <h:outputLabel value="Total #{trip.hotel}"/>
+                        <h:outputText value="€ #{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()} / passenger"/>
+
+                        <h:outputLabel value="Total per passenger"/>
+                        <h:outputText value="€ #{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()} / passenger"/>
+
+                        <hr /><h:outputText value=""/>
+                        <h:outputLabel value="Total:"/>
+                        <h:outputText value="€ #{tripController.calculateTotalPriceForTrip()} / passenger"/>
 
 
-                        <h:outputLabel value="number of passengers"/>
-                        <h:inputText id="passengercount" value="#{tripController.numberOfPassengers}">
-
-                            <f:ajax event="valueChange"
-                                    execute="passengercount"
-                                    listener="#{tripController.calculateTotalPriceForTrip(tripController.numberOfPassengers)}"
-                                    render="totalPrice"/>
-                        </h:inputText>
-
-                        <h:outputLabel id="totalPrice"/>
                     </h:panelGrid>
                 </h:form>
 

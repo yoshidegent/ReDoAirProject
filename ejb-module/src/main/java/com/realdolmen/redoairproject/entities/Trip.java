@@ -27,8 +27,8 @@ public class Trip extends AbstractEntity {
     @Transient
     private LocalDate endDate;
 
-    @Transient
-    private int numberOfNights;
+    //@Transient
+    //private int numberOfNights;
 
     /**
      * Constructor
@@ -37,12 +37,11 @@ public class Trip extends AbstractEntity {
     }
 
 
-    public Trip(Long id, List<Flight> flightList, String hotel, double priceHotelPerNightPerPerson, int numberOfNights, Airport endDestination) {
+    public Trip(Long id, List<Flight> flightList, String hotel, double priceHotelPerNightPerPerson, Airport endDestination) {
         super(id);
         this.flightList = flightList;
         this.hotel = hotel;
         this.priceHotelPerNightPerPerson = priceHotelPerNightPerPerson;
-        this.numberOfNights = numberOfNights;
         this.endDestination = endDestination;
         this.beginDate = calculateBeginDate();
         this.endDate = calculateEndDate();
@@ -59,7 +58,7 @@ public class Trip extends AbstractEntity {
     public double calculateTotalPrice(int numberOfPersons) {
         double priceForAllFlights = calculatePriceForAllFlights();
 
-        double pricePerPerson = priceHotelPerNightPerPerson*numberOfNights + priceForAllFlights;
+        double pricePerPerson = priceHotelPerNightPerPerson*calculateDurationOfTrip() + priceForAllFlights;
         return pricePerPerson*numberOfPersons;
     }
 
@@ -152,14 +151,6 @@ public class Trip extends AbstractEntity {
         this.priceHotelPerNightPerPerson = priceHotelPerNightPerPerson;
     }
 
-    public int getNumberOfNights() {
-        return numberOfNights;
-    }
-
-    public void setNumberOfNights(int numberOfNights) {
-        this.numberOfNights = numberOfNights;
-    }
-
     public Airport getEndDestination() {
         return endDestination;
     }
@@ -173,7 +164,6 @@ public class Trip extends AbstractEntity {
             "flightList=" + flightList +
             ", hotel='" + hotel + '\'' +
             ", priceHotelPerNightPerPerson=" + priceHotelPerNightPerPerson +
-            ", numberOfNights=" + numberOfNights +
             ", endDestination=" + endDestination +
             '}';
     }
