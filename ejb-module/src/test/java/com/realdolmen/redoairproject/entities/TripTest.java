@@ -66,8 +66,6 @@ public class TripTest {
     public void testCalculateTotalPrice()   {
         double totalPricePerPerson = FLIGHT_PRICE_1 + FLIGHT_PRICE_2 + FLIGHT_PRICE_3 + HOTEL_PRICE_PER_NIGHT * NUMBER_OF_NIGHTS;
         Assert.assertEquals(totalPricePerPerson*NUMBER_OF_PASSENGERS, trip.calculateTotalPrice(NUMBER_OF_PASSENGERS), GAMMA);
-
-
     }
 
     @Test
@@ -92,5 +90,4 @@ public class TripTest {
         long duration = dateFlight3.toEpochDay() - dateFlight1.toEpochDay();
         Assert.assertEquals(duration +1 , trip.calculateDurationOfTrip());
     }
-
 }

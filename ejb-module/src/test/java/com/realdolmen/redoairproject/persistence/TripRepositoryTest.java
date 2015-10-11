@@ -20,7 +20,6 @@ public class TripRepositoryTest extends PersistenceTest{
     @Before
     public void before()
     {
-        LOG.debug("*****************************************************************************************************************************************");
         countryRepository.entityManager = entityManager();
         tripRepository.entityManager = entityManager();
     }
@@ -53,5 +52,19 @@ public class TripRepositoryTest extends PersistenceTest{
             LOG.debug(t.toString());
 
         entityManager().clear();
+    }
+
+    @Test
+    public void testBeginAndEndDatesAreNotNull()
+    {
+        List<Trip> allTrips = tripRepository.findAll();
+
+        for(int i=0; i<allTrips.size()-2; i++)
+        {
+            if(allTrips.get(i).getFlightList().size() > 0) {
+                Assert.assertNotNull(allTrips.get(i).getBeginDate());
+                Assert.assertNotNull(allTrips.get(i).getEndDate());
+            }
+        }
     }
 }
