@@ -1,6 +1,9 @@
 package com.realdolmen.redoairproject.controller;
 
+import com.realdolmen.redoairproject.entities.Booking;
+import com.realdolmen.redoairproject.entities.Flight;
 import com.realdolmen.redoairproject.entities.Trip;
+import com.realdolmen.redoairproject.persistence.BookingRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
 
 import javax.enterprise.context.ConversationScoped;
@@ -20,6 +23,9 @@ public class TripController implements Serializable {
     @Inject
     private TripRepository tripRepository;
 
+    @Inject
+    private BookingRepository bookingRepository;
+
 
     public Trip retrieveTripById(long id)  {
         return tripRepository.findById(id);
@@ -27,6 +33,18 @@ public class TripController implements Serializable {
 
     public String bookTrip(long id)
     {
+        List<Flight> flightList = trip.getFlightList();
+        for (Flight flight : flightList) {
+            flight.setSeatsAvailable(flight.getSeatsAvailable() - 1);
+        }
+
+        Booking booking = new Booking();
+        booking.setNumberOfPassengers(numberOfPassengers);
+        booking.setCreditCardNumber(cardNumber);
+        booking.setExpiryDate(expiryDate);
+        booking.setTrip(trip);
+        bookingRepository.createOrUpdate(booking);
+
         return "tripconfirmation";
     }
 
@@ -34,6 +52,7 @@ public class TripController implements Serializable {
     public double calculateTotalPriceForTrip(int count) {
         return trip.calculateTotalPrice(count);
     }
+
 
 
 
