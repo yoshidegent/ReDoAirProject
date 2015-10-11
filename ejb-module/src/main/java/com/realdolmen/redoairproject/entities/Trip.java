@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -50,6 +51,11 @@ public class Trip extends AbstractEntity {
     /**
      * Bussiness Methods
      */
+
+    public int calculateNumberOfPlacesAvailableForAllFlights()  {
+
+        return 0;
+    }
     public double calculateTotalPrice(int numberOfPersons) {
         double priceForAllFlights = calculatePriceForAllFlights();
 

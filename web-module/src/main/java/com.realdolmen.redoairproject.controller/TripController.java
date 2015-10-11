@@ -11,7 +11,7 @@ import java.util.List;
 
 @Named
 @ConversationScoped
-public class TripControllerConv implements Serializable {
+public class TripController implements Serializable {
     private Trip trip = new Trip();
     private String cardNumber;
     private String expiryDate;

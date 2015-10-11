@@ -113,7 +113,7 @@
 
 
     <!--trip to South Africa-->
-    <flight id="507" airline_id="1" origin_id="1" destination_id="11" pricePerSeat="129"
+        <flight id="507" airline_id="1" origin_id="1" destination_id="11" pricePerSeat="129"
             flightDurationInMinutes="55"
             seatsAvailable="100" seatCapacity="250"
             seatsThresholdForDiscount="5"/>
