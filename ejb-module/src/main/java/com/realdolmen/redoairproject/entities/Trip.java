@@ -4,6 +4,7 @@ import javax.ejb.Local;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -22,13 +23,12 @@ public class Trip extends AbstractEntity {
     @ManyToOne
     private Airport endDestination;
     @Transient
-    private LocalDate startDate;
+    private LocalDate beginDate;
     @Transient
     private LocalDate endDate;
 
     @Transient
     private int numberOfNights;
-
 
     /**
      * Constructor
@@ -44,6 +44,8 @@ public class Trip extends AbstractEntity {
         this.priceHotelPerNightPerPerson = priceHotelPerNightPerPerson;
         this.numberOfNights = numberOfNights;
         this.endDestination = endDestination;
+        this.beginDate = calculateBeginDate();
+        this.endDate = calculateEndDate();
     }
 
     /**
@@ -72,33 +74,48 @@ public class Trip extends AbstractEntity {
 
 
     public LocalDate calculateBeginDate()   {
-        LocalDate departureDate = flightList.get(0).getDepartureDate();
-        for (Flight flight : flightList) {
-            if(flight.getDepartureDate().isBefore(departureDate))    {
-                departureDate = flight.getDepartureDate();
+        if(flightList.size() > 0) {
+            LocalDate departureDate = flightList.get(0).getDepartureDate();
+            for (Flight flight : flightList) {
+
+                if(flight.getDepartureDate() == null)
+                    return null;
+
+                if (flight.getDepartureDate().isBefore(departureDate)) {
+                    departureDate = flight.getDepartureDate();
+                }
             }
+            return departureDate;
         }
-        return departureDate;
+        return null;
     }
 
     public LocalDate calculateEndDate() {
-        LocalDate backHomeDate = flightList.get(0).getDepartureDate();
-        LocalTime backHomeTime = flightList.get(0).getDepartureTime();
+        if(flightList.size() > 0) {
+            LocalDate backHomeDate = flightList.get(0).getDepartureDate();
 
-        for (Flight flight : flightList) {
-            if(flight.getDepartureDate().isAfter(backHomeDate) || flight.getDepartureTime().isAfter(backHomeTime)) {
-                backHomeDate = flight.getDepartureDate();
-                backHomeTime = flight.getDepartureTime();
+            for (Flight flight : flightList) {
+                if(flight.getDepartureDate() == null)
+                    return null;
 
-                LocalDateTime arrivalDateCheck =  LocalDateTime.of(backHomeDate.getYear(), backHomeDate.getMonthValue(), backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(), flight.getDepartureTime().getMinute());
-                arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
+                if (flight.getDepartureDate().isAfter(backHomeDate)) {
+                    backHomeDate = flight.getDepartureDate();
 
-                if(arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear())   {
-                    backHomeDate = backHomeDate.plusDays(1);
+                    LocalDateTime arrivalDateCheck = LocalDateTime
+                        .of(backHomeDate.getYear(), backHomeDate.getMonthValue(),
+                            backHomeDate.getDayOfMonth(), flight.getDepartureTime().getHour(),
+                            flight.getDepartureTime().getMinute());
+                    arrivalDateCheck = arrivalDateCheck.plusMinutes(flight.getFlightDurationInMinutes());
+
+                    if (arrivalDateCheck.getDayOfYear() > backHomeDate.getDayOfYear()) {
+                        backHomeDate = backHomeDate.plusDays(1);
+                    }
                 }
             }
+            return backHomeDate;
         }
-        return backHomeDate;
+
+        return null;
     }
 
 
@@ -161,11 +178,11 @@ public class Trip extends AbstractEntity {
             '}';
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDate getBeginDate() {
+        return calculateBeginDate();
     }
 
     public LocalDate getEndDate() {
-        return endDate;
+        return calculateEndDate();
     }
 }
