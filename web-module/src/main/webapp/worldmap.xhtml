@@ -43,11 +43,10 @@
                 });
                 /* ]]> */
 
-        countryPath.click(function(e){
-        window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id");
-        //$('#countryHiddenIput').val(countryPath.attr("id"));
-        });
-        }
+            countryPath.click(function(e){
+                window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id");
+            });
+            }
 
         });
     </h:outputScript>
@@ -59,7 +58,6 @@
     <div class="container">
 
         <div id="worldmap">
-            <h:form id="countryForm"><h:inputHidden id="countryHiddenInput" value=""/></h:form>
 
             <div id="fullscreen">
                 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"

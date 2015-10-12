@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class DestinationsController implements Serializable{
 
     private Date from = new Date();
@@ -27,8 +27,7 @@ public class DestinationsController implements Serializable{
     private int numberOfPassengers = 1;
     private Country country;
 
-    @Inject
-    private CountryRepository countryRepository;
+
 
     @Inject
     private TripRepository tripRepository;
@@ -45,15 +44,10 @@ public class DestinationsController implements Serializable{
         tripsForDestination = tripRepository.findValidTrips(country, from, to, numberOfPassengers);
     }
 
-    public String getDestinationFromCountry()
+    public String getDestinationsFromCountry()
     {
         to = getTo();
 
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext()
-            .getRequestParameterMap();
-        String countryName = params.get("country");
-
-        country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
         refreshTripList();
 
         if(country.getCountry() != null && !country.getCountry().equals(""))
@@ -98,5 +92,13 @@ public class DestinationsController implements Serializable{
 
     public void setTo(Date to) {
         this.to = to;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
