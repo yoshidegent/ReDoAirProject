@@ -17,14 +17,15 @@
 </h:head>
 
 <h:body>
-    <ui:include src="/navbar.xhtml" />
+    <ui:include src="/navbar.xhtml"/>
 
 
     <div class="container">
 
         <h1>Available flights</h1>
 
-        <h:dataTable class="table table-hover" id="flights" value="#{flightController.retrieveAllFlights()}" var="flight">
+        <h:dataTable class="table table-hover" id="flights" value="#{flightController.retrieveAllFlights()}"
+                     var="flight">
 
             <h:column>
                 <f:facet name="header">
@@ -64,19 +65,20 @@
             </h:column>
 
             <!--<h:column>-->
-                <!--<f:facet name="header">-->
-                    <!--<h:outputText value="Airline"/>-->
-                <!--</f:facet>-->
-                <!--<h:outputText value="#{flight.airline.name}"/>-->
+            <!--<f:facet name="header">-->
+            <!--<h:outputText value="Airline"/>-->
+            <!--</f:facet>-->
+            <!--<h:outputText value="#{flight.airline.name}"/>-->
             <!--</h:column>-->
-
 
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Price"/>
                 </f:facet>
-                <h:outputText value="€ #{flight.pricePerSeat}"/>
+                <h:outputText value="#{flight.pricePerSeat}">
+                    <f:convertNumber currencySymbol="€ " type="currency"/>
+                </h:outputText>
             </h:column>
 
 
@@ -84,7 +86,11 @@
                 <f:facet name="header">
                     <h:outputText value="Price for passenger"/>
                 </f:facet>
-                <h:outputText value="€ #{flight.pricePerSeatForPassenger}"/>
+                <h:outputText value="#{flight.pricePerSeatForPassenger}">
+                    <f:convertNumber currencySymbol="€ " type="currency"/>
+                </h:outputText>
+
+
             </h:column>
 
 
@@ -101,11 +107,11 @@
 
 
             <!--<h:column>-->
-                <!--<h:form>-->
-                    <!--<h:commandLink  class="glyphicon glyphicon-trash">-->
-                        <!--<f:ajax render="flights" execute="@all" event="click" listener="#{flightController.removeFlight(flight)}"/>-->
-                    <!--</h:commandLink>-->
-                <!--</h:form>-->
+            <!--<h:form>-->
+            <!--<h:commandLink  class="glyphicon glyphicon-trash">-->
+            <!--<f:ajax render="flights" execute="@all" event="click" listener="#{flightController.removeFlight(flight)}"/>-->
+            <!--</h:commandLink>-->
+            <!--</h:form>-->
             <!--</h:column>-->
         </h:dataTable>
 

@@ -52,89 +52,103 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-4"><ui:include src="/airplaneimage.xhtml" /></div>
+            <div class="col-sm-4"><ui:include src="/airplaneimage.xhtml"/></div>
             <div class="col-sm-8">
 
-                <h:dataTable class="table table-hover" var="flight" value="#{flightController.getFlight(param['id'])}" style="vertical-align: top;">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value=""/>
-                </f:facet>
-                <img src="#{flight.airline.imageUrl}" alt="airline logo" style="height: 30px"/>
-            </h:column>
+                <h:dataTable class="table table-hover" var="flight" value="#{flightController.getFlight(param['id'])}"
+                             style="vertical-align: top;">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <img src="#{flight.airline.imageUrl}" alt="airline logo" style="height: 30px"/>
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Date of departure"/>
-                </f:facet>
-                <h:outputText value="#{flight.departureDate}"/>
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Date of departure"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.departureDate}"/>
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Departure time"/>
-                </f:facet>
-                <h:outputText value="#{flight.departureTime}"/>
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Departure time"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.departureTime}"/>
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Arrival time"/>
-                </f:facet>
-                <h:outputText value="#{flight.calculateArrivalTime()}"/>
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Arrival time"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.calculateArrivalTime()}"/>
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Duration"/>
-                </f:facet>
-                <h:outputText value="#{flight.flightDurationInMinutes} min"/>
-            </h:column>
+                    <!--<h:column>-->
+                        <!--<f:facet name="header">-->
+                            <!--<h:outputText value="Duration"/>-->
+                        <!--</f:facet>-->
+                        <!--<h:outputText value="#{flight.flightDurationInMinutes} min"/>-->
+                    <!--</h:column>-->
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Price per seat"/>
-                </f:facet>
-                <h:outputText value="#{flight.pricePerSeat}"/>
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Price for Passenger/seat"/>
-                </f:facet>
-                <h:outputText value="#{flight.calculatePriceforPassenger()}"/>
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Seat threshold for discounts"/>
-                </f:facet>
-                <h:outputText value="#{flight.seatsThresholdForDiscount}"/>
-            </h:column>
-
-            <h:column>
-            <f:facet name="header">
-                <h:outputText value="Discount for volume sales"/>
-            </f:facet>
-            <h:outputText value="#{flight.airline.discountVolumeSales}"/>
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Duration"/>
+                        </f:facet>
+                        <h:outputText value="#{(flight.flightDurationInMinutes /60).intValue()} h #{flight.flightDurationInMinutes %60} min"/>
+                    </h:column>
 
 
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="edit"/>
-                </f:facet>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price per seat"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.pricePerSeat}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                    </h:column>
 
-                <h:link outcome="flightupdate">
-                    <span class="glyphicon glyphicon-pencil"/>
-                    <f:param name="id" value="#{flight.id}"/>
-                </h:link>
-            </h:column>
-        </h:dataTable>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price for Passenger/seat"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.calculatePriceforPassenger()}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Seat threshold for discounts"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.seatsThresholdForDiscount}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Discount for volume sales"/>
+                        </f:facet>
+                        <h:outputText value="#{flight.airline.discountVolumeSales}">
+                            <f:convertNumber type="percent"/>
+                        </h:outputText>
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="edit"/>
+                        </f:facet>
+
+                        <h:link outcome="flightupdate">
+                            <span class="glyphicon glyphicon-pencil"/>
+                            <f:param name="id" value="#{flight.id}"/>
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
 
             </div>
         </div>
-
 
 
     </div>
