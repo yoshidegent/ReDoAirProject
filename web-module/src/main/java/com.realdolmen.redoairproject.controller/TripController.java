@@ -29,13 +29,7 @@ public class TripController implements Serializable {
     @Inject
     private BookingRepository bookingRepository;
 
-
-    public Trip retrieveTripById(long id)  {
-        this.trip = tripRepository.findById(id);
-        return trip;
-    }
-
-    public String bookTrip(long id)
+    public String bookTrip()
     {
         List<Flight> flightList = trip.getFlightList();
         for (Flight flight : flightList) {

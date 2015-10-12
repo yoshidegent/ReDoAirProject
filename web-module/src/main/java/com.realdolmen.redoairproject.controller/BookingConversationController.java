@@ -1,8 +1,10 @@
 package com.realdolmen.redoairproject.controller;
 
+import com.realdolmen.redoairproject.entities.Booking;
 import com.realdolmen.redoairproject.entities.Country;
 import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
+import com.realdolmen.redoairproject.persistence.TripRepository;
 
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
@@ -14,8 +16,8 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Named
-@RequestScoped
-public class BookingConversationController
+@ConversationScoped
+public class BookingConversationController implements Serializable
 {
     @Inject
     private Conversation conversation;
@@ -28,9 +30,11 @@ public class BookingConversationController
 
     @Inject
     private CountryRepository countryRepository;
+    @Inject
+    private TripRepository tripRepository;
 
-    private Country country;
-    private Trip trip;
+    private Country country = new Country();
+    private Booking booking = new Booking();
 
     public String goBackToWorldMap()
     {
@@ -38,6 +42,8 @@ public class BookingConversationController
     }
 
     public void startConversation() {
+        if(!conversation.isTransient())
+            conversation.end();
         conversation.begin();
     }
 
@@ -46,32 +52,48 @@ public class BookingConversationController
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String countryName = params.get("country");
 
-        country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
+        this.country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
+
         if("".equals(country.getCountryCode())) {
             return goBackToWorldMap();
         }
         else {
             destinationsController.setCountry(country);
             destinationsController.getDestinationsFromCountry();
-            return "destinations";
+            return "destinations?faces-redirect=true";
         }
     }
 
-    public String goToTripDetail()
+    public String goToTripDetail(Long tripId)
     {
         int numberOfPassengers = destinationsController.getNumberOfPassengers();
+        this.booking.setNumberOfPassengers(numberOfPassengers);
+
+        Trip trip = tripRepository.findById(tripId);
+        this.booking.setTrip(trip);
+
+        tripController.setTrip(trip);
         tripController.setNumberOfPassengers(numberOfPassengers);
-        return "tripdetail";
+        return "tripdetail?faces-redirect=true";
     }
 
     public String goToTripPayement()
     {
-        return "trippayment";
+        tripController.setTrip(this.booking.getTrip());
+        tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
+        return "trippayment?faces-redirect=true";
     }
 
     public String goBackToDestinations()
     {
+        destinationsController.setCountry(this.country);
         return "destinations?faces-redirect=true";
+    }
+
+    public String goBackToTripDetail()
+    {
+        destinationsController.setCountry(this.country);
+        return "tripdetail?faces-redirect=true";
     }
 
     public Conversation getConversation() {
@@ -80,5 +102,21 @@ public class BookingConversationController
 
     public void setConversation(Conversation conversation) {
         this.conversation = conversation;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

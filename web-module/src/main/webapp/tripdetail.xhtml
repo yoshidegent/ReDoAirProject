@@ -14,14 +14,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <script>
-        $( document ).ready(function(){
-            $("#passengercount").on('change', function(){
-                console.log("change");
-            });
-        });
-    </script>
-
 </h:head>
 
 
@@ -38,9 +30,7 @@
                     <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}" />
                 </h:form>
 
-
-
-                <c:set var="trip" value="#{tripController.retrieveTripById(param['id'])}"/>
+                <c:set var="trip" value="#{tripController.trip}"/>
 
                 <h1><h:outputText value="Trip to #{trip.endDestination.address.city}"/></h1>
 
@@ -54,7 +44,7 @@
                     <h:panelGrid columns="2">
 
                         <h:outputLabel value="Number of passengers"/>
-                        <h:outputText id="passengercount" value="#{tripController.numberOfPassengers}" />
+                        <h:outputText id="passengercount" value="#{bookingConversationController.booking.numberOfPassengers}" />
 
                         <h:outputLabel value="Total price for flights"/>
                         <h:outputText value="€ #{trip.calculatePriceForAllFlights()} / passenger"/>
@@ -74,9 +64,8 @@
 
                     </h:panelGrid>
 
-                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}">
-                        Continue
-                        <f:param name="id" value="#{trip.id}"/>
+                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}" value="Continue to payment">
+                        <f:param name="tripid" value="#{tripController.trip.id}"/>
                         <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                     </h:commandLink>
                 </h:form>

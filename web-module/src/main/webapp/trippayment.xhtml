@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta charset="UTF-8"/>
     <title>Trip detail</title>
@@ -26,7 +27,11 @@
         <div class="row">
             <div class="col-md-9">
 
-                <c:set var="trip" value="#{tripController.retrieveTripById(param['id'])}"/>
+                <h:form>
+                    <h:commandLink value="Back" action="#{bookingConversationController.goBackToTripDetail()}" />
+                </h:form>
+
+                <c:set var="trip" value="#{tripController.trip}"/>
 
                 <h1><h:outputText value="Trip to #{trip.hotel} -  #{trip.endDestination.address.city}"/></h1>
 
@@ -37,30 +42,30 @@
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
 
-                        <!-- menu maken om te kiezen tussen Card/Endorsement-->
-                        <!--<h:outputLabel value="airline"/>-->
-                        <!--<h:selectOneMenu value="#{flightController.airlineId}">-->
-                            <!--<f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline"-->
-                                           <!--itemValue="#{airline.id}" itemLabel="#{airline.name}"/>-->
-                        <!--</h:selectOneMenu>-->
+                        <h:panelGrid columns="2" cellpadding="5">
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
 
-                        <h:outputLabel value="credit card number"/>
-                        <h:inputText value="#{tripController.cardNumber}"/>
+                            <p:outputLabel for="cardnr"  value="Creditcard Number: " />
+                            <p:inputMask id="cardnr" value="#{tripController.cardNumber}" mask="9999-9999-9999-9999"/>
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
+                            <p:outputLabel for="date" value="Expiry date: " />
+                            <p:inputMask id="date" value="#{tripController.expiryDate}" mask="99/99"/>
+                        </h:panelGrid>
 
-                        <h:outputLabel value="expiry date"/>
-                        <h:inputText value="#{tripController.expiryDate}"/>
+                        <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade">
+                            <p:panelGrid id="display" columns="2" columnClasses="label,value">
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
+                                <h:outputText value="Product Key: " />
+                                <h:outputText id="keyValue" value="#{tripController.cardNumber}" />
 
-                        <h:commandButton value="book your trip" action="#{tripController.bookTrip(trip.id)}"/>
+                                <h:outputText value="Date: " />
+                                <h:outputText id="dateValue" value="#{tripController.expiryDate}" />
+                            </p:panelGrid>
+                        </p:dialog>
+
+                        <h:commandButton value="book your trip" action="#{tripController.bookTrip()}"/>
                         <f:param name="id" value="#{trip.id}"/>
+                        <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                     </h:panelGrid>
                 </h:form>
             </div>
