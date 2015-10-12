@@ -80,31 +80,31 @@
 
 
     <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
-            flightDurationInMinutes="200" departureDate="2015-10-11"
+            flightDurationInMinutes="200" departureDate="2015-10-18"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="501" airline_id="1" origin_id="2" destination_id="4" pricePerSeat="199"
-            flightDurationInMinutes="160" departureDate="2015-10-11"
+            flightDurationInMinutes="160" departureDate="2015-10-18"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="10"/>
 
     <flight id="502" airline_id="1" origin_id="1" destination_id="7" pricePerSeat="99"
-            flightDurationInMinutes="60" departureDate="2015-10-11"
+            flightDurationInMinutes="60" departureDate="2015-10-19"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="503" airline_id="1" origin_id="3" destination_id="2" pricePerSeat="119"
-            flightDurationInMinutes="320" departureDate="2015-10-11"
+            flightDurationInMinutes="320" departureDate="2015-10-20"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="504" airline_id="1" origin_id="6" destination_id="5" pricePerSeat="799"
-            flightDurationInMinutes="30" departureDate="2015-10-11"
+            flightDurationInMinutes="30" departureDate="2015-10-25"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
