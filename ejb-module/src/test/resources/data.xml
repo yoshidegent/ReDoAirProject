@@ -38,13 +38,13 @@
     <address id="19" city="Melbourne" country_countryCode="AU"/>
     <address id="20" city="Lisbon" country_countryCode="PT"/>
     <address id="21" city="Cape Town" country_countryCode="ZA"/>
-
-
-    <!--<address id="22" city="Melbourne" country_countryCode="AU"/>-->
-    <!--<address id="23" city="Melbourne" country_countryCode="AU"/>-->
-    <!--<address id="24" city="Melbourne" country_countryCode="AU"/>-->
-    <!--<address id="25" city="Melbourne" country_countryCode="AU"/>-->
-    <!--<address id="26" city="Melbourne" country_countryCode="AU"/>-->
+    <address id="22" city="Rio De Janeiro" country_countryCode="BR"/>
+    <address id="23" city="Lima" country_countryCode="PE"/>
+    <address id="24" city="Mexico City" country_countryCode="MX"/>
+    <address id="25" city="Buenos Aires" country_countryCode="AR"/>
+    <address id="26" city="Keflavik" country_countryCode="IS"/>
+    <address id="27" city="Dar Es Salaam" country_countryCode="TZ"/>
+    <!--<address id="28" city="Melbourne" country_countryCode="AU"/>-->
 
 
 
@@ -64,11 +64,13 @@
     <airport id="14" name="Portela Airport" address_id="20"/>
     <airport id="15" name="Cape Town International Airport" address_id="21"/>
     <airport id="16" name="Tegel" address_id="9"/>
-
-    <!--<airport id="17" name="Melbourne Airport" address_id="19"/>-->
-    <!--<airport id="18" name="Melbourne Airport" address_id="19"/>-->
-    <!--<airport id="19" name="Melbourne Airport" address_id="19"/>-->
-    <!--<airport id="20" name="Melbourne Airport" address_id="19"/>-->
+    <airport id="17" name="Umberto Modiano" address_id="22"/>
+    <airport id="18" name="Aeropuerto Internacional Jorge Chávez" address_id="23"/>
+    <airport id="19" name="Aeropuerto Internacional Benito Juárez" address_id="24"/>
+    <airport id="20" name="Ezeiza International Airport" address_id="25"/>
+    <airport id="21" name="Keflavík International Airport" address_id="26"/>
+    <airport id="22" name="Julius Nyerere International" address_id="27"/>
+    <!--<airport id="23" name="Melbourne Airport" address_id="19"/>-->
 
 
 
@@ -293,6 +295,149 @@
           endDestination_id="4"/>
     <trip_flight Trip_id="8" flightList_id="523"/>
     <trip_flight Trip_id="8" flightList_id="524"/>
+
+
+    <!--trip to Lyon, France-->
+    <flight id="525" airline_id="7" origin_id="1" destination_id="10" pricePerSeat="160"
+            flightDurationInMinutes="200" departureDate="2015-10-16"
+            departureTime="09:00:00"
+            seatsAvailable="20" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <flight id="526" airline_id="7" origin_id="10" destination_id="1" pricePerSeat="156"
+            flightDurationInMinutes="200" departureDate="2015-10-25"
+            departureTime="17:50:00"
+            seatsAvailable="20" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="9" hotel="Hotel Le Royal Lyon"  priceHotelPerNightPerPerson="108"
+          endDestination_id="10"/>
+    <trip_flight Trip_id="9" flightList_id="525"/>
+    <trip_flight Trip_id="9" flightList_id="526"/>
+
+
+    <!--trip to Brazil-->
+    <flight id="527" airline_id="7" origin_id="1" destination_id="17" pricePerSeat="588"
+            flightDurationInMinutes="420" departureDate="2015-10-29"
+            departureTime="06:30:00"
+            seatsAvailable="130" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+
+    <flight id="528" airline_id="7" origin_id="17" destination_id="1" pricePerSeat="680"
+            flightDurationInMinutes="420" departureDate="2015-11-15"
+            departureTime="16:30:00"
+            seatsAvailable="103" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="10" hotel="Windsor Guanabara Hotel"  priceHotelPerNightPerPerson="75"
+          endDestination_id="17"/>
+    <trip_flight Trip_id="10" flightList_id="527"/>
+    <trip_flight Trip_id="10" flightList_id="528"/>
+
+
+
+    <!--trip to Peru-->
+    <flight id="529" airline_id="6" origin_id="1" destination_id="18" pricePerSeat="760"
+            flightDurationInMinutes="420" departureDate="2015-10-22"
+            departureTime="08:40:00"
+            seatsAvailable="200" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+
+    <flight id="530" airline_id="6" origin_id="18" destination_id="1" pricePerSeat="805"
+            flightDurationInMinutes="420" departureDate="2015-11-08"
+            departureTime="20:15:00"
+            seatsAvailable="206" seatCapacity="400"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="11" hotel="Hotel Panamericano"  priceHotelPerNightPerPerson="105"
+          endDestination_id="18"/>
+    <trip_flight Trip_id="11" flightList_id="529"/>
+    <trip_flight Trip_id="11" flightList_id="530"/>
+
+
+
+    <!--trip to Mexico-->
+    <flight id="531" airline_id="4" origin_id="1" destination_id="19" pricePerSeat="588"
+            flightDurationInMinutes="400" departureDate="2015-11-01"
+            departureTime="07:30:00"
+            seatsAvailable="302" seatCapacity="400"
+            seatsThresholdForDiscount="15"/>
+
+    <flight id="532" airline_id="4" origin_id="19" destination_id="1" pricePerSeat="680"
+            flightDurationInMinutes="400" departureDate="2015-11-15"
+            departureTime="18:15:00"
+            seatsAvailable="315" seatCapacity="400"
+            seatsThresholdForDiscount="15"/>
+
+    <trip id="12" hotel="Windsor Guanabara Hotel"  priceHotelPerNightPerPerson="75"
+          endDestination_id="19"/>
+    <trip_flight Trip_id="12" flightList_id="531"/>
+    <trip_flight Trip_id="12" flightList_id="532"/>
+
+
+
+
+    <!--trip to Argentina-->
+    <flight id="535" airline_id="7" origin_id="1" destination_id="20" pricePerSeat="450"
+            flightDurationInMinutes="400" departureDate="2015-11-06"
+            departureTime="14:40:00"
+            seatsAvailable="150" seatCapacity="400"
+            seatsThresholdForDiscount="9"/>
+
+    <flight id="536" airline_id="7" origin_id="20" destination_id="1" pricePerSeat="555"
+            flightDurationInMinutes="400" departureDate="2015-11-18"
+            departureTime="18:15:00"
+            seatsAvailable="300" seatCapacity="400"
+            seatsThresholdForDiscount="9"/>
+
+    <trip id="13" hotel="Miravida Soho Hotel and Wine Bar"  priceHotelPerNightPerPerson="90"
+          endDestination_id="20"/>
+    <trip_flight Trip_id="13" flightList_id="535"/>
+    <trip_flight Trip_id="13" flightList_id="536"/>
+
+
+
+
+    <!--trip to Iceland-->
+    <flight id="537" airline_id="1" origin_id="1" destination_id="21" pricePerSeat="260"
+            flightDurationInMinutes="210" departureDate="2015-10-26"
+            departureTime="08:40:00"
+            seatsAvailable="150" seatCapacity="250"
+            seatsThresholdForDiscount="9"/>
+
+    <flight id="538" airline_id="1" origin_id="21" destination_id="1" pricePerSeat="260"
+            flightDurationInMinutes="210" departureDate="2015-11-05"
+            departureTime="15:30:00"
+            seatsAvailable="150" seatCapacity="250"
+            seatsThresholdForDiscount="9"/>
+
+    <trip id="14" hotel="Miravida Soho Hotel and Wine Bar"  priceHotelPerNightPerPerson="90"
+          endDestination_id="21"/>
+
+    <trip_flight Trip_id="14" flightList_id="537"/>
+    <trip_flight Trip_id="14" flightList_id="538"/>
+
+
+
+    <!--trip to Iceland-->
+    <flight id="539" airline_id="4" origin_id="1" destination_id="22" pricePerSeat="260"
+            flightDurationInMinutes="400" departureDate="2015-10-20"
+            departureTime="10:40:00"
+            seatsAvailable="110" seatCapacity="250"
+            seatsThresholdForDiscount="9"/>
+
+    <flight id="540" airline_id="4" origin_id="22" destination_id="1" pricePerSeat="260"
+            flightDurationInMinutes="400" departureDate="2015-11-05"
+            departureTime="15:30:00"
+            seatsAvailable="80" seatCapacity="250"
+            seatsThresholdForDiscount="9"/>
+
+    <trip id="15" hotel="Miravida Soho Hotel and Wine Bar"  priceHotelPerNightPerPerson="90"
+          endDestination_id="22"/>
+
+    <trip_flight Trip_id="15" flightList_id="539"/>
+    <trip_flight Trip_id="15" flightList_id="540"/>
+
 
 </dataset>
 
