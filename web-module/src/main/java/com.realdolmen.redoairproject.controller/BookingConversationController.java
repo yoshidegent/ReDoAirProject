@@ -5,10 +5,12 @@ import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 
 import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.Map;
 
 @Named
@@ -27,28 +29,28 @@ public class BookingConversationController
     @Inject
     private CountryRepository countryRepository;
 
+    private Country country;
+    private Trip trip;
+
     public String goBackToWorldMap()
     {
-        conversation.end();
         return "worldmap";
     }
 
-    public void startTest() {
+    public void startConversation() {
         conversation.begin();
     }
 
-    public String startConversation()
+    public String goToDestinations()
     {
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext()
-            .getRequestParameterMap();
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String countryName = params.get("country");
 
-        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
+        country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
         if("".equals(country.getCountryCode())) {
-            return "worldmap";
+            return goBackToWorldMap();
         }
-        else
-        {
+        else {
             destinationsController.setCountry(country);
             destinationsController.getDestinationsFromCountry();
             return "destinations";

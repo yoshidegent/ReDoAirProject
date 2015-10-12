@@ -43,10 +43,10 @@
                 });
                 /* ]]> */
 
-            countryPath.click(function(e){
-        #{bookingConversationController.startTest()};
-                window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id") +"&amp;cid=" + #{bookingConversationController.conversation.id} + "";
-            });
+                countryPath.click(function(e){
+                    #{bookingConversationController.startConversation()};
+                    window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id") +"&amp;cid=" + #{bookingConversationController.conversation.id} + "";
+                });
             }
 
         });
