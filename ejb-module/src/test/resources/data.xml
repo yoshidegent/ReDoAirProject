@@ -144,13 +144,13 @@
 
     <!--trip to Berlin-->
     <flight id="511" airline_id="1" origin_id="1" destination_id="16" pricePerSeat="159"
-            flightDurationInMinutes="200" departureDate="2015-10-11"
+            flightDurationInMinutes="200" departureDate="2015-10-19"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="512" airline_id="1" origin_id="16" destination_id="1" pricePerSeat="159"
-            flightDurationInMinutes="160" departureDate="2015-10-11"
+            flightDurationInMinutes="160" departureDate="2015-10-25"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="10"/>
