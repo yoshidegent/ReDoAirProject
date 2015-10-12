@@ -41,7 +41,8 @@ public class BookingConversationController
         else
         {
             destinationsController.setCountry(country);
-            return destinationsController.getDestinationsFromCountry();
+            destinationsController.getDestinationsFromCountry();
+            return "destinations";
         }
     }
 }
