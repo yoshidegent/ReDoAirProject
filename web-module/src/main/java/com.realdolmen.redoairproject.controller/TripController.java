@@ -7,13 +7,14 @@ import com.realdolmen.redoairproject.persistence.BookingRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
 
 import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named
-@ConversationScoped
+@RequestScoped
 public class TripController implements Serializable {
     private Trip trip = new Trip();
     private String cardNumber;
@@ -35,7 +36,7 @@ public class TripController implements Serializable {
     {
         List<Flight> flightList = trip.getFlightList();
         for (Flight flight : flightList) {
-            flight.setSeatsAvailable(flight.getSeatsAvailable() - 1);
+            flight.setSeatsAvailable(flight.getSeatsAvailable() - numberOfPassengers);
         }
 
         Booking booking = new Booking();
