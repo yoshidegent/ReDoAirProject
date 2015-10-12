@@ -21,7 +21,6 @@ public class TripTest {
     private final double FLIGHT_PRICE_2 = 200;
     private final double FLIGHT_PRICE_3 = 100;
     private final double HOTEL_PRICE_PER_NIGHT = 80;
-    private final int NUMBER_OF_NIGHTS = 8;
     private final int NUMBER_OF_PASSENGERS = 4;
     private final LocalDate dateFlight1 = LocalDate.of(2015, 10, 15);
     private final LocalDate dateFlight2 = LocalDate.of(2015, 10, 18);
@@ -58,13 +57,12 @@ public class TripTest {
         flightList.add(flight2);
         trip.setFlightList(flightList);
         trip.setPriceHotelPerNightPerPerson(HOTEL_PRICE_PER_NIGHT);
-        trip.setNumberOfNights(NUMBER_OF_NIGHTS);
     }
 
 
     @Test
     public void testCalculateTotalPrice()   {
-        double totalPricePerPerson = FLIGHT_PRICE_1 + FLIGHT_PRICE_2 + FLIGHT_PRICE_3 + HOTEL_PRICE_PER_NIGHT * NUMBER_OF_NIGHTS;
+        double totalPricePerPerson = FLIGHT_PRICE_1 + FLIGHT_PRICE_2 + FLIGHT_PRICE_3 + HOTEL_PRICE_PER_NIGHT * trip.calculateDurationOfTrip();
         Assert.assertEquals(totalPricePerPerson*NUMBER_OF_PASSENGERS, trip.calculateTotalPrice(NUMBER_OF_PASSENGERS), GAMMA);
     }
 

@@ -7,6 +7,7 @@ import com.realdolmen.redoairproject.entities.Country;
 import com.realdolmen.redoairproject.entities.Trip;
 
 import javax.ejb.Remote;
+import java.util.Date;
 import java.util.List;
 
 @Remote
@@ -14,4 +15,6 @@ public interface ITripRepository extends IGenericRepository<Trip>
 {
     List<Trip> findTripsByCountry(Country country);
     List<Country> findAllCountriesFromTrips();
+
+    List<Trip> findValidTrips(Country country, Date periodStart, Date periodEnd, int numberOfPassengers);
 }
