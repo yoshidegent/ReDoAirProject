@@ -30,6 +30,10 @@ public class TripController implements Serializable {
     private BookingRepository bookingRepository;
 
 
+    public List<String> retrieveAllDestinations()   {
+        return tripRepository.findAllDestinationNames();
+    }
+
     public Trip retrieveTripById(long id)  {
         this.trip = tripRepository.findById(id);
         return trip;

@@ -36,7 +36,7 @@ public abstract class GenericRepository<T extends Serializable> implements IGene
     public T createOrUpdate(T t)
     {
         T t2 = entityManager.merge(t);
-        entityManager.flush();
+//        entityManager.flush();
         return t2;
     }
 

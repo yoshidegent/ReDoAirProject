@@ -26,67 +26,69 @@
         <h:inputHidden value="#{bookingConversationController.startConversation()}"/>
 
         <h:form>
-            <h1>Trips for <h:commandLink action="#{bookingConversationController.goBackToWorldMap()}" value="#{destinationsController.country.getCountry()}" /></h1>
+            <h1>Trips for <h:commandLink action="#{bookingConversationController.goBackToWorldMap()}"
+                                         value="#{destinationsController.country.getCountry()}"/></h1>
         </h:form>
-        <h:panelGrid columns="2">
-            <h:form id="form">
-                <p:growl id="msgs" showDetail="true"/>
+        <!--<h:panelGrid columns="2">-->
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
 
-                <h:panelGrid columns="2" cellpadding="5" id="searchTripGrid">
+            <h:panelGrid columns="6" id="searchTripGrid">
+
+                <h:panelGroup>
+
                     <p:outputLabel for="from" value="From:"/>
                     <p:calendar id="from" value="#{destinationsController.from}"
                                 mindate="#{destinationsController.dateToday}" mode="inline">
                         <p:ajax process="searchTripGrid" event="dateSelect"
                                 listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:calendar>
+                </h:panelGroup>
 
+                <h:panelGroup>
                     <p:outputLabel for="to" value="To:"/>
                     <p:calendar event="select" id="to" value="#{destinationsController.to}"
                                 mindate="#{destinationsController.dateToday}" mode="inline">
                         <p:ajax process="searchTripGrid" event="dateSelect"
                                 listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:calendar>
+                </h:panelGroup>
 
-
-                    <p:outputLabel for="inputNumberOfPassengers" value="Number of passengers:" />
+                <h:panelGroup>
+                    <p:outputLabel for="inputNumberOfPassengers" value="Number of passengers:"/>
                     <p:spinner id="inputNumberOfPassengers" value="#{destinationsController.numberOfPassengers}">
-                        <p:ajax process="searchTripGrid" event="change" listener="#{destinationsController.formChange()}" update="trips"/>
+                        <p:ajax process="searchTripGrid" event="change"
+                                listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:spinner>
+                </h:panelGroup>
 
-                </h:panelGrid>
-
-                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg"
-                          showEffect="fold">
-                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
-
-                        <h:outputText value="From:"/>
-                        <h:outputText value="#{destinationsController.from}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                        <h:outputText value="To:"/>
-                        <h:outputText value="#{destinationsController.to}">
-                            <f:convertDateTime pattern="MM/dd/yyyy"/>
-                        </h:outputText>
-
-                    </p:panelGrid>
-                </p:dialog>
-            </h:form>
+            </h:panelGrid>
 
 
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg"
+                      showEffect="fold">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+                    <h:outputText value="From:"/>
+                    <h:outputText value="#{destinationsController.from}">
+                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                    </h:outputText>
+
+                    <h:outputText value="To:"/>
+                    <h:outputText value="#{destinationsController.to}">
+                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                    </h:outputText>
+
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
 
 
-
+        <div>
 
             <h:dataTable class="table table-hover" id="trips"
                          value="#{destinationsController.tripsForDestination}" var="trip">
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="ID"/>
-                    </f:facet>
-                    <h:outputText value="#{trip.id}"/>
-                </h:column>
 
                 <h:column>
                     <f:facet name="header">
@@ -96,19 +98,42 @@
                 </h:column>
 
 
-                <!-- todo: implement eager loading of flightList! (otherwise errors with calculateDuration-method)-->
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="number of nights"/>
+                        <h:outputText value="destination"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.endDestination.address.city}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="from"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.calculateBeginDate()}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="to"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.calculateEndDate()}"/>
+                </h:column>
+
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="nights"/>
                     </f:facet>
                     <h:outputText value="#{trip.calculateDurationOfTrip()}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="destination"/>
+                        <h:outputText value="price per person"/>
                     </f:facet>
-                    <h:outputText value="#{trip.endDestination.address.city}"/>
+                    <h:outputText value="#{trip.calculateTotalPrice(1)}">
+                        <f:convertNumber currencySymbol="€ " type="currency"/>
+                    </h:outputText>
                 </h:column>
 
                 <h:column>
@@ -120,8 +145,8 @@
 
             </h:dataTable>
 
-        </h:panelGrid>
-
+        </div>
+        <!--</h:panelGrid>-->
     </div>
 </h:body>
 </html>

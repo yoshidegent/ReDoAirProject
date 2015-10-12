@@ -23,144 +23,91 @@
 
     <ui:include src="/navbar.xhtml"/>
 
-
+    <f:metadata>
+        <f:viewParam name="id" value="#{flightController.flightId}"/>
+        <f:event type="preRenderView" listener="#{flightController.onEdit()}"/>
+    </f:metadata>
     <div class="container">
 
         <h1>Edit flight</h1>
 
-        <h:form style="margin: auto" class="form-horizontal" var="flight"
-                value="#{flightController.Flight(param['id'])}">
+        <h:form style="margin: auto" class="form-horizontal">
 
             <h:panelGrid columns="2">
 
+                <h:outputLabel value="airline"/>
+                <h:selectOneMenu value="#{flightController.airlineId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
+                </h:selectOneMenu>
 
-                <!--VOORBEELD VAN OLLIE-->
-
-                <!--<ui:param name="controller" value="#{updateFlightController}"/>-->
-                    <!--<f:metadata>-->
-                        <!--<f:viewParam name="flightId" value="#{updateFlightController.flightIdParam}"/>-->
-                        <!--<f:event type="preRenderView" listener="#{updateFlightController.onLoad}"/>-->
-                    <!--</f:metadata>-->
-                    <!--<h:panelGroup>-->
-                        <!--<h:commandButton id="action-flight-button" action="#{updateFlightController.updateFlight}"-->
-                                         <!--value="Update"/>-->
-                    <!--</h:panelGroup>-->
-
-                <!--<h:form id="flight-form" prependId="false">-->
-                    <!--<p:panelGrid id="panel" border="1" columns="3">-->
-                        <!--<p:outputLabel for="departure-location" value="Departure:  "/>-->
-                        <!--<p:selectOneMenu styleClass="departure-location-selection" id="departure-location"-->
-                                         <!--required="true"-->
-                                         <!--value="#{controller.flightModel.arrivalLocationId}">-->
-                            <!--<f:selectItems-->
-                                    <!--value="#{createFlightController.getAllLocations()}"-->
-                                    <!--var="location"-->
-                                    <!--itemLabel="#{location.name}" itemValue="#{location.id}"/>-->
-                        <!--</p:selectOneMenu>-->
-                        <!--<p:message for="departure-location"/>-->
-
-                        <!--<p:outputLabel for="arrival-location" value="Arrival:  "/>-->
-                        <!--<p:selectOneMenu styleClass="arrival-location-selection" id="arrival-location" required="true"-->
-                                         <!--value="#{controller.flightModel.departureLocationId}">-->
-                            <!--<f:selectItems value="#{createFlightController.getAllLocations()}"-->
-                                           <!--var="location"-->
-                                           <!--itemLabel="#{location.name}" itemValue="#{location.id}"/>-->
-                        <!--</p:selectOneMenu>-->
-                        <!--<p:message for="arrival-location"/>-->
-
-                        <!--<p:outputLabel for="departure-date-time" value="Departure Time: "/>-->
-                        <!--<p:calendar id="departure-date-time" value="#{controller.flightModel.departureDateTime}"-->
-                                    <!--pattern="MM/dd/yyyy HH:mm:ss">-->
-                            <!--<f:validator binding="#{notEmptyValidator}"/>-->
-                        <!--</p:calendar>-->
-                        <!--<p:message for="departure-date-time" id="departure-date-time-error"/>-->
-
-                        <!--<p:outputLabel for="arrival-date-time" value="Arrival Time: "/>-->
-                        <!--<p:calendar id="arrival-date-time" value="#{controller.flightModel.arrivalDateTime}"-->
-                                    <!--pattern="MM/dd/yyyy HH:mm:ss">-->
-                            <!--<f:validator binding="#{notEmptyValidator}"/>-->
-                        <!--</p:calendar>-->
-                        <!--<p:message for="arrival-date-time" id="arrival-date-time-error"/>-->
-
-                        <!--<p:outputLabel for="flight-price" value="Price: "/>-->
-                        <!--<p:inputText id="flight-price"-->
-                                     <!--value="#{controller.flightModel.flightPrice}"-->
-                                     <!--converterMessage="The number must be decimal eg: 000.00">-->
-                            <!--<f:convertNumber pattern="#,###,##0.00"/>-->
-                            <!--<f:validateLongRange minimum="0"/>-->
-                            <!--<f:validator binding="#{notEmptyValidator}"/>-->
-                        <!--</p:inputText>-->
-                        <!--<p:message for="flight-price" id="flight-price-error"/>-->
-
-                        <!--<p:outputLabel for="flight-available-seats" value="Available seats: "/>-->
-                        <!--<p:inputText type="number" min="0" id="flight-available-seats"-->
-                                     <!--value="#{controller.flightModel.availableSeats}">-->
-                            <!--<f:validator binding="#{positiveIntegerValidator}"/>-->
-                        <!--</p:inputText>-->
-                        <!--<p:message for="flight-available-seats" id="flight-available-seats-error"/>-->
-                    <!--</p:panelGrid>-->
-                    <!--<ui:insert name="action-panel">-->
-                    <!--</ui:insert>-->
-                <!--</h:form>-->
-                <!--voorbeeld tot hier-->
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
 
+                <h:outputLabel value="origin"/>
+                <h:selectOneMenu value="#{flightController.airportOriginId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
 
-                <!--<h:outputLabel value="airline"/>-->
-                <!--<h:selectOneMenu value="#{flightController.airlineId}">-->
-                    <!--<f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline"-->
-                                   <!--itemValue="#{airline.id}" itemLabel="#{airline.name}"/>-->
-                <!--</h:selectOneMenu>-->
+                <h:outputLabel value="destination"/>
+                <h:selectOneMenu value="#{flightController.airportDestinationId}">
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                </h:selectOneMenu>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
-                <!--<h:outputLabel value="origin"/>-->
-                <!--<h:selectOneMenu value="#{flightController.airportOriginId}">-->
-                    <!--<f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport"-->
-                                   <!--itemValue="#{airport.id}" itemLabel="#{airport.name}"/>-->
-                <!--</h:selectOneMenu>-->
+                <p:outputLabel for="popup" value="departure date:" />
+                <p:calendar id="popup" value="#{flightController.departureDate}" />
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
-                <!--<h:outputLabel value="destination"/>-->
-                <!--<h:selectOneMenu value="#{flightController.airportDestinationId}">-->
-                    <!--<f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport"-->
-                                   <!--itemValue="#{airport.id}" itemLabel="#{airport.name}"/>-->
-                <!--</h:selectOneMenu>-->
+                <h:outputLabel value="seating capacity"/>
+                <h:inputText value="#{flightController.flight.seatCapacity}"/>
 
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
-                <!--<h:outputLabel value="seats available"/>-->
-                <!--<h:inputText value="#{flightController.flight.seatsAvailable}"/>-->
+                <h:outputLabel value="seats available"/>
+                <h:inputText value="#{flightController.flight.seatsAvailable}"/>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
                 <h:outputLabel value="price per seat"/>
-                <h:inputText value="#{flightController.flight.pricePerSeat}" />
+                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
 
-                <!--<h:outputLabel value="seats threshold for discount"/>-->
-                <!--<h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>-->
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
+                <h:outputLabel value="seats threshold for discount"/>
+                <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
+                <h:outputLabel value="departure time:"/>
+                <h:inputText value="#{flightController.departureTime}"/>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+
+                <h:outputLabel value="duration in minutes"/>
+                <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
+
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
 
 
-                <!--<h:outputLabel value="departure time:"/>-->
-                <!--<h:inputText value="#{flightController.departureTime}"/>-->
-
-                <!--<h:outputLabel value="duration in minutes"/>-->
-                <!--<h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>-->
-
-
-                <!--<p:outputLabel for="popup" value="departure date:"/>-->
-                <!--<p:calendar id="popup" value="#{flightController.departureDate}"/>-->
 
                 <h:outputLabel value=""/>
                 <h:commandButton value="update this flight" action="#{flightController.createOrUpdateFlight()}"/>
             </h:panelGrid>
-
-            <!--<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">-->
-                <!--<p:panelGrid id="display" columns="2" columnClasses="label,value">-->
-
-                    <!--<h:outputText value="Popup:"/>-->
-                    <!--<h:outputText value="#{flightController.departureDate}">-->
-                        <!--<f:convertDateTime pattern="MM/dd/yyyy"/>-->
-                    <!--</h:outputText>-->
-                <!--</p:panelGrid>-->
-            <!--</p:dialog>-->
 
 
         </h:form>

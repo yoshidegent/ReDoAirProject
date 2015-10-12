@@ -10,6 +10,7 @@ import org.primefaces.event.SelectEvent;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -32,8 +33,8 @@ public class FlightController {
     long airportOriginId;
     Date departureDate;
     String departureTime;
-
-//ON LOAD FUNCTIE
+    @ManagedProperty("#{param.id}")
+    private Long flightId;
 
 
     /**
@@ -49,9 +50,21 @@ public class FlightController {
     AirportRepository airportRepository;
 
 
+
     /**
      * Methods
      */
+
+    public void onEdit()    {
+        flight = flightRepository.findById(flightId);
+        airlineId = flight.getAirline().getId();
+        airportDestinationId = flight.getDestination().getId();
+        airportOriginId = flight.getOrigin().getId();
+        departureDate = Date.from(flight.getDepartureDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        departureTime = flight.getDepartureTime().toString();
+    }
+
+
     public List<Flight> retrieveAllFlights() {
         return flightRepository.findAll();
     }
@@ -77,6 +90,7 @@ public class FlightController {
 
         flight.setDepartureTime(time);
         flight.setDepartureDate(date);
+        flight.setId(flightId);
         flightRepository.createOrUpdate(flight);
         return "flightsall";
     }
@@ -134,5 +148,13 @@ public class FlightController {
 
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
+    }
+
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
+    }
+
+    public Long getFlightId() {
+        return flightId;
     }
 }

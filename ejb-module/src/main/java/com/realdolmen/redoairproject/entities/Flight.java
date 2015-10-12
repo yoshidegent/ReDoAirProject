@@ -210,4 +210,6 @@ public class Flight extends AbstractEntity {
     public void setSeatCapacity(int seatCapacity) {
         this.seatCapacity = seatCapacity;
     }
+
+
 }

@@ -39,6 +39,11 @@ import java.util.List;
         return query.getResultList();
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<String> findAllDestinationNames()   {
+        return entityManager.createQuery("SELECT distinct t.endDestination.address.country.country FROM Trip t order by t.endDestination.address.country.country").getResultList();
+    }
 
     public List<Trip> findValidTrips(Country country, Date periodStart, Date periodEnd,
         int numberOfPassengers) {

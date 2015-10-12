@@ -16,5 +16,8 @@ public interface ITripRepository extends IGenericRepository<Trip>
     List<Trip> findTripsByCountry(Country country);
     List<Country> findAllCountriesFromTrips();
 
+    @SuppressWarnings("unchecked")
+    List<String> findAllDestinationNames();
+
     List<Trip> findValidTrips(Country country, Date periodStart, Date periodEnd, int numberOfPassengers);
 }

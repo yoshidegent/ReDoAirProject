@@ -58,4 +58,12 @@ public class BookingConversationController
         tripController.setNumberOfPassengers(numberOfPassengers);
         return "tripdetail";
     }
+
+    public Conversation getConversation() {
+        return conversation;
+    }
+
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+    }
 }
