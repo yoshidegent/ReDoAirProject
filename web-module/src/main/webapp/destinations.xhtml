@@ -27,15 +27,22 @@
             <h:form id="form">
                 <p:growl id="msgs" showDetail="true"/>
 
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" id="searchTripGrid">
+
+
+
 
                     <p:outputLabel for="from" value="From:"/>
                     <p:calendar id="from" value="#{destinationsController.from}"
-                                mindate="#{destinationsController.dateToday}" mode="inline"/>
+                                mindate="#{destinationsController.dateToday}" mode="inline">
+                        <p:ajax process="searchTripGrid" event="dateSelect" listener="#{destinationsController.dateChange()}" update="trips"/>
+                    </p:calendar>
 
                     <p:outputLabel for="to" value="To:"/>
-                    <p:calendar id="to" value="#{destinationsController.to}"
-                                mindate="#{destinationsController.dateToday}" mode="inline"/>
+                    <p:calendar event="select" id="to" value="#{destinationsController.to}"
+                                mindate="#{destinationsController.dateToday}" mode="inline">
+                        <p:ajax process="searchTripGrid" event="dateSelect" listener="#{destinationsController.dateChange()}" update="trips"/>
+                    </p:calendar>
 
                 </h:panelGrid>
 

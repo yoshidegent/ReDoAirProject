@@ -1,9 +1,12 @@
 package com.realdolmen.redoairproject.controller;
 
+import com.realdolmen.redoairproject.converter.LocalDatePersistenceConverter;
 import com.realdolmen.redoairproject.entities.Country;
 import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultScheduleEvent;
 
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -11,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.*;
 
 @Named
@@ -19,6 +23,9 @@ public class DestinationsController implements Serializable{
 
     private Date from = new Date();
     private Date to = null;
+
+    private int numberOfPassengers = 1;
+    private Country country;
 
     @Inject
     private CountryRepository countryRepository;
@@ -33,24 +40,30 @@ public class DestinationsController implements Serializable{
         return tripRepository.findAll();
     }
 
+    public void refreshTripList()
+    {
+        tripsForDestination = tripRepository.findValidTrips(country, from, to, numberOfPassengers);
+    }
+
     public String getDestinationFromCountry()
     {
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        to = getTo();
+
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext()
+            .getRequestParameterMap();
         String countryName = params.get("country");
 
-        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
-        List<Trip> temp = tripRepository.findTripsByCountry(country);
-
-        for(Trip t : temp)
-        {
-            if(t.getFlightList().size() > 0)
-                tripsForDestination.add(t);
-        }
+        country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
+        refreshTripList();
 
         if(country.getCountry() != null && !country.getCountry().equals(""))
             return country.getCountry();
         else
             return "";
+    }
+
+    public void dateChange() {
+        refreshTripList();
     }
 
     public List<Trip> getTripsForDestination() {
