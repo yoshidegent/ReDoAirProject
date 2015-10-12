@@ -25,24 +25,33 @@
 
         <h:inputHidden value="#{bookingConversationController.startConversation()}"/>
 
-        <h1>Trips for #{destinationsController.country.getCountry()}</h1>
-
+        <h:form>
+            <h1>Trips for <h:commandLink action="#{bookingConversationController.goBackToWorldMap()}" value="#{destinationsController.country.getCountry()}" /></h1>
+        </h:form>
         <h:panelGrid columns="2">
             <h:form id="form">
                 <p:growl id="msgs" showDetail="true"/>
 
                 <h:panelGrid columns="2" cellpadding="5" id="searchTripGrid">
-                        <p:outputLabel for="from" value="From:"/>
-                        <p:calendar id="from" value="#{destinationsController.from}"
-                                    mindate="#{destinationsController.dateToday}" mode="inline">
-                            <p:ajax process="searchTripGrid" event="dateSelect" listener="#{destinationsController.dateChange()}" update="trips"/>
-                        </p:calendar>
+                    <p:outputLabel for="from" value="From:"/>
+                    <p:calendar id="from" value="#{destinationsController.from}"
+                                mindate="#{destinationsController.dateToday}" mode="inline">
+                        <p:ajax process="searchTripGrid" event="dateSelect"
+                                listener="#{destinationsController.formChange()}" update="trips"/>
+                    </p:calendar>
 
-                        <p:outputLabel for="to" value="To:"/>
-                        <p:calendar event="select" id="to" value="#{destinationsController.to}"
-                                    mindate="#{destinationsController.dateToday}" mode="inline">
-                            <p:ajax process="searchTripGrid" event="dateSelect" listener="#{destinationsController.dateChange()}" update="trips"/>
-                        </p:calendar>
+                    <p:outputLabel for="to" value="To:"/>
+                    <p:calendar event="select" id="to" value="#{destinationsController.to}"
+                                mindate="#{destinationsController.dateToday}" mode="inline">
+                        <p:ajax process="searchTripGrid" event="dateSelect"
+                                listener="#{destinationsController.formChange()}" update="trips"/>
+                    </p:calendar>
+
+
+                    <p:outputLabel for="inputNumberOfPassengers" value="Number of passengers:" />
+                    <p:spinner id="inputNumberOfPassengers" value="#{destinationsController.numberOfPassengers}">
+                        <p:ajax process="searchTripGrid" event="change" listener="#{destinationsController.formChange()}" update="trips"/>
+                    </p:spinner>
 
                 </h:panelGrid>
 
@@ -84,10 +93,10 @@
 
                 <!-- todo: implement eager loading of flightList! (otherwise errors with calculateDuration-method)-->
                 <h:column>
-                <f:facet name="header">
-                <h:outputText value="number of nights"/>
-                </f:facet>
-                <h:outputText value="#{trip.calculateDurationOfTrip()}"/>
+                    <f:facet name="header">
+                        <h:outputText value="number of nights"/>
+                    </f:facet>
+                    <h:outputText value="#{trip.calculateDurationOfTrip()}"/>
                 </h:column>
 
                 <h:column>

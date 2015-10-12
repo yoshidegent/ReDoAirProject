@@ -61,7 +61,7 @@ import java.util.List;
                 .convertToEntityAttribute(new java.sql.Date(periodEnd.getTime()));
 
             if (beginDate.isAfter(localBeginDate) && endDate.isBefore(localEndDate)
-                && numberOfPassengers < trip.calculateNumberOfPlacesAvailableForAllFlights()
+                && numberOfPassengers <= trip.calculateNumberOfPlacesAvailableForAllFlights()
                 && trip.getFlightList() != null && trip.getFlightList().size() > 0)
             {
                 resultingTrips.add(trip);

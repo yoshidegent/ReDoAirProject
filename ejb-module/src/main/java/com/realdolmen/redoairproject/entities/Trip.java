@@ -56,7 +56,7 @@ public class Trip extends AbstractEntity {
         for(Flight f : flightList)
         {
             if(f.getSeatsAvailable() < placesLeft)
-                placesLeft = f.getSeatCapacity();
+                placesLeft = f.getSeatsAvailable();
         }
         return placesLeft;
     }
