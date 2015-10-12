@@ -44,7 +44,8 @@
                 /* ]]> */
 
             countryPath.click(function(e){
-                window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id");
+        #{bookingConversationController.startTest()};
+                window.location.href = "#{request.contextPath}/destinations.faces?country=" + $(this).attr("id") +"&amp;cid=" + #{bookingConversationController.conversation.id} + "";
             });
             }
 

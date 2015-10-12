@@ -1,6 +1,7 @@
 package com.realdolmen.redoairproject.controller;
 
 import com.realdolmen.redoairproject.entities.Country;
+import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 
 import javax.enterprise.context.Conversation;
@@ -32,16 +33,18 @@ public class BookingConversationController
         return "worldmap";
     }
 
+    public void startTest() {
+        conversation.begin();
+    }
+
     public String startConversation()
     {
-        conversation.begin();
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext()
             .getRequestParameterMap();
         String countryName = params.get("country");
 
         Country country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
         if("".equals(country.getCountryCode())) {
-            conversation.end();
             return "worldmap";
         }
         else
@@ -57,6 +60,16 @@ public class BookingConversationController
         int numberOfPassengers = destinationsController.getNumberOfPassengers();
         tripController.setNumberOfPassengers(numberOfPassengers);
         return "tripdetail";
+    }
+
+    public String goToTripPayement()
+    {
+        return "trippayment";
+    }
+
+    public String goBackToDestinations()
+    {
+        return "destinations?faces-redirect=true";
     }
 
     public Conversation getConversation() {

@@ -34,9 +34,10 @@
             <div class="col-md-9">
 
 
-                <h:link outcome="">
-                    GO BACK GO BACK
-                </h:link>
+                <h:form>
+                    <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}" />
+                </h:form>
+
 
 
                 <c:set var="trip" value="#{tripController.retrieveTripById(param['id'])}"/>
@@ -71,15 +72,18 @@
                         <h:outputLabel value="Total:"/>
                         <h:outputText value="€ #{tripController.calculateTotalPriceForTrip()}"/>
 
-
                     </h:panelGrid>
+
+                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}">
+                        Continue
+                        <f:param name="id" value="#{trip.id}"/>
+                        <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
+                    </h:commandLink>
                 </h:form>
 
 
-                <h:link outcome="trippayment">
-                    Continue
-                    <f:param name="id" value="#{trip.id}"/>
-                </h:link>
+
+
             </div>
         </div>
 
