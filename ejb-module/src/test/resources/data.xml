@@ -230,7 +230,7 @@
             seatsAvailable="350" seatCapacity="500"
             seatsThresholdForDiscount="10"/>
 
-    <trip id="5" hotel="Waldorf Astoria"  priceHotelPerNightPerPerson="80"
+    <trip id="5" hotel="Harbour Rocks Hotel"  priceHotelPerNightPerPerson="80"
           endDestination_id="12"/>
     <trip_flight Trip_id="5" flightList_id="515"/>
     <trip_flight Trip_id="5" flightList_id="516"/>
