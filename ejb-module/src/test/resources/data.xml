@@ -197,7 +197,7 @@
             seatsThresholdForDiscount="10"/>
 
     <trip id="4" hotel="Waldorf Astoria"  priceHotelPerNightPerPerson="245"
-          endDestination_id="16"/>
+          endDestination_id="6"/>
     <trip_flight Trip_id="4" flightList_id="513"/>
     <trip_flight Trip_id="4" flightList_id="514"/>
 
@@ -238,9 +238,61 @@
     <trip_flight Trip_id="5" flightList_id="518"/>
 
 
+    <!--trip to Spain-->
+    <flight id="519" airline_id="5" origin_id="2" destination_id="5" pricePerSeat="88"
+            flightDurationInMinutes="180" departureDate="2015-10-16"
+            departureTime="15:40:00"
+            seatsAvailable="3" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <flight id="520" airline_id="5" origin_id="5" destination_id="2" pricePerSeat="79"
+            flightDurationInMinutes="180" departureDate="2015-10-22"
+            departureTime="18:10:00"
+            seatsAvailable="6" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="6" hotel="Hotel Costa Brava"  priceHotelPerNightPerPerson="55"
+          endDestination_id="5"/>
+    <trip_flight Trip_id="6" flightList_id="519"/>
+    <trip_flight Trip_id="6" flightList_id="520"/>
 
 
+    <!--trip to Paris, France-->
+    <flight id="521" airline_id="1" origin_id="1" destination_id="3" pricePerSeat="120"
+            flightDurationInMinutes="80" departureDate="2015-10-19"
+            departureTime="08:40:00"
+            seatsAvailable="12" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
 
+    <flight id="522" airline_id="1" origin_id="3" destination_id="1" pricePerSeat="89"
+            flightDurationInMinutes="80" departureDate="2015-10-25"
+            departureTime="18:10:00"
+            seatsAvailable="16" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="7" hotel="Hotel Pullman Paris Tour Eiffel"  priceHotelPerNightPerPerson="130"
+          endDestination_id="3"/>
+    <trip_flight Trip_id="7" flightList_id="521"/>
+    <trip_flight Trip_id="7" flightList_id="522"/>
+
+
+    <!--trip to Paris, France-->
+    <flight id="523" airline_id="1" origin_id="1" destination_id="4" pricePerSeat="50"
+            flightDurationInMinutes="80" departureDate="2015-10-26"
+            departureTime="12:40:00"
+            seatsAvailable="16" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <flight id="524" airline_id="1" origin_id="4" destination_id="1" pricePerSeat="46"
+            flightDurationInMinutes="80" departureDate="2015-11-01"
+            departureTime="17:10:00"
+            seatsAvailable="6" seatCapacity="250"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="8" hotel="Le Bristol"  priceHotelPerNightPerPerson="88"
+          endDestination_id="4"/>
+    <trip_flight Trip_id="8" flightList_id="523"/>
+    <trip_flight Trip_id="8" flightList_id="524"/>
 
 </dataset>
 
