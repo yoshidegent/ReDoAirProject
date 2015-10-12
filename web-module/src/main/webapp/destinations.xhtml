@@ -107,7 +107,7 @@
                 </h:column>
 
                 <h:column>
-                    <h:link outcome="tripdetail">
+                    <h:link outcome="#{bookingConversationController.goToTripDetail()}">
                         <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
                         <f:param name="id" value="#{trip.id}"/>
                     </h:link>

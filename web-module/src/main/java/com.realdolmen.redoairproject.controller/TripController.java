@@ -16,12 +16,12 @@ import java.util.Calendar;
 import java.util.List;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class TripController implements Serializable {
     private Trip trip = new Trip();
     private String cardNumber;
     private String expiryDate;
-    private int numberOfPassengers = 1;
+    private int numberOfPassengers;
 
     @Inject
     private TripRepository tripRepository;

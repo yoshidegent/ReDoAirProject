@@ -18,7 +18,7 @@ public class BookingConversationController
     private Conversation conversation;
 
     @Inject
-    private WorldmapController worldmapController;
+    private TripController tripController;
 
     @Inject
     private DestinationsController destinationsController;
@@ -50,5 +50,12 @@ public class BookingConversationController
             destinationsController.getDestinationsFromCountry();
             return "destinations";
         }
+    }
+
+    public String goToTripDetail()
+    {
+        int numberOfPassengers = destinationsController.getNumberOfPassengers();
+        tripController.setNumberOfPassengers(numberOfPassengers);
+        return "tripdetail";
     }
 }
