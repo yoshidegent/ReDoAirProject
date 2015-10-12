@@ -21,7 +21,6 @@ public class Passenger extends User {
     private String emailAddress;
 
 
-
     /**
      * Constructor
      */
@@ -77,4 +76,5 @@ public class Passenger extends User {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
+
 }

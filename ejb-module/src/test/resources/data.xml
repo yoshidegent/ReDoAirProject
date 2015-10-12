@@ -76,9 +76,6 @@
 
 
 
-
-
-
     <flight id="500" airline_id="1" origin_id="1" destination_id="5" pricePerSeat="888"
             flightDurationInMinutes="200" departureDate="2015-10-18"
             departureTime="22:00:00"

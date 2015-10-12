@@ -14,7 +14,7 @@ import javax.inject.Named;
 @RequestScoped
 public class LoginController {
 
-    private Passenger passenger;
+    Passenger passenger = new Passenger();
     private User user;
     private String username;
     private String password;
@@ -85,4 +85,6 @@ public class LoginController {
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
     }
+
+
 }

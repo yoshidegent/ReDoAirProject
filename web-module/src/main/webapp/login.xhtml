@@ -49,18 +49,45 @@
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
 
+                        <h:outputLabel value=""/>
+                        <h:outputLabel value=""/>
+
+
                         <h:outputLabel value="username"/>
-                        <h:inputText value="#{loginController.passenger.username}"/>
-
-
-
-                        <h:outputLabel value="choose a password"/>
-                        <h:inputSecret value="#{loginController.passenger.hashedPassword}"/>
+                        <h:inputText value="#{passengerController.passenger.username}"/>
 
                         <h:outputLabel value=""/>
-                        <h:commandButton action="#{loginController.createUser}" value="Register"/>
+                        <h:outputLabel value=""/>
 
+                        <h:outputLabel value="password"/>
+                        <h:inputSecret value="#{passengerController.passwordToHash}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:outputLabel value=""/>
+
+                        <h:outputLabel value="First Name"/>
+                        <h:inputText value="#{passengerController.passenger.firstName}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:outputLabel value=""/>
+
+                        <h:outputLabel value="Last Name"/>
+                        <h:inputText value="#{passengerController.passenger.lastName}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:outputLabel value=""/>
+
+                        <h:outputLabel value="email address"/>
+                        <h:inputText value="#{passengerController.passenger.emailAddress}"/>
+
+                        <h:outputLabel value=""/>
+                        <h:outputLabel value=""/>
+
+                        <h:outputLabel value=""/>
+                        <h:commandButton value="Register" action="#{passengerController.createPassenger}"/>
                     </h:panelGrid>
+
+
                 </h:form>
 
             </div>
