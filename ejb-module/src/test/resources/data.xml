@@ -32,7 +32,7 @@
     <address id="13" city="Hawaii" country_countryCode="US"/>
     <address id="14" city="Sydney" country_countryCode="AU"/>
     <address id="15" city="Perth" country_countryCode="AU"/>
-    <address id="16" city="Hong Kong" country_countryCode="CN"/>
+    <address id="16" city="Beijing" country_countryCode="CN"/>
     <address id="17" city="Lyon" country_countryCode="FR"/>
     <address id="18" city="Amsterdam" country_countryCode="NL"/>
     <address id="19" city="Melbourne" country_countryCode="AU"/>
@@ -44,7 +44,7 @@
     <address id="25" city="Buenos Aires" country_countryCode="AR"/>
     <address id="26" city="Keflavik" country_countryCode="IS"/>
     <address id="27" city="Dar Es Salaam" country_countryCode="TZ"/>
-    <!--<address id="28" city="Melbourne" country_countryCode="AU"/>-->
+    <address id="28" city="Moskou" country_countryCode="RU"/>
 
 
 
@@ -70,7 +70,8 @@
     <airport id="20" name="Ezeiza International Airport" address_id="25"/>
     <airport id="21" name="Keflavík International Airport" address_id="26"/>
     <airport id="22" name="Julius Nyerere International" address_id="27"/>
-    <!--<airport id="23" name="Melbourne Airport" address_id="19"/>-->
+    <airport id="23" name="Beijing Capital International Airport" address_id="16"/>
+    <airport id="24" name="Sheremetyevo International Airport" address_id="28"/>
 
 
 
@@ -437,6 +438,49 @@
 
     <trip_flight Trip_id="15" flightList_id="539"/>
     <trip_flight Trip_id="15" flightList_id="540"/>
+
+
+
+    <!--trip to China-->
+    <flight id="541" airline_id="6" origin_id="1" destination_id="23" pricePerSeat="704"
+            flightDurationInMinutes="400" departureDate="2015-11-03"
+            departureTime="07:40:00"
+            seatsAvailable="110" seatCapacity="500"
+            seatsThresholdForDiscount="9"/>
+
+    <flight id="542" airline_id="6" origin_id="23" destination_id="1" pricePerSeat="720"
+            flightDurationInMinutes="400" departureDate="2015-11-18"
+            departureTime="12:30:00"
+            seatsAvailable="80" seatCapacity="500"
+            seatsThresholdForDiscount="9"/>
+
+    <trip id="16" hotel="Shangri-La Hotel"  priceHotelPerNightPerPerson="110"
+          endDestination_id="23"/>
+
+    <trip_flight Trip_id="16" flightList_id="541"/>
+    <trip_flight Trip_id="16" flightList_id="542"/>
+
+
+
+
+    <!--trip to Moskou-->
+    <flight id="543" airline_id="6" origin_id="1" destination_id="24" pricePerSeat="399"
+            flightDurationInMinutes="300" departureDate="2015-11-15"
+            departureTime="07:00:00"
+            seatsAvailable="110" seatCapacity="300"
+            seatsThresholdForDiscount="8"/>
+
+    <flight id="544" airline_id="6" origin_id="24" destination_id="1" pricePerSeat="399"
+            flightDurationInMinutes="300" departureDate="2015-11-20"
+            departureTime="19:10:00"
+            seatsAvailable="80" seatCapacity="300"
+            seatsThresholdForDiscount="8"/>
+
+    <trip id="17" hotel="Katerina City"  priceHotelPerNightPerPerson="85"
+          endDestination_id="24"/>
+
+    <trip_flight Trip_id="17" flightList_id="543"/>
+    <trip_flight Trip_id="17" flightList_id="544"/>
 
 
 </dataset>
