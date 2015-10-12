@@ -26,6 +26,12 @@ public class BookingConversationController
     @Inject
     private CountryRepository countryRepository;
 
+    public String goBackToWorldMap()
+    {
+        conversation.end();
+        return "worldmap";
+    }
+
     public String startConversation()
     {
         conversation.begin();

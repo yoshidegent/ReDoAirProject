@@ -51,7 +51,7 @@ public class DestinationsController implements Serializable{
         refreshTripList();
     }
 
-    public void dateChange() {
+    public void formChange() {
         refreshTripList();
     }
 
@@ -78,7 +78,7 @@ public class DestinationsController implements Serializable{
     public Date getTo() {
         if(this.to == null) {
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.MONTH, 1);
+            calendar.add(Calendar.MONTH, 2);
             return calendar.getTime();
         }
         else
@@ -95,5 +95,13 @@ public class DestinationsController implements Serializable{
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public void setNumberOfPassengers(int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
     }
 }
