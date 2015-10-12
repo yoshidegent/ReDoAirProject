@@ -40,11 +40,11 @@
     <address id="21" city="Cape Town" country_countryCode="ZA"/>
 
 
-    <address id="22" city="Melbourne" country_countryCode="AU"/>
-    <address id="23" city="Melbourne" country_countryCode="AU"/>
-    <address id="24" city="Melbourne" country_countryCode="AU"/>
-    <address id="25" city="Melbourne" country_countryCode="AU"/>
-    <address id="26" city="Melbourne" country_countryCode="AU"/>
+    <!--<address id="22" city="Melbourne" country_countryCode="AU"/>-->
+    <!--<address id="23" city="Melbourne" country_countryCode="AU"/>-->
+    <!--<address id="24" city="Melbourne" country_countryCode="AU"/>-->
+    <!--<address id="25" city="Melbourne" country_countryCode="AU"/>-->
+    <!--<address id="26" city="Melbourne" country_countryCode="AU"/>-->
 
 
 
@@ -65,10 +65,10 @@
     <airport id="15" name="Cape Town International Airport" address_id="21"/>
     <airport id="16" name="Tegel" address_id="9"/>
 
-    <airport id="17" name="Melbourne Airport" address_id="19"/>
-    <airport id="18" name="Melbourne Airport" address_id="19"/>
-    <airport id="19" name="Melbourne Airport" address_id="19"/>
-    <airport id="20" name="Melbourne Airport" address_id="19"/>
+    <!--<airport id="17" name="Melbourne Airport" address_id="19"/>-->
+    <!--<airport id="18" name="Melbourne Airport" address_id="19"/>-->
+    <!--<airport id="19" name="Melbourne Airport" address_id="19"/>-->
+    <!--<airport id="20" name="Melbourne Airport" address_id="19"/>-->
 
 
 
@@ -106,44 +106,34 @@
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
-    <flight id="505" airline_id="5" origin_id="2" destination_id="14" pricePerSeat="799"
-            flightDurationInMinutes="30" departureDate="2015-10-11"
-            departureTime="22:00:00"
-            seatsAvailable="300" seatCapacity="400"
-            seatsThresholdForDiscount="5"/>
 
-    <flight id="506" airline_id="5" origin_id="14" destination_id="2" pricePerSeat="799"
-            flightDurationInMinutes="30" departureDate="2015-10-11"
-            departureTime="22:00:00"
-            seatsAvailable="300" seatCapacity="400"
-            seatsThresholdForDiscount="5"/>
 
 
     <!--trip to South Africa-->
         <flight id="507" airline_id="1" origin_id="1" destination_id="11" pricePerSeat="129"
-            flightDurationInMinutes="55" departureDate="2015-11-11"
+            flightDurationInMinutes="55" departureDate="2015-10-20"
                 departureTime="22:00:00"
                 seatsAvailable="100" seatCapacity="250"
             seatsThresholdForDiscount="5"/>
 
     <flight id="508" airline_id="7" origin_id="11" destination_id="15" pricePerSeat="799"
-            flightDurationInMinutes="360" departureDate="2015-11-11"
+            flightDurationInMinutes="360" departureDate="2015-10-20"
             departureTime="22:00:00"
             seatsAvailable="201" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="509" airline_id="1" origin_id="15" destination_id="11" pricePerSeat="899"
-            flightDurationInMinutes="360" departureDate="2015-11-11"
+            flightDurationInMinutes="360" departureDate="2015-11-18"
             departureTime="22:00:00"
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="5"/>
 
     <flight id="510" airline_id="7" origin_id="11" destination_id="1" pricePerSeat="129"
-            flightDurationInMinutes="55" departureDate="2015-10-11"
+            flightDurationInMinutes="55" departureDate="2015-10-18"
             departureTime="22:00:00"
             seatsAvailable="200" seatCapacity="250"
             seatsThresholdForDiscount="5"/>
-    <trip id="1" hotel="Yoshi Game Reservate" priceHotelPerNightPerPerson="80" endDestination_id="15"/>
+    <trip id="1" hotel="Wildlife Reservate Oani" priceHotelPerNightPerPerson="80" endDestination_id="15"/>
     <trip_flight Trip_id="1" flightList_id="507"/>
     <trip_flight Trip_id="1" flightList_id="508"/>
     <trip_flight Trip_id="1" flightList_id="509"/>
@@ -165,7 +155,7 @@
             seatsAvailable="300" seatCapacity="400"
             seatsThresholdForDiscount="10"/>
 
-    <trip id="2" hotel="Hotel Alles hat ein Ende, nur die Wurst hat zwei"  priceHotelPerNightPerPerson="100"
+    <trip id="2" hotel="Môvenpick"  priceHotelPerNightPerPerson="100"
           endDestination_id="16"/>
     <trip_flight Trip_id="2" flightList_id="509"/>
     <trip_flight Trip_id="2" flightList_id="510"/>
@@ -173,18 +163,81 @@
 
 
 
-<!--trip to?-->
-    <trip hotel="Hotel Evelyne is leuk 2"  priceHotelPerNightPerPerson="100"
-          endDestination_id="1"/>
-    <trip hotel="Hotel Evelyne is tof"  priceHotelPerNightPerPerson="100"
-          endDestination_id="2"/>
-    <trip hotel="Hotel Evelyne is fantastisch"  priceHotelPerNightPerPerson="100"
-          endDestination_id="3"/>
-    <trip hotel="Hotel Evelyne is awesome"  priceHotelPerNightPerPerson="100"
-          endDestination_id="4"/>
-    <trip hotel="Hotel Evelyne is cool"  priceHotelPerNightPerPerson="200"
-          endDestination_id="5"/>
-    <trip hotel="Hotel Yoshi is ook pretty cool" priceHotelPerNightPerPerson="80" endDestination_id="13"/>
+<!--trip to Portugal (Portela, Listboa)-->
+    <flight id="505" airline_id="5" origin_id="2" destination_id="14" pricePerSeat="126"
+            flightDurationInMinutes="360" departureDate="2015-10-16"
+            departureTime="08:00:00"
+            seatsAvailable="6" seatCapacity="250"
+            seatsThresholdForDiscount="5"/>
+
+    <flight id="506" airline_id="5" origin_id="14" destination_id="2" pricePerSeat="136"
+            flightDurationInMinutes="360" departureDate="2015-10-22"
+            departureTime="18:30:00"
+            seatsAvailable="6" seatCapacity="250"
+            seatsThresholdForDiscount="5"/>
+
+    <trip id="3" hotel="Hotel Convento Do Salvador"  priceHotelPerNightPerPerson="80"
+          endDestination_id="14"/>
+    <trip_flight Trip_id="3" flightList_id="505"/>
+    <trip_flight Trip_id="3" flightList_id="506"/>
+
+
+
+    <!--trip to NYC-->
+    <flight id="513" airline_id="4" origin_id="1" destination_id="6" pricePerSeat="889"
+            flightDurationInMinutes="200" departureDate="2015-11-01"
+            departureTime="06:50:00"
+            seatsAvailable="300" seatCapacity="500"
+            seatsThresholdForDiscount="15"/>
+
+    <flight id="514" airline_id="4" origin_id="6" destination_id="1" pricePerSeat="799"
+            flightDurationInMinutes="160" departureDate="2015-11-06"
+            departureTime="19:30:00"
+            seatsAvailable="350" seatCapacity="500"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="4" hotel="Waldorf Astoria"  priceHotelPerNightPerPerson="245"
+          endDestination_id="16"/>
+    <trip_flight Trip_id="4" flightList_id="513"/>
+    <trip_flight Trip_id="4" flightList_id="514"/>
+
+
+
+    <!--trip to Sydney-->
+    <flight id="515" airline_id="2" origin_id="1" destination_id="8" pricePerSeat="205"
+            flightDurationInMinutes="120" departureDate="2015-10-20"
+            departureTime="04:30:00"
+            seatsAvailable="80" seatCapacity="300"
+            seatsThresholdForDiscount="15"/>
+
+    <flight id="516" airline_id="2" origin_id="8" destination_id="12" pricePerSeat="1199"
+            flightDurationInMinutes="720" departureDate="2015-10-20"
+            departureTime="14:50:00"
+            seatsAvailable="300" seatCapacity="500"
+            seatsThresholdForDiscount="6"/>
+
+
+    <flight id="517" airline_id="2" origin_id="12" destination_id="8" pricePerSeat="1099"
+            flightDurationInMinutes="720" departureDate="2015-11-15"
+            departureTime="20:00:00"
+            seatsAvailable="300" seatCapacity="500"
+            seatsThresholdForDiscount="15"/>
+
+
+    <flight id="518" airline_id="2" origin_id="8" destination_id="1" pricePerSeat="199"
+            flightDurationInMinutes="160" departureDate="2015-11-16"
+            departureTime="19:30:00"
+            seatsAvailable="350" seatCapacity="500"
+            seatsThresholdForDiscount="10"/>
+
+    <trip id="5" hotel="Waldorf Astoria"  priceHotelPerNightPerPerson="80"
+          endDestination_id="12"/>
+    <trip_flight Trip_id="5" flightList_id="515"/>
+    <trip_flight Trip_id="5" flightList_id="516"/>
+    <trip_flight Trip_id="5" flightList_id="517"/>
+    <trip_flight Trip_id="5" flightList_id="518"/>
+
+
 
 
 
