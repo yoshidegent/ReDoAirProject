@@ -21,16 +21,17 @@
     <ui:include src="/navbar.xhtml"/>
 
     <div class="container">
-        #{bookingConversationController.startConversation()}
 
-        <h1>Trips for #{destinationsController.country}</h1>
+
+        <h:inputHidden value="#{bookingConversationController.startConversation()}"/>
+
+        <h1>Trips for #{destinationsController.country.getCountry()}</h1>
 
         <h:panelGrid columns="2">
             <h:form id="form">
                 <p:growl id="msgs" showDetail="true"/>
 
                 <h:panelGrid columns="2" cellpadding="5" id="searchTripGrid">
-                    <h:form>
                         <p:outputLabel for="from" value="From:"/>
                         <p:calendar id="from" value="#{destinationsController.from}"
                                     mindate="#{destinationsController.dateToday}" mode="inline">
@@ -42,7 +43,6 @@
                                     mindate="#{destinationsController.dateToday}" mode="inline">
                             <p:ajax process="searchTripGrid" event="dateSelect" listener="#{destinationsController.dateChange()}" update="trips"/>
                         </p:calendar>
-                    </h:form>
 
                 </h:panelGrid>
 

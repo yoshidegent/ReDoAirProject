@@ -52,8 +52,13 @@ public class Trip extends AbstractEntity {
      */
 
     public int calculateNumberOfPlacesAvailableForAllFlights()  {
-
-        return 0;
+        int placesLeft = Integer.MAX_VALUE;
+        for(Flight f : flightList)
+        {
+            if(f.getSeatsAvailable() < placesLeft)
+                placesLeft = f.getSeatCapacity();
+        }
+        return placesLeft;
     }
     public double calculateTotalPrice(int numberOfPersons) {
         double priceForAllFlights = calculatePriceForAllFlights();

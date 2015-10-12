@@ -44,16 +44,11 @@ public class DestinationsController implements Serializable{
         tripsForDestination = tripRepository.findValidTrips(country, from, to, numberOfPassengers);
     }
 
-    public String getDestinationsFromCountry()
+    public void getDestinationsFromCountry()
     {
         to = getTo();
 
         refreshTripList();
-
-        if(country.getCountry() != null && !country.getCountry().equals(""))
-            return country.getCountry();
-        else
-            return "";
     }
 
     public void dateChange() {
