@@ -9,7 +9,7 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-    <c:set var="flight" value="#{flightController.getFlight(param['id'])}"/>
+    <c:set var="flight" value="#{flightController.getFlightById(param['id'])}"/>
 
     <h:outputScript>
         $( document ).ready(function(){

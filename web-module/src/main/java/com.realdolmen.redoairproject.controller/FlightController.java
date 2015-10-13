@@ -102,7 +102,7 @@ public class FlightController {
 
     }
 
-    public Flight getFlight(int id)   {
+    public Flight getFlightById(int id)   {
         return flightRepository.findById((long) id);
     }
 
