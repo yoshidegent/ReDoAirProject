@@ -31,7 +31,7 @@
                 //Pay attention to the extra single quotes in following selector, they enable us to take id's which include spaces
                 countryPath = $("[id='" + countries[i].toLowerCase() + "']");
 
-                countryPath.css("fill", "black");
+                countryPath.css("fill", "rgb(0,60,80)");
 
                 countryPath.on('mouseenter',function () {
                     $(this).css("fill", "#5bc0de");
@@ -39,7 +39,7 @@
                 });
 
                 countryPath.on('mouseleave',function () {
-                    $(this).css("fill", "black");
+                    $(this).css("fill", "rgb(0,60,80)");
                 });
                 /* ]]> */
 
