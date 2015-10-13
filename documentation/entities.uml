@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.realdolmen.redoairproject.entities</OriginalElement>
+  <nodes>
+    <node x="498.8490021969974" y="727.9306114976198">com.realdolmen.redoairproject.entities.Passenger</node>
+    <node x="-401.74295129989025" y="-31.02599780300264">com.realdolmen.redoairproject.entities.Address</node>
+    <node x="-331.24295129989025" y="251.63804467228113">com.realdolmen.redoairproject.entities.Airport</node>
+    <node x="67.82204320761622" y="-7.34895642621747">com.realdolmen.redoairproject.entities.Country</node>
+    <node x="-352.51457036494577" y="694.589527645551">com.realdolmen.redoairproject.entities.Booking</node>
+    <node x="-404.45213902111567" y="435.1164408641523">com.realdolmen.redoairproject.entities.Trip</node>
+    <node x="445.5122207982424" y="290.7231783229585">com.realdolmen.redoairproject.entities.User</node>
+    <node x="-38.58069388502395" y="120.20322226290727">com.realdolmen.redoairproject.entities.Flight</node>
+    <node x="325.3759154155987" y="584.6797876235811">com.realdolmen.redoairproject.entities.Partner</node>
+    <node x="571.8698736726474" y="582.2570487001099">com.realdolmen.redoairproject.entities.ReDoEmployee</node>
+    <node x="103.29174295129985" y="549.2438667154888">com.realdolmen.redoairproject.entities.Airline</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.realdolmen.redoairproject.entities.Passenger" target="com.realdolmen.redoairproject.entities.User">
+      <point x="0.0" y="-57.5" />
+      <point x="597.6241761259611" y="637.9340900768949" />
+      <point x="542.3611772244599" y="637.9340900768949" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Partner" target="com.realdolmen.redoairproject.entities.User">
+      <point x="35.0" y="-30.5" />
+      <point x="430.3759154155988" y="514.2266569022337" />
+      <point x="479.0200323446843" y="515.4514829732699" />
+      <point x="-59.66666666666666" y="44.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Address" target="com.realdolmen.redoairproject.entities.Country">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Flight" target="com.realdolmen.redoairproject.entities.Airline">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Booking" target="com.realdolmen.redoairproject.entities.Passenger">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Trip" target="com.realdolmen.redoairproject.entities.Airport">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Partner" target="com.realdolmen.redoairproject.entities.Airline">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Flight" target="com.realdolmen.redoairproject.entities.Airport">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.ReDoEmployee" target="com.realdolmen.redoairproject.entities.User">
+      <point x="0.0" y="-17.0" />
+      <point x="636.9202215305747" y="517.9011351153423" />
+      <point x="600.8030178200901" y="516.676309044306" />
+      <point x="59.66666666666663" y="44.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Trip" target="com.realdolmen.redoairproject.entities.Flight">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Booking" target="com.realdolmen.redoairproject.entities.Trip">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.realdolmen.redoairproject.entities.Airport" target="com.realdolmen.redoairproject.entities.Address">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7543668122270742" x="151.0" y="416.6628075253256" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
