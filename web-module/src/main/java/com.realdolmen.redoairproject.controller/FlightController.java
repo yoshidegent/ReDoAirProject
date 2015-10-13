@@ -69,9 +69,9 @@ public class FlightController {
         departureTime = flight.getDepartureTime().toString();
     }
 
-    public boolean checkUserIsPartner()
+    public boolean checkUserIsNoPartner(User user)
     {
-        return user instanceof Partner;
+        return !(user instanceof Partner);
     }
 
     public String overridePriceForEmployees()   {
@@ -79,11 +79,6 @@ public class FlightController {
         flight.overridePriceForPassenger(overriddenPrice);
         flightRepository.createOrUpdate(flight);
         return "flightdetail?faces-redirect=true&id=" + flight.getId();
-    }
-
-    public boolean checkUserIsReDoEmployee()
-    {
-        return user instanceof ReDoEmployee;
     }
 
     public User retrieveUserById(String username)
