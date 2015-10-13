@@ -1,11 +1,10 @@
 package com.realdolmen.redoairproject.controller;
 
-import com.realdolmen.redoairproject.entities.Airline;
-import com.realdolmen.redoairproject.entities.Airport;
-import com.realdolmen.redoairproject.entities.Flight;
+import com.realdolmen.redoairproject.entities.*;
 import com.realdolmen.redoairproject.persistence.AirlineRepository;
 import com.realdolmen.redoairproject.persistence.AirportRepository;
 import com.realdolmen.redoairproject.persistence.FlightRepository;
+import com.realdolmen.redoairproject.persistence.UserRepository;
 import org.primefaces.event.SelectEvent;
 
 import javax.enterprise.context.RequestScoped;
@@ -35,6 +34,8 @@ public class FlightController {
     String departureTime;
     @ManagedProperty("#{param.id}")
     private Long flightId;
+    @ManagedProperty("#{param.empId}")
+    private String username;
 
 
     /**
@@ -49,7 +50,10 @@ public class FlightController {
     @Inject
     AirportRepository airportRepository;
 
+    @Inject
+    UserRepository userRepository;
 
+    private User user;
 
     /**
      * Methods
@@ -64,9 +68,32 @@ public class FlightController {
         departureTime = flight.getDepartureTime().toString();
     }
 
+    public boolean checkUserIsPartner()
+    {
+        return user instanceof Partner;
+    }
+
+    public boolean checkUserIsReDoEmployee()
+    {
+        return user instanceof ReDoEmployee;
+    }
+
+    public User retrieveUserById(String username)
+    {
+        return userRepository.getUserByUsername(username);
+    }
+
+    public void setUser()
+    {
+        this.user = retrieveUserById(this.username);
+    }
 
     public List<Flight> retrieveAllFlights() {
         return flightRepository.findAll();
+    }
+
+    public List<Flight> retrieveFlightsByAirline(Airline airline) {
+        return flightRepository.findFlightsByAirline(airline);
     }
 
 
@@ -163,5 +190,38 @@ public class FlightController {
 
     public Long getFlightId() {
         return flightId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Flight> getFlightList()
+    {
+        if(this.user instanceof Partner)
+        {
+            return this.retrieveFlightsByAirline(((Partner)user).getAirline());
+        }
+        else
+        {
+            if(this.user instanceof ReDoEmployee)
+            {
+                return this.retrieveAllFlights();
+            }
+        }
+
+        return null;
     }
 }

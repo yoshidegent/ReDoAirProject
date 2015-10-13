@@ -32,14 +32,10 @@
                     <h:panelGrid columns="2">
 
                         <h:outputLabel value="username"/>
-                        <h:inputText id="usernameInput" value="#{loginController.username}">
-                            <f:validateLength minimum="2" maximum="8" />
-                        </h:inputText>
+                        <h:inputText id="usernameInput" value="#{loginController.username}" />
 
                         <h:outputLabel value="password"/>
-                        <h:inputSecret value="#{loginController.password}">
-                            <f:validateLength minimum="5" maximum="15" />
-                        </h:inputSecret>
+                        <h:inputSecret value="#{loginController.password}" />
 
                         <h:outputLabel value=""/>
                         <h:commandButton action="#{loginController.logInUser()}" value="Log in">

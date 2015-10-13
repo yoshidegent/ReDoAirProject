@@ -19,12 +19,17 @@
 <h:body>
     <ui:include src="/navbar.xhtml"/>
 
+    <f:metadata>
+        <f:viewParam name="username" value="#{flightController.username}"/>
+        <f:event type="preRenderView" listener="#{flightController.setUser()}"/>
+    </f:metadata>
+
 
     <div class="container">
 
         <h1>Available flights</h1>
 
-        <h:dataTable class="table table-hover" id="flights" value="#{flightController.retrieveAllFlights()}"
+        <h:dataTable class="table table-hover" id="flights" value="#{flightController.getFlightList()}"
                      var="flight">
 
             <h:column>
@@ -33,7 +38,6 @@
                 </f:facet>
                 <img src="#{flight.airline.imageUrl}" alt="airline logo" style="height: 30px"/>
             </h:column>
-
 
             <h:column>
                 <f:facet name="header">

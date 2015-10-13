@@ -52,7 +52,7 @@ public class LoginController implements Serializable{
             if(user.checkPasswordIsValid(password))
             {
                 if(user instanceof Partner || user instanceof ReDoEmployee)
-                    return "flightsall";
+                    return "flightsall?faces-redirect=true&username=" + user.getUsername();
                 else {
                     passenger = (Passenger) user;
                     return bookingConversationController.loginRouting();
