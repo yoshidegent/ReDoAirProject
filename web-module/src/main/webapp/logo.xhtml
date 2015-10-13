@@ -1,0 +1,31 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <style>
+        @font-face {
+            font-family: lemonMilk; /*a name to be used later*/
+            src: url('fonts/lemon_milk/LemonMilk.otf'); /*URL to font*/
+            src: url('fonts/lemon_milk/lemonmilk.eot');
+            src: url('fonts/lemon_milk/lemonmilk.eot?#iefix') format('embedded-opentype'),
+            url('fonts/lemon_milk/lemonmilk.woff2') format('woff2'),
+            url('fonts/lemon_milk/lemonmilk.woff') format('woff'),
+            url('fonts/lemon_milk/lemonmilk.ttf') format('truetype');
+        }
+
+        #logo{
+            color: #5BC0DE;
+            font-family: lemonMilk, 'Arial', 'sans-serif';
+        }
+
+        #logo span{
+            color: #FFFFFF;
+        }
+
+    </style>
+
+    <a class="navbar-brand" id="logo" href="#{request.contextPath}/worldmap.faces"><span>REDO</span>AIR</a>
+
+</ui:composition>
