@@ -23,12 +23,17 @@ public class TripController implements Serializable {
     private String expiryDate;
     private int numberOfPassengers;
 
+    private String errorCreditCard;
+    private String selectedDestination;
+
+
+
     @Inject
     private TripRepository tripRepository;
 
     @Inject
     private BookingRepository bookingRepository;
-    private String selectedDestination;
+
 
 
     public List<String> retrieveAllDestinations()   {
@@ -40,7 +45,7 @@ public class TripController implements Serializable {
         return trip;
     }
 
-    public String bookTrip(long id)
+    public boolean checkCreditCardIsValid()
     {
         List<Flight> flightList = trip.getFlightList();
         for (Flight flight : flightList) {
@@ -67,22 +72,15 @@ public class TripController implements Serializable {
                     LocalDate expire = LocalDate.of(year, month, 1);
 
                     if(LocalDate.now().isBefore(expire))
-                        return "tripconfirmation";
-                    else
-                        return "";
+                        return true;
                 }
                 catch (Exception e)
                 {
-                    return "";
+                    return false;
                 }
-
             }
-            else
-                return "";
-
         }
-        else
-            return "";
+        return false;
     }
 
     public double calculateTotalPriceForTrip() {
@@ -120,6 +118,14 @@ public class TripController implements Serializable {
 
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
+    }
+
+    public String getErrorCreditCard() {
+        return errorCreditCard;
+    }
+
+    public void setErrorCreditCard(String errorCreditCard) {
+        this.errorCreditCard = errorCreditCard;
     }
 
     public String goToDestination() {
