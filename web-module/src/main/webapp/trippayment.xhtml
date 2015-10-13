@@ -43,7 +43,6 @@
                         </p:dialog>
                         <h:commandButton value="book your trip" action="#{bookingConversationController.goToTripConfirmation()}">
                             <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
-                            <f:param name="userid" value="#{bookingConversationController.passenger.id}"/>
                         </h:commandButton>
                     </h:panelGrid>
                 </h:form>

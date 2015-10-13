@@ -52,7 +52,7 @@ public class LoginController implements Serializable{
                 if(user instanceof Partner || user instanceof ReDoEmployee)
                     return "flightsall";
                 else {
-
+                    passenger = (Passenger) user;
                     return bookingConversationController.loginRouting();
                 }
             }

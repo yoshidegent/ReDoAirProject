@@ -30,8 +30,7 @@ public class BookingConversationController implements Serializable
     private TripRepository tripRepository;
     @Inject
     private FlightRepository flightRepository;
-    @Inject
-    private UserRepository userRepository;
+
 
     private Country country = new Country();
     private Booking booking = new Booking();

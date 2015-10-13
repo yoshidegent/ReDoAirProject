@@ -34,7 +34,6 @@
         <h:form style="margin: auto" class="form-horizontal">
 
             <h:panelGrid columns="2">
-
                 <h:outputLabel value="airline"/>
                 <h:selectOneMenu value="#{flightController.airlineId}">
                     <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />

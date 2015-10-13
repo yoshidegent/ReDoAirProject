@@ -417,7 +417,7 @@
 
 
 
-    <!--trip to Iceland-->
+    <!--trip to Tanzania-->
     <flight id="539" airline_id="4" origin_id="1" destination_id="22" pricePerSeat="260"
             flightDurationInMinutes="400" departureDate="2015-10-20"
             departureTime="10:40:00"
