@@ -38,7 +38,9 @@
                         <h:inputSecret value="#{loginController.password}"/>
 
                         <h:outputLabel value=""/>
-                        <h:commandButton action="#{loginController.logInUser()}" value="Log in"/>
+                        <h:commandButton action="#{loginController.logInUser()}" value="Log in">
+                            <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
+                        </h:commandButton>
                     </h:panelGrid>
                 </h:form>
 
@@ -84,7 +86,7 @@
                         <h:outputLabel value=""/>
 
                         <h:outputLabel value=""/>
-                        <h:commandButton value="Register" action="#{passengerController.createPassenger}"/>
+                        <h:commandButton value="Register" action="#{passengerController.createPassenger}" />
                     </h:panelGrid>
 
 

@@ -4,19 +4,23 @@ import com.realdolmen.redoairproject.entities.Partner;
 import com.realdolmen.redoairproject.entities.Passenger;
 import com.realdolmen.redoairproject.entities.ReDoEmployee;
 import com.realdolmen.redoairproject.entities.User;
+import com.realdolmen.redoairproject.persistence.BookingRepository;
 import com.realdolmen.redoairproject.persistence.UserRepository;
 
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
+import java.util.Map;
 
 @Named
 @RequestScoped
-public class LoginController {
+public class LoginController implements Serializable{
 
     @Inject BookingConversationController bookingConversationController;
-
-    private String destinationPage;
 
     Passenger passenger = new Passenger();
     private User user;
@@ -25,7 +29,8 @@ public class LoginController {
 
     private String feedbackMessage;
 
-    @Inject UserRepository userRepository;
+    @Inject
+    private UserRepository userRepository;
 
     //redirecten moet nog juister gebeuren dan gewoon return "worldmap"
 
@@ -47,11 +52,9 @@ public class LoginController {
                 if(user instanceof Partner || user instanceof ReDoEmployee)
                     return "flightsall";
                 else {
-                    if(destinationPage.equals("trippayment")) {
-                        bookingConversationController.setPassenger(passenger);
-                        return bookingConversationController.goToTripPayement();
-                    }
-                    else return "worldmap";
+
+                    bookingConversationController.setPassenger(passenger);
+                    return bookingConversationController.loginRouting();
                 }
             }
             else
@@ -93,13 +96,5 @@ public class LoginController {
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
-    }
-
-    public String getDestinationPage() {
-        return destinationPage;
-    }
-
-    public void setDestinationPage(String destinationPage) {
-        this.destinationPage = destinationPage;
     }
 }

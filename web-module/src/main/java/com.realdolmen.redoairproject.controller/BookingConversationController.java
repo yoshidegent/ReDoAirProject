@@ -44,9 +44,12 @@ public class BookingConversationController implements Serializable
 
     private Passenger passenger;
 
+    private String lastPage;
+
     public String goBackToWorldMap()
     {
-        return "worldmap";
+        lastPage = "worldmap?faces-redirect=true";
+        return lastPage;
     }
 
     public void startConversation() {
@@ -68,7 +71,8 @@ public class BookingConversationController implements Serializable
         else {
             destinationsController.setCountry(country);
             destinationsController.getDestinationsFromCountry();
-            return "destinations?faces-redirect=true";
+            lastPage = "destinations?faces-redirect=true";
+            return lastPage;
         }
     }
 
@@ -82,7 +86,8 @@ public class BookingConversationController implements Serializable
 
         tripController.setTrip(trip);
         tripController.setNumberOfPassengers(numberOfPassengers);
-        return "tripdetail?faces-redirect=true";
+        lastPage = "tripdetail?faces-redirect=true";
+        return lastPage;
     }
 
     public String goToTripPayement()
@@ -90,10 +95,10 @@ public class BookingConversationController implements Serializable
         if(passenger != null) {
             tripController.setTrip(this.booking.getTrip());
             tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
-            return "trippayment?faces-redirect=true";
+            lastPage = "trippayment?faces-redirect=true";
+            return lastPage;
         }
         else {
-            loginController.setDestinationPage("trippayment");
             return "login?faces-redirect=true";
         }
     }
@@ -101,14 +106,16 @@ public class BookingConversationController implements Serializable
     public String goBackToDestinations()
     {
         destinationsController.setCountry(this.country);
-        return "destinations?faces-redirect=true";
+        lastPage = "destinations?faces-redirect=true";
+        return lastPage;
     }
 
     public String goBackToTripDetail()
     {
         tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
         tripController.setTrip(this.booking.getTrip());
-        return "tripdetail?faces-redirect=true";
+        lastPage = "tripdetail?faces-redirect=true";
+        return lastPage;
     }
 
     public String goToTripConfirmation()
@@ -117,10 +124,28 @@ public class BookingConversationController implements Serializable
             booking.setCreditCardNumber(tripController.getCardNumber());
             booking.setExpiryDate(tripController.getExpiryDate());
 
+
             return "tripconfirmation?faces-redirect=true";
         }
         else {
             return "login?faces-redirect=true";
+        }
+    }
+
+    public String loginRouting()
+    {
+        if(lastPage != null && lastPage.startsWith("tripdetail"))
+        {
+            return goToTripPayement();
+        }
+        else
+        {
+            if(lastPage != null && lastPage.startsWith("worldmap"))
+            {
+                return goBackToWorldMap();
+            }
+            else
+                return "";
         }
     }
 
