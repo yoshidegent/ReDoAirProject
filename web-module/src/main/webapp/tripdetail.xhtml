@@ -3,6 +3,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <meta charset="UTF-8"/>
@@ -15,45 +16,79 @@
 </h:head>
 <h:body>
     <ui:include src="/navbar.xhtml"/>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <h:form>
-                    <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}" />
+                    <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}"/>
                 </h:form>
                 <c:set var="trip" value="#{tripController.trip}"/>
+
                 <h1><h:outputText value="Trip to #{trip.endDestination.address.city}"/></h1>
-                <h3>#{trip.hotel}</h3>
             </div>
-            <div class="col-md-5" style="background-color: lightgrey">
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-7">
+                <h3>#{trip.hotel}</h3>
+
+                <h4>Details</h4>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra erat aliquam urna congue varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed nec risus et lorem eleifend placerat. Praesent congue porta ligula eu feugiat. Suspendisse cursus vitae felis ut porttitor. Nullam at nunc urna. Duis sapien sem, pulvinar nec eros id, mattis accumsan dui. Donec tincidunt ullamcorper rutrum. Nulla tincidunt dolor vel sodales laoreet. Cras scelerisque mollis nunc quis pretium. Morbi id ex ex. In mauris metus, volutpat at scelerisque eu, fermentum vel tellus. Cras sit amet ullamcorper massa. Sed pulvinar, tellus id volutpat fringilla, ex odio aliquet arcu, ac dapibus diam metus a mauris. Mauris nec tortor mollis, egestas augue sed, lobortis dolor.
+
+                    Donec interdum, tortor ac fringilla gravida, dolor neque malesuada dui, et venenatis turpis dui non justo. Cras ac dui vel magna lobortis condimentum a et elit. Etiam porttitor iaculis accumsan. Praesent tempus volutpat quam at pretium. Ut tempus porttitor volutpat. Donec laoreet turpis eu purus feugiat venenatis. Donec vehicula quam nisi, in finibus risus euismod ac. Nam interdum nisl lorem, non tempus magna efficitur in. Fusce gravida fringilla dictum.
+
+                    In vitae sodales ligula. Praesent eu odio rutrum, tempus quam eget, condimentum massa. Sed vestibulum ullamcorper tortor, sed rutrum arcu venenatis sit amet. In hac habitasse platea dictumst. Sed urna leo, imperdiet ut tellus non, suscipit ornare ligula. In luctus luctus enim in dignissim. Etiam maximus libero mi, a tristique augue vestibulum ut.
+
+                    Duis sed fringilla metus, in tempor dui. Sed sit amet auctor nisi, sit amet fermentum tortor. Etiam efficitur, mi vitae tempus sodales, arcu quam luctus ipsum, nec blandit eros nulla quis elit. Nunc auctor ante feugiat efficitur accumsan. Nam euismod tortor a nisi commodo, at porttitor elit dictum. Etiam eget ultricies enim. Sed lorem magna, viverra ac libero ut, rutrum efficitur orci. In hac habitasse platea dictumst. Praesent mattis sodales nibh, ut ultricies leo rutrum imperdiet. Cras porta turpis ornare auctor malesuada. Aliquam porta lorem sed viverra tristique. Proin nec felis sed nisl rhoncus elementum in id dolor. Vivamus ac pretium ex. Donec sit amet egestas ligula, eu commodo ipsum.
+
+                    Donec id luctus odio, nec sagittis mauris. In mattis nunc ligula, vel rhoncus lorem convallis et. Quisque dictum vulputate justo, ut mattis est ultricies et. Ut tellus orci, tempus nec ligula id, eleifend pellentesque libero. Integer tincidunt, ante accumsan imperdiet vestibulum, lorem orci varius nibh, non consequat nibh ante vitae erat. Proin tristique, metus vitae blandit pulvinar, felis ipsum egestas risus, dignissim egestas purus quam vitae sem. Maecenas tempus sed sapien nec malesuada. Quisque pharetra, ex at tincidunt cursus, lorem metus consequat diam, vel efficitur urna elit et odio. Nam ut risus rutrum, dignissim ante sed, faucibus nisi. Cras commodo pharetra pellentesque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec in hendrerit libero. Praesent rhoncus malesuada mauris sed lobortis. Donec nunc orci, porttitor vitae quam a, suscipit rutrum leo. In vulputate pellentesque varius.
+
+                    Nullam at eros sit amet mi rutrum venenatis vitae et ex. Proin at lectus in est congue feugiat. Ut sit amet erat in eros molestie sodales. Suspendisse potenti. Mauris eleifend eros at elit iaculis luctus. Aliquam non arcu mattis, aliquet est vitae, ultricies erat. Pellentesque et ex id risus porttitor commodo. Morbi nec purus eget nunc viverra facilisis.
+
+                    Curabitur tellus eros, egestas non turpis eget, malesuada dignissim nulla. Mauris dictum elementum nibh, eu tincidunt mi facilisis ultrices. Curabitur sit amet sem sed tellus congue elementum. Proin finibus vel lorem eget porta. Fusce a ipsum non augue imperdiet maximus. Mauris ut diam a mi faucibus ornare. Cras mollis, odio non aliquam ornare, diam nibh hendrerit ipsum, eu auctor tortor orci in ipsum. Cras suscipit, urna sed faucibus egestas, risus eros accumsan velit, sit amet mollis turpis turpis et tellus. Vivamus consequat tristique velit, ac euismod nibh faucibus quis. Nullam erat metus, feugiat vel neque et, porttitor porta libero. Pellentesque euismod hendrerit tincidunt. Vivamus tincidunt metus tortor, at pellentesque elit hendrerit quis. Etiam quis vulputate mauris. Etiam ac sagittis erat, in placerat nisi. Praesent dictum lorem quis sodales tincidunt. Nulla non posuere tellus.
+
+                    Vestibulum iaculis odio id arcu facilisis, molestie mattis arcu sollicitudin. Vestibulum lobortis justo a leo tempor, ut efficitur metus aliquet. Nulla ac elementum metus. Suspendisse auctor pellentesque est, id elementum lacus. Fusce feugiat, eros sed ultricies elementum, arcu enim blandit quam, a sodales nibh velit ut risus. Donec condimentum urna turpis, a commodo ipsum iaculis et. Cras sollicitudin, quam ut eleifend dignissim, sapien risus sollicitudin ipsum, eget ultricies magna tellus eu augue. Donec ut velit semper, hendrerit velit nec, laoreet metus.
+
+                </p>
+
+
+            </div>
+            <div class="col-md-5" style="background-color: lightgrey; border-radius: 25px;">
                 <h3>Price calculations</h3>
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Number of passengers"/>
-                        <h:outputText id="passengercount" value="#{bookingConversationController.booking.numberOfPassengers}" />
+                        <h:outputText style="margin: 0rem 2rem;"
+                                id="passengercount"
+                                      value="#{bookingConversationController.booking.numberOfPassengers}"/>
                         <h:outputText value=""/>
 
                         <h:outputLabel value="Total price for flights"/>
-                        <h:outputText value="#{trip.calculatePriceForAllFlights()}">
+                        <h:outputText style="margin: 0rem 2rem;" value="#{trip.calculatePriceForAllFlights()}">
                             <f:convertNumber currencySymbol="€ " type="currency"/>
                         </h:outputText>
                         <h:outputText value="/ passenger"/>
 
                         <h:outputLabel value="#{trip.hotel}"/>
-                        <h:outputText value="#{trip.priceHotelPerNightPerPerson}">
+                        <h:outputText style="margin: 0rem 2rem;" value="#{trip.priceHotelPerNightPerPerson}">
                             <f:convertNumber currencySymbol="€ " type="currency"/>
                         </h:outputText>
                         <h:outputText value="/ night"/>
 
                         <h:outputLabel value="Total #{trip.hotel}"/>
-                        <h:outputText value="#{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()}">
+                        <h:outputText style="margin: 0rem 2rem;" value="#{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()}">
                             <f:convertNumber currencySymbol="€ " type="currency"/>
                         </h:outputText>
                         <h:outputText value="/ passenger"/>
 
                         <h:outputLabel value="Total per passenger"/>
-                        <h:outputText value="#{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()}">
-                                <f:convertNumber currencySymbol="€ " type="currency"/>
+                        <h:outputText style="margin: 0rem 2rem;"
+                                value="#{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
                         </h:outputText>
                         <h:outputText value="/ passenger"/>
 
@@ -61,12 +96,13 @@
                         <h:outputText value=""/>
                         <h:outputText value=""/>
 
-                        <h:outputLabel value="Total:"/>
-                        <h:outputLabel value="#{tripController.calculateTotalPriceForTrip()}">
+                        <h:outputLabel style="margin: 2rem 0rem 2rem 0rem;" value="Total:"/>
+                        <h:outputLabel style="margin: 2rem 2rem 2rem 2rem;" value="#{tripController.calculateTotalPriceForTrip()}">
                             <f:convertNumber currencySymbol="€ " type="currency"/>
                         </h:outputLabel>
                     </h:panelGrid>
-                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}" value="Continue to payment">
+                    <h:commandLink style="margin: 2rem 0rem" class="btn-info btn-lg btn-block" outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}"
+                                   value="Continue to payment">
                         <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                         <f:param name="resultpage" value="trippayment"/>
                     </h:commandLink>

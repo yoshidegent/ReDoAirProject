@@ -15,24 +15,35 @@
 <h:body>
     <ui:include src="/navbar.xhtml"/>
     <div class="container">
+
+        <h:form>
+            <h:commandLink value="Back" action="#{bookingConversationController.goBackToTripDetail()}" />
+        </h:form>
+        <c:set var="trip" value="#{tripController.trip}"/>
+        <h1><h:outputText value="Trip to #{trip.hotel} -  #{trip.endDestination.address.city}"/></h1>
+
+
         <div class="row">
-            <div class="col-md-9">
-                <h:form>
-                    <h:commandLink value="Back" action="#{bookingConversationController.goBackToTripDetail()}" />
-                </h:form>
-                <c:set var="trip" value="#{tripController.trip}"/>
-                <h1><h:outputText value="Trip to #{trip.hotel} -  #{trip.endDestination.address.city}"/></h1>
+            <div class="col-md-7">
+
+
+
             </div>
-            <div class="col-md-3" style="background-color: lightgrey">
-                <h6>Input your creditcard information</h6>
-                <h:form style="margin: auto" class="form-horizontal">
+            <div class="col-md-5" style="background-color: lightgrey; border-radius: 25px;">
+                <div style="padding: 10rem 0">
+                <h5>Input your creditcard information</h5>
+
+                    <div style="padding:5rem 0">
+
+                    <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="cardnr"  value="Creditcard Number: " />
-                            <p:inputMask id="cardnr" value="#{tripController.cardNumber}" mask="9999-9999-9999-9999"/>
-                            <p:outputLabel for="date" value="Expiry date: " />
-                            <p:inputMask id="date" value="#{tripController.expiryDate}" mask="99/99"/>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel style="padding: 2rem 2rem" for="cardnr"  value="Creditcard Number: " />
+                            <p:inputMask class="form-control" id="cardnr" value="#{tripController.cardNumber}" mask="9999-9999-9999-9999"/>
+                            <p:outputLabel style="padding: 2rem 2rem" for="date" value="Expiry date: " />
+                            <p:inputMask class="form-control" id="date" value="#{tripController.expiryDate}" mask="99/99"/>
                         </h:panelGrid>
+
                         <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade">
                             <p:panelGrid id="display" columns="2" columnClasses="label,value">
                                 <h:outputText value="Product Key: " />
@@ -41,11 +52,16 @@
                                 <h:outputText id="dateValue" value="#{tripController.expiryDate}" />
                             </p:panelGrid>
                         </p:dialog>
-                        <h:commandButton value="book your trip" action="#{bookingConversationController.goToTripConfirmation()}">
+                        <div style="padding:2rem 0">
+                        <h:commandButton class="btn-info btn-lg btn-block"  value="book your trip" action="#{bookingConversationController.goToTripConfirmation()}">
                             <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                         </h:commandButton>
+                        </div>
                     </h:panelGrid>
+
                 </h:form>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
