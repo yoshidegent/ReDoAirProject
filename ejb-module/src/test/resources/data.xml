@@ -437,7 +437,6 @@
     <trip_flight Trip_id="15" flightList_id="540"/>
 
 
-
     <!--trip to China-->
     <flight id="541" airline_id="6" origin_id="1" destination_id="23" pricePerSeat="704"
             flightDurationInMinutes="400" departureDate="2015-11-03"
