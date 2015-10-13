@@ -28,6 +28,7 @@ public class TripController implements Serializable {
 
     @Inject
     private BookingRepository bookingRepository;
+    private String selectedDestination;
 
 
     public List<String> retrieveAllDestinations()   {
@@ -119,5 +120,17 @@ public class TripController implements Serializable {
 
     public void setNumberOfPassengers(int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
+    }
+
+    public String goToDestination() {
+        return "destination?faces-redirect=true";
+    }
+
+    public void setSelectedDestination(String selectedDestination) {
+        this.selectedDestination = selectedDestination;
+    }
+
+    public String getSelectedDestination() {
+        return selectedDestination;
     }
 }

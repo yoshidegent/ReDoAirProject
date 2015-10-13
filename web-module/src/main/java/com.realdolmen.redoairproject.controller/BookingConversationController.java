@@ -1,13 +1,16 @@
 package com.realdolmen.redoairproject.controller;
 
 import com.realdolmen.redoairproject.entities.Country;
+import com.realdolmen.redoairproject.entities.Trip;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 
 import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.Map;
 
 @Named
@@ -26,26 +29,28 @@ public class BookingConversationController
     @Inject
     private CountryRepository countryRepository;
 
+    private Country country;
+    private Trip trip;
+
     public String goBackToWorldMap()
     {
-        conversation.end();
         return "worldmap";
     }
 
-    public String startConversation()
-    {
+    public void startConversation() {
         conversation.begin();
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext()
-            .getRequestParameterMap();
+    }
+
+    public String goToDestinations()
+    {
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String countryName = params.get("country");
 
-        Country country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
+        country = countryRepository.findCountryCodeByCountryCaseInsensitive(countryName);
         if("".equals(country.getCountryCode())) {
-            conversation.end();
-            return "worldmap";
+            return goBackToWorldMap();
         }
-        else
-        {
+        else {
             destinationsController.setCountry(country);
             destinationsController.getDestinationsFromCountry();
             return "destinations";
@@ -57,6 +62,16 @@ public class BookingConversationController
         int numberOfPassengers = destinationsController.getNumberOfPassengers();
         tripController.setNumberOfPassengers(numberOfPassengers);
         return "tripdetail";
+    }
+
+    public String goToTripPayement()
+    {
+        return "trippayment";
+    }
+
+    public String goBackToDestinations()
+    {
+        return "destinations?faces-redirect=true";
     }
 
     public Conversation getConversation() {

@@ -22,8 +22,7 @@
 
     <div class="container">
 
-
-        <h:inputHidden value="#{bookingConversationController.startConversation()}"/>
+        <h:inputHidden value="#{bookingConversationController.goToDestinations()}"/>
 
         <h:form>
             <h1>Trips for <h:commandLink action="#{bookingConversationController.goBackToWorldMap()}"
@@ -89,7 +88,6 @@
             <h:dataTable class="table table-hover" id="trips"
                          value="#{destinationsController.tripsForDestination}" var="trip">
 
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="hotel"/>
@@ -140,6 +138,7 @@
                     <h:link outcome="#{bookingConversationController.goToTripDetail()}">
                         <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
                         <f:param name="id" value="#{trip.id}"/>
+                        <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                     </h:link>
                 </h:column>
 

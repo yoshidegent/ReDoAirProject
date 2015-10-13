@@ -19,14 +19,50 @@
 </h:head>
 <h:body>
 
-    <ui:include src="/navbar.xhtml"/>
-
     <div class="container">
         <h1>Home</h1>
 
         <p>Landing page.</p>
         <h:link outcome="/flightsall.xhtml">See all flights</h:link><br/>
         <h:link outcome="/worldmap.xhtml">View worldmap</h:link><br/>
+
+        <select id="yolo2">
+
+        </select>
+        <button id="yolo">Submit</button>
     </div>
+    <h:outputScript>
+        window.addEventListener("load", init, false);
+        var dest = '';
+        var dests;
+
+        function init() {
+        dests = #{tripController.retrieveAllDestinations()};
+        generateSelect();
+        document.getElementById('yolo').addEventListener('click', goToDest, false);
+        document.getElementById('yolo2').addEventListener('onchange', changeVal, false);
+        }
+
+        function generateSelect() {
+        dests.forEach(function(obj) {
+        var opt = document.createElement('option');
+        opt.setAttribute('value', obj);
+        opt.innerHTML = obj;
+        document.getElementById('yolo2').appendChild(opt);
+        });
+        }
+
+        function changeVal(event) {
+        console.log(event.target);
+        }
+        function goToDest(event) {
+        var arr = window.location.href.split('/');
+        var sub = window.location.href.substr(0, window.location.href.length - arr[arr.length - 1].length);
+        #{bookingConversationController.startConversation()};
+        console.log(event.target);
+        //window.location.href = sub + "destinations.faces?country=" + "" +"&amp;cid=" + #{bookingConversationController.conversation.id} + "";
+        }
+    </h:outputScript>
+
 </h:body>
 </html>
