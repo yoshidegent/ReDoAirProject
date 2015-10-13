@@ -2,13 +2,14 @@ package com.realdolmen.redoairproject.controller;
 
 import com.realdolmen.redoairproject.entities.Booking;
 import com.realdolmen.redoairproject.entities.Country;
+import com.realdolmen.redoairproject.entities.Passenger;
 import com.realdolmen.redoairproject.entities.Trip;
+import com.realdolmen.redoairproject.persistence.BookingRepository;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
 
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -26,8 +27,13 @@ public class BookingConversationController implements Serializable
     private TripController tripController;
 
     @Inject
+    private LoginController loginController;
+
+    @Inject
     private DestinationsController destinationsController;
 
+    @Inject
+    private BookingRepository bookingRepository;
     @Inject
     private CountryRepository countryRepository;
     @Inject
@@ -35,6 +41,8 @@ public class BookingConversationController implements Serializable
 
     private Country country = new Country();
     private Booking booking = new Booking();
+
+    private Passenger passenger;
 
     public String goBackToWorldMap()
     {
@@ -79,9 +87,15 @@ public class BookingConversationController implements Serializable
 
     public String goToTripPayement()
     {
-        tripController.setTrip(this.booking.getTrip());
-        tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
-        return "trippayment?faces-redirect=true";
+        if(passenger != null) {
+            tripController.setTrip(this.booking.getTrip());
+            tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
+            return "trippayment?faces-redirect=true";
+        }
+        else {
+            loginController.setDestinationPage("trippayment");
+            return "login?faces-redirect=true";
+        }
     }
 
     public String goBackToDestinations()
@@ -92,8 +106,22 @@ public class BookingConversationController implements Serializable
 
     public String goBackToTripDetail()
     {
-        destinationsController.setCountry(this.country);
+        tripController.setNumberOfPassengers(this.booking.getNumberOfPassengers());
+        tripController.setTrip(this.booking.getTrip());
         return "tripdetail?faces-redirect=true";
+    }
+
+    public String goToTripConfirmation()
+    {
+        if(passenger != null) {
+            booking.setCreditCardNumber(tripController.getCardNumber());
+            booking.setExpiryDate(tripController.getExpiryDate());
+
+            return "tripconfirmation?faces-redirect=true";
+        }
+        else {
+            return "login?faces-redirect=true";
+        }
     }
 
     public Conversation getConversation() {
@@ -118,5 +146,13 @@ public class BookingConversationController implements Serializable
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 }

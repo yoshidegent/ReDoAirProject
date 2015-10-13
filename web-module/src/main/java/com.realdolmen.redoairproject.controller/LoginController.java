@@ -14,6 +14,10 @@ import javax.inject.Named;
 @RequestScoped
 public class LoginController {
 
+    @Inject BookingConversationController bookingConversationController;
+
+    private String destinationPage;
+
     Passenger passenger = new Passenger();
     private User user;
     private String username;
@@ -31,7 +35,7 @@ public class LoginController {
     }
 
     public String logInUser() {
-        User user = userRepository.getUserByUsername(username);
+        user = userRepository.getUserByUsername(username);
 
         if (user == null) {
             feedbackMessage = "Username " + username + " was not found. Please register or try again.";
@@ -42,8 +46,13 @@ public class LoginController {
             {
                 if(user instanceof Partner || user instanceof ReDoEmployee)
                     return "flightsall";
-                else
-                    return "worldmap";
+                else {
+                    if(destinationPage.equals("trippayment")) {
+                        bookingConversationController.setPassenger(passenger);
+                        return bookingConversationController.goToTripPayement();
+                    }
+                    else return "worldmap";
+                }
             }
             else
             {
@@ -86,5 +95,11 @@ public class LoginController {
         this.passenger = passenger;
     }
 
+    public String getDestinationPage() {
+        return destinationPage;
+    }
 
+    public void setDestinationPage(String destinationPage) {
+        this.destinationPage = destinationPage;
+    }
 }

@@ -65,7 +65,6 @@
                     </h:panelGrid>
 
                     <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}" value="Continue to payment">
-                        <f:param name="tripid" value="#{tripController.trip.id}"/>
                         <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                     </h:commandLink>
                 </h:form>
