@@ -29,7 +29,9 @@ public class UserImporter {
         User evelyne = new Passenger("evelynewauters", "password");
         evelyne = entityManager.merge(evelyne);
 
-        User partner = new Partner("Partner", "password");
+
+        Partner partner = new Partner("Partner", "password");
+        partner.setAirline(entityManager());
         partner = entityManager.merge(partner);
 
         User reDoEmployee = new ReDoEmployee("ReDoEmployee", "password");
