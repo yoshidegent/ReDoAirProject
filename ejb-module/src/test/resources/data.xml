@@ -1,6 +1,6 @@
 <dataset>
     <airline id="1" name="SN Brussels Airline" discountVolumeSales="0.08"
-             imageUrl="http://logos.skyscnr.com/images/airlines/small/SN.png"/>
+             imageUrl="http://tinyurl.com/ov2j6my"/>
     <airline id="2" name="Qatar Airlines" discountVolumeSales="0.05"
              imageUrl="http://logos.skyscnr.com/images/airlines/small/QR.png"/>
     <airline id="3" name="Aer Lingus" discountVolumeSales="0.03"
