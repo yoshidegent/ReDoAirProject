@@ -53,7 +53,6 @@ public class LoginController implements Serializable{
                     return "flightsall";
                 else {
 
-                    bookingConversationController.setPassenger(passenger);
                     return bookingConversationController.loginRouting();
                 }
             }

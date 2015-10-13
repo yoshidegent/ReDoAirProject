@@ -79,6 +79,7 @@ public class FlightController {
     }
 
     public String createOrUpdateFlight() {
+
         flight.setAirline(airlineRepository.findById(airlineId));
         flight.setOrigin(airportRepository.findById(airportOriginId));
         flight.setDestination(airportRepository.findById(airportDestinationId));
@@ -91,8 +92,14 @@ public class FlightController {
         flight.setDepartureTime(time);
         flight.setDepartureDate(date);
         flight.setId(flightId);
-        flightRepository.createOrUpdate(flight);
-        return "flightsall";
+        if (flight.getId() == null) {
+            flightRepository.createOrUpdate(flight);
+            return "flightsall";
+        }   else    {
+            flightRepository.createOrUpdate(flight);
+            return "flightdetail?faces-redirect=true&id=" + flight.getId();
+        }
+
     }
 
     public Flight getFlight(int id)   {

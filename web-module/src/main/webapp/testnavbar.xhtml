@@ -1,12 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title></title>
-</head>
-<body>
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" style="padding-left: 37rem">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#{request.contextPath}/worldmap.faces">Home</a>
+            </div>
 
-</body>
-</html>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><h:link outcome="/flightsall.xhtml">Available flights <span
+                            class="sr-only">(current)</span></h:link></li>
+                    <li><h:link outcome="/flightcreate.xhtml">Add a flight</h:link></li>
+
+                    <!--<li>-->
+                    <!--<div class="ui-widget">-->
+                    <!--<input id="tags"/>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                </ul>
+
+                <h:selectOneMenu value="#{tripController.selectedDestination}">
+                    <f:selectItems value="#{tripController.retrieveAllDestinations()}" var="dest" itemValue="#{dest}"
+                                   itemLabel="#{dest}"/>
+                </h:selectOneMenu>
+                <button id="yolo">Submit</button>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#{request.contextPath}/login.faces">Login</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+        <!--<h:outputScript>-->
+        <!--window.addEventListener("load", init, false);-->
+        <!--function init() {-->
+        <!--document.getElementById('yolo').addEventListener('click', goToDest, false);-->
+        <!--}-->
+        <!--function goToDest(event) {-->
+        <!--var arr = window.location.href.split('/');-->
+        <!--var sub = window.location.href.substr(0, window.location.href.length - arr[arr.length - 1].length);-->
+        <!--#{bookingConversationController.startConversation()};-->
+        <!--var yolo = "#{tripController.selectedDestination}";-->
+        <!--console.log(yolo);-->
+        <!--window.location.href = sub + "destinations.faces?country=" + yolo +"&amp;cid=" + #{bookingConversationController.conversation.id} + "";-->
+        <!--}-->
+        <!--</h:outputScript>-->
+
+    </nav>
+</ui:composition>
