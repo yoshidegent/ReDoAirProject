@@ -32,17 +32,25 @@
                     <h:panelGrid columns="2">
 
                         <h:outputLabel value="username"/>
-                        <h:inputText value="#{loginController.username}"/>
+                        <h:inputText id="usernameInput" value="#{loginController.username}">
+                            <f:validateLength minimum="2" maximum="8" />
+                        </h:inputText>
 
                         <h:outputLabel value="password"/>
-                        <h:inputSecret value="#{loginController.password}"/>
+                        <h:inputSecret value="#{loginController.password}">
+                            <f:validateLength minimum="5" maximum="15" />
+                        </h:inputSecret>
 
                         <h:outputLabel value=""/>
                         <h:commandButton action="#{loginController.logInUser()}" value="Log in">
                             <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                         </h:commandButton>
                     </h:panelGrid>
+                    <h:message for="usernameInput" style="color:red" ></h:message>
                 </h:form>
+
+
+
 
 
             </div>
@@ -62,7 +70,9 @@
                         <h:outputLabel value=""/>
 
                         <h:outputLabel value="password"/>
-                        <h:inputSecret value="#{passengerController.passwordToHash}"/>
+                        <h:inputSecret value="#{passengerController.passwordToHash}">
+                                    <f:validateLength minimum="5" maximum="15" />
+                        </h:inputSecret>
 
                         <h:outputLabel value=""/>
                         <h:outputLabel value=""/>

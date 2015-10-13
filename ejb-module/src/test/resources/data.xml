@@ -1,6 +1,6 @@
 <dataset>
     <airline id="1" name="SN Brussels Airline" discountVolumeSales="0.08"
-             imageUrl="http://logos.skyscnr.com/images/airlines/small/SN.png"/>
+             imageUrl="http://tinyurl.com/ov2j6my"/>
     <airline id="2" name="Qatar Airlines" discountVolumeSales="0.05"
              imageUrl="http://logos.skyscnr.com/images/airlines/small/QR.png"/>
     <airline id="3" name="Aer Lingus" discountVolumeSales="0.03"
@@ -417,7 +417,7 @@
 
 
 
-    <!--trip to Iceland-->
+    <!--trip to Tanzania-->
     <flight id="539" airline_id="4" origin_id="1" destination_id="22" pricePerSeat="260"
             flightDurationInMinutes="400" departureDate="2015-10-20"
             departureTime="10:40:00"
@@ -435,7 +435,6 @@
 
     <trip_flight Trip_id="15" flightList_id="539"/>
     <trip_flight Trip_id="15" flightList_id="540"/>
-
 
 
     <!--trip to China-->

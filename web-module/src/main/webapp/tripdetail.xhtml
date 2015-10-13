@@ -17,7 +17,7 @@
     <ui:include src="/navbar.xhtml"/>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-7">
                 <h:form>
                     <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}" />
                 </h:form>
@@ -25,23 +25,46 @@
                 <h1><h:outputText value="Trip to #{trip.endDestination.address.city}"/></h1>
                 <h3>#{trip.hotel}</h3>
             </div>
-            <div class="col-md-3" style="background-color: lightgrey">
-                <h6>Price calculations</h6>
+            <div class="col-md-5" style="background-color: lightgrey">
+                <h3>Price calculations</h3>
                 <h:form style="margin: auto" class="form-horizontal">
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="3">
                         <h:outputLabel value="Number of passengers"/>
                         <h:outputText id="passengercount" value="#{bookingConversationController.booking.numberOfPassengers}" />
+                        <h:outputText value=""/>
+
                         <h:outputLabel value="Total price for flights"/>
-                        <h:outputText value="€ #{trip.calculatePriceForAllFlights()} / passenger"/>
+                        <h:outputText value="#{trip.calculatePriceForAllFlights()}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                        <h:outputText value="/ passenger"/>
+
                         <h:outputLabel value="#{trip.hotel}"/>
-                        <h:outputText value="€ #{trip.priceHotelPerNightPerPerson} / night"/>
+                        <h:outputText value="#{trip.priceHotelPerNightPerPerson}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                        <h:outputText value="/ night"/>
+
                         <h:outputLabel value="Total #{trip.hotel}"/>
-                        <h:outputText value="€ #{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()} / passenger"/>
+                        <h:outputText value="#{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                        <h:outputText value="/ passenger"/>
+
                         <h:outputLabel value="Total per passenger"/>
-                        <h:outputText value="€ #{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()} / passenger"/>
-                        <hr /><h:outputText value=""/>
+                        <h:outputText value="#{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()}">
+                                <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputText>
+                        <h:outputText value="/ passenger"/>
+
+                        <h:outputText value=""/>
+                        <h:outputText value=""/>
+                        <h:outputText value=""/>
+
                         <h:outputLabel value="Total:"/>
-                        <h:outputText value="€ #{tripController.calculateTotalPriceForTrip()}"/>
+                        <h:outputLabel value="#{tripController.calculateTotalPriceForTrip()}">
+                            <f:convertNumber currencySymbol="€ " type="currency"/>
+                        </h:outputLabel>
                     </h:panelGrid>
                     <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}" value="Continue to payment">
                         <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>

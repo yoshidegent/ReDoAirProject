@@ -47,17 +47,17 @@ public class TripController implements Serializable {
 
     public boolean checkCreditCardIsValid()
     {
-        List<Flight> flightList = trip.getFlightList();
-        for (Flight flight : flightList) {
-            flight.setSeatsAvailable(flight.getSeatsAvailable() - numberOfPassengers);
-        }
-
-        Booking booking = new Booking();
-        booking.setNumberOfPassengers(numberOfPassengers);
-        booking.setCreditCardNumber(cardNumber);
-        booking.setExpiryDate(expiryDate);
-        booking.setTrip(trip);
-        bookingRepository.createOrUpdate(booking);
+//        List<Flight> flightList = trip.getFlightList();
+//         for (Flight flight : flightList) {
+//            flight.setSeatsAvailable(flight.getSeatsAvailable() - numberOfPassengers);
+//        }
+//
+//        Booking booking = new Booking();
+//        booking.setNumberOfPassengers(numberOfPassengers);
+//        booking.setCreditCardNumber(cardNumber);
+//        booking.setExpiryDate(expiryDate);
+//        booking.setTrip(trip);
+//        bookingRepository.createOrUpdate(booking);
 
         if(!expiryDate.isEmpty())
         {
@@ -67,7 +67,7 @@ public class TripController implements Serializable {
                 try
                 {
                     int month = Integer.parseInt(dateValues[0]);
-                    int year = Integer.parseInt(dateValues[0]);
+                    int year = Integer.parseInt(dateValues[1]+2000);
 
                     LocalDate expire = LocalDate.of(year, month, 1);
 
