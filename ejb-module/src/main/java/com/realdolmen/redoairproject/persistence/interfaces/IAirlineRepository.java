@@ -7,5 +7,5 @@ import java.util.List;
 
 @Remote
 public interface IAirlineRepository extends IGenericRepository<Airline> {
-    public Airline findAirlineByName(String name);
+    public Airline findAirlineByNameCaseInsensitive(String name);
 }
