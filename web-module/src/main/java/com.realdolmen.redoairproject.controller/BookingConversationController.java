@@ -1,11 +1,9 @@
 package com.realdolmen.redoairproject.controller;
 
-import com.realdolmen.redoairproject.entities.Booking;
-import com.realdolmen.redoairproject.entities.Country;
-import com.realdolmen.redoairproject.entities.Passenger;
-import com.realdolmen.redoairproject.entities.Trip;
+import com.realdolmen.redoairproject.entities.*;
 import com.realdolmen.redoairproject.persistence.BookingRepository;
 import com.realdolmen.redoairproject.persistence.CountryRepository;
+import com.realdolmen.redoairproject.persistence.FlightRepository;
 import com.realdolmen.redoairproject.persistence.TripRepository;
 
 import javax.enterprise.context.Conversation;
@@ -14,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 @Named
@@ -38,6 +37,8 @@ public class BookingConversationController implements Serializable
     private CountryRepository countryRepository;
     @Inject
     private TripRepository tripRepository;
+    @Inject
+    private FlightRepository flightRepository;
 
     private Country country = new Country();
     private Booking booking = new Booking();
@@ -121,11 +122,28 @@ public class BookingConversationController implements Serializable
     public String goToTripConfirmation()
     {
         if(passenger != null) {
-            booking.setCreditCardNumber(tripController.getCardNumber());
-            booking.setExpiryDate(tripController.getExpiryDate());
+            if(tripController.checkCreditCardIsValid()) {
+                booking.setCreditCardNumber(tripController.getCardNumber());
+                booking.setExpiryDate(tripController.getExpiryDate());
 
+                booking.setPassenger(passenger);
 
-            return "tripconfirmation?faces-redirect=true";
+                List<Flight> flightList = booking.getTrip().getFlightList();
+
+                for(Flight f : flightList)
+                {
+                    f.setSeatsAvailable(f.getSeatsAvailable() - booking.getNumberOfPassengers());
+                    flightRepository.createOrUpdate(f);
+                }
+
+                bookingRepository.createOrUpdate(booking);
+
+                return "tripconfirmation?faces-redirect=true";
+            }
+            else {
+                tripController.setErrorCreditCard("Invalid credit card date");
+                return "";
+            }
         }
         else {
             return "login?faces-redirect=true";

@@ -17,6 +17,8 @@ public class Booking extends AbstractEntity{
     private int numberOfPassengers;
     private String creditCardNumber;
     private String expiryDate;
+    @ManyToOne
+    private Passenger passenger;
 
     public Booking() {
     }
@@ -52,5 +54,13 @@ public class Booking extends AbstractEntity{
 
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 }

@@ -59,8 +59,9 @@
                             </p:panelGrid>
                         </p:dialog>
 
-                        <h:commandButton value="book your trip" action="#{tripController.bookTrip()}"/>
-                        <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
+                        <h:commandButton value="book your trip" action="#{bookingConversationController.goToTripConfirmation()}">
+                            <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
+                        </h:commandButton>
                     </h:panelGrid>
                 </h:form>
             </div>

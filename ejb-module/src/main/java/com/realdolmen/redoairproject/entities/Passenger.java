@@ -13,9 +13,6 @@ public class Passenger extends User {
     /**
      * Class fields
      */
-    @OneToMany
-    private List<Booking> booking;
-
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -45,13 +42,6 @@ public class Passenger extends User {
     /**
      * Getters & Setters
      */
-    public List<Booking> getBooking() {
-        return booking;
-    }
-
-    public void setBooking(List<Booking> booking) {
-        this.booking = booking;
-    }
 
     public String getFirstName() {
         return firstName;
