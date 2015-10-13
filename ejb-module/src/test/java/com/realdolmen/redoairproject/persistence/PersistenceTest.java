@@ -58,7 +58,10 @@ public class PersistenceTest{
         connection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY,
             new MySqlDataTypeFactory()); // Set factorytype in dbconfig to remove warning
 
+        UserImporter userImporter = new UserImporter();
+
         DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        userImporter.setPasswordForPartners(entityManagerFactory);
         connection.close();
     }
 

@@ -1,5 +1,5 @@
 <dataset>
-    <airline id="1" name="SN Brussels Airline" discountVolumeSales="0.08"
+    <airline id="1" name="SN Brussels Airlines" discountVolumeSales="0.08"
              imageUrl="http://tinyurl.com/ov2j6my"/>
     <airline id="2" name="Qatar Airlines" discountVolumeSales="0.05"
              imageUrl="http://logos.skyscnr.com/images/airlines/small/QR.png"/>
@@ -14,7 +14,9 @@
     <airline id="7" name="KLM" discountVolumeSales="0.03"
              imageUrl="http://logos.skyscnr.com/images/airlines/small/KL.png"/>
 
-
+    <partner id="1" username="PartnerBrusselsAirlines" airline_id="1"/>
+    <partner id="2" username="PartnerKLM" airline_id="7"/>
+    <partner id="3" username="PartnerEmirates" airline_id="6"/>
 
 
     <address id="1" city="Zaventem" country_countryCode="BE"/>

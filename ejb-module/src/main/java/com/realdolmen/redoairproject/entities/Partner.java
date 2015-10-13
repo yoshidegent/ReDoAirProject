@@ -5,28 +5,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Partner extends User{
+public class Partner extends User {
 
+
+    /**
+     * Class fields
+     */
     @ManyToOne
     private Airline airline;
 
+    /**
+     * Constructor
+     */
     public Partner(String username, String password) {
         super(username, password);
     }
 
     public Partner() {
-        super("","");
+        super("", "");
     }
-    /**
-     * Class fields
-     */
-
-
-
-    /**
-     * Constructor
-     */
-
 
 
     /**

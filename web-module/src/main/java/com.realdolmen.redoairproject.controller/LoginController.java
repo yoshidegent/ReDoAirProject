@@ -40,6 +40,8 @@ public class LoginController implements Serializable{
     }
 
     public String logInUser() {
+
+
         user = userRepository.getUserByUsername(username);
 
         if (user == null) {
@@ -61,7 +63,6 @@ public class LoginController implements Serializable{
                 feedbackMessage = "The password and username did not match. Please register or try again.";
                 return "";
             }
-
         }
     }
 

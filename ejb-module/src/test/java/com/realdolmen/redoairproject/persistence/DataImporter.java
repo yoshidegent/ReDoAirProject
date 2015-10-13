@@ -24,4 +24,6 @@ public class DataImporter
         UserImporter userImporter = new UserImporter();
         userImporter.importUsers(entityManagerFactory);
     }
+
+
 }

@@ -1,6 +1,9 @@
 package com.realdolmen.redoairproject.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Airline extends AbstractEntity {
@@ -11,6 +14,7 @@ public class Airline extends AbstractEntity {
     private String name;
     private double discountVolumeSales;
     private String imageUrl;
+
 
 
     /**
@@ -66,4 +70,6 @@ public class Airline extends AbstractEntity {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
 }
