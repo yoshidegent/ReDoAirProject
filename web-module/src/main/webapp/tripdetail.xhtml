@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -13,81 +12,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <script>
-        $( document ).ready(function(){
-            $("#passengercount").on('change', function(){
-                console.log("change");
-            });
-        });
-    </script>
-
 </h:head>
-
-
 <h:body>
     <ui:include src="/navbar.xhtml"/>
-
     <div class="container">
-
         <div class="row">
             <div class="col-md-9">
-
-
                 <h:form>
                     <h:commandLink value="Back" action="#{bookingConversationController.goBackToDestinations()}" />
                 </h:form>
-
-
-
-                <c:set var="trip" value="#{tripController.retrieveTripById(param['id'])}"/>
-
+                <c:set var="trip" value="#{tripController.trip}"/>
                 <h1><h:outputText value="Trip to #{trip.endDestination.address.city}"/></h1>
-
                 <h3>#{trip.hotel}</h3>
             </div>
             <div class="col-md-3" style="background-color: lightgrey">
                 <h6>Price calculations</h6>
-
-
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
-
                         <h:outputLabel value="Number of passengers"/>
-                        <h:outputText id="passengercount" value="#{tripController.numberOfPassengers}" />
-
+                        <h:outputText id="passengercount" value="#{bookingConversationController.booking.numberOfPassengers}" />
                         <h:outputLabel value="Total price for flights"/>
                         <h:outputText value="€ #{trip.calculatePriceForAllFlights()} / passenger"/>
-
                         <h:outputLabel value="#{trip.hotel}"/>
                         <h:outputText value="€ #{trip.priceHotelPerNightPerPerson} / night"/>
-
                         <h:outputLabel value="Total #{trip.hotel}"/>
                         <h:outputText value="€ #{trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()} / passenger"/>
-
                         <h:outputLabel value="Total per passenger"/>
                         <h:outputText value="€ #{(trip.priceHotelPerNightPerPerson * trip.calculateDurationOfTrip()) + trip.calculatePriceForAllFlights()} / passenger"/>
-
                         <hr /><h:outputText value=""/>
                         <h:outputLabel value="Total:"/>
                         <h:outputText value="€ #{tripController.calculateTotalPriceForTrip()}"/>
-
                     </h:panelGrid>
-
-                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}">
-                        Continue
-                        <f:param name="id" value="#{trip.id}"/>
+                    <h:commandLink outcome="trippayment" action="#{bookingConversationController.goToTripPayement()}" value="Continue to payment">
                         <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
+                        <f:param name="resultpage" value="trippayment"/>
                     </h:commandLink>
                 </h:form>
-
-
-
-
             </div>
         </div>
-
-
     </div>
 </h:body>
 </html>
