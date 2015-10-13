@@ -5,7 +5,6 @@ import com.realdolmen.redoairproject.entities.Passenger;
 import com.realdolmen.redoairproject.entities.ReDoEmployee;
 import com.realdolmen.redoairproject.entities.User;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -29,8 +28,21 @@ public class UserImporter {
         User evelyne = new Passenger("evelynewauters", "password");
         evelyne = entityManager.merge(evelyne);
 
-        User partner = new Partner("Partner", "password");
-        partner = entityManager.merge(partner);
+        AirlineRepository airlineRepository = new AirlineRepository();
+
+        airlineRepository.entityManager = entityManager;
+
+        Partner partnerBrussels = new Partner("PartnerBA", "password");
+        partnerBrussels.setAirline(airlineRepository.findAirlineByNameCaseInsensitive("SN Brussels Airline"));
+        partnerBrussels = entityManager.merge(partnerBrussels);
+
+        Partner partnerKlm = new Partner("PartnerKLM", "password");
+        partnerKlm.setAirline(airlineRepository.findAirlineByNameCaseInsensitive("KLM"));
+        partnerKlm = entityManager.merge(partnerKlm);
+
+        Partner partnerEmirates = new Partner("PartnerEmirates", "password");
+        partnerEmirates.setAirline(airlineRepository.findAirlineByNameCaseInsensitive("KLM"));
+        partnerEmirates = entityManager.merge(partnerEmirates);
 
         User reDoEmployee = new ReDoEmployee("ReDoEmployee", "password");
         reDoEmployee = entityManager.merge(reDoEmployee);
