@@ -32,6 +32,7 @@ public class FlightController {
     long airportOriginId;
     Date departureDate;
     String departureTime;
+    long overriddenPrice;
     @ManagedProperty("#{param.id}")
     private Long flightId;
     @ManagedProperty("#{param.empId}")
@@ -71,6 +72,13 @@ public class FlightController {
     public boolean checkUserIsPartner()
     {
         return user instanceof Partner;
+    }
+
+    public String overridePriceForEmployees()   {
+        flight = flightRepository.findById(flightId);
+        flight.overridePriceForPassenger(overriddenPrice);
+        flightRepository.createOrUpdate(flight);
+        return "flightdetail?faces-redirect=true&id=" + flight.getId();
     }
 
     public boolean checkUserIsReDoEmployee()
@@ -126,7 +134,6 @@ public class FlightController {
             flightRepository.createOrUpdate(flight);
             return "flightdetail?faces-redirect=true&id=" + flight.getId();
         }
-
     }
 
     public Flight getFlightById(int id)   {
@@ -190,6 +197,14 @@ public class FlightController {
 
     public Long getFlightId() {
         return flightId;
+    }
+
+    public long getOverriddenPrice() {
+        return overriddenPrice;
+    }
+
+    public void setOverriddenPrice(long overriddenPrice) {
+        this.overriddenPrice = overriddenPrice;
     }
 
     public String getUsername() {

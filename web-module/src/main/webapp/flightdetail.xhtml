@@ -108,7 +108,7 @@
                                     <h:outputLabel value="Price for Passenger/seat"/>
                                 </p:column>
                                 <p:column><h:outputText
-                                        value="#{flight.calculatePriceforPassenger()}">
+                                        value="#{flight.getPricePerSeatForPassenger()}">
                                     <f:convertNumber currencySymbol="€ " type="currency"/>
                                 </h:outputText></p:column>
                             </p:row>
@@ -131,7 +131,17 @@
 
                             <p:row>
                                 <p:column colspan="2" style="padding: 0;">
-                                    <h:link outcome="flightupdate">
+                                    <h:link outcome="flightupdatepartner">
+                                        <span class="glyphicon glyphicon-pencil"
+                                              style="width:100%; height: 100%; background-color:#5bc0de; text-align: center; margin: 0; padding: 0;"/>
+                                        <f:param name="id" value="#{flight.id}"/>
+                                    </h:link>
+                                </p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column colspan="2" style="padding: 0;">
+                                    <h:link outcome="flightupdateemployee">
                                         <span class="glyphicon glyphicon-pencil"
                                               style="width:100%; height: 100%; background-color:#5bc0de; text-align: center; margin: 0; padding: 0;"/>
                                         <f:param name="id" value="#{flight.id}"/>
