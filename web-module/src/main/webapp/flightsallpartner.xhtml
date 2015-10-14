@@ -19,7 +19,7 @@
 </h:head>
 
 <h:body>
-    <ui:include src="/navbaremployee.xhtml"/>
+    <ui:include src="/navbarpartner.xhtml"/>
 
     <f:metadata>
         <f:viewParam name="username" value="#{flightController.username}"/>
@@ -89,24 +89,13 @@
             </h:column>
 
 
-            <c:if test="#{flightController.checkUserIsNoPartner(flightController.user)}">
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Price for passenger"/>
-                    </f:facet>
-                    <h:outputText value="#{flight.pricePerSeatForPassenger}">
-                        <f:convertNumber currencySymbol="€ " type="currency"/>
-                    </h:outputText>
-                </h:column>
-            </c:if>
-
 
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="details"/>
                 </f:facet>
 
-                <h:link outcome="flightdetail">
+                <h:link outcome="flightdetailpartner">
                     <span class="btn btn-info btn-sm glyphicon glyphicon-zoom-in"/>
                     <f:param name="id" value="#{flight.id}"/>
                 </h:link>

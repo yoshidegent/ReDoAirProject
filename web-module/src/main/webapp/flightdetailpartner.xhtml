@@ -35,7 +35,7 @@
 </h:head>
 
 <h:body>
-    <ui:include src="/navbaremployee.xhtml"/>
+    <ui:include src="/navbarpartner.xhtml"/>
 
     <div class="container">
 
@@ -104,16 +104,6 @@
                             </p:row>
 
                             <p:row>
-                                <p:column>
-                                    <h:outputLabel value="Price for Passenger/seat"/>
-                                </p:column>
-                                <p:column><h:outputText
-                                        value="#{flight.getPricePerSeatForPassenger()}">
-                                    <f:convertNumber currencySymbol="€ " type="currency"/>
-                                </h:outputText></p:column>
-                            </p:row>
-
-                            <p:row>
                                 <p:column><h:outputLabel
                                         value="Seat threshold for discounts"/></p:column>
                                 <p:column><h:outputText
@@ -129,16 +119,16 @@
                                 </h:outputText></p:column>
                             </p:row>
 
-
                             <p:row>
                                 <p:column colspan="2" style="padding: 0;">
-                                    <h:link outcome="flightupdateemployee">
+                                    <h:link outcome="flightupdatepartner">
                                         <span class="glyphicon glyphicon-pencil"
                                               style="width:100%; height: 100%; background-color:#5bc0de; text-align: center; margin: 0; padding: 0;"/>
                                         <f:param name="id" value="#{flight.id}"/>
                                     </h:link>
                                 </p:column>
                             </p:row>
+
 
                         </p:panelGrid>
                     </div>
