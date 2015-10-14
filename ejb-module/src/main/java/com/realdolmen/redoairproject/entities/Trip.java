@@ -27,6 +27,8 @@ public class Trip extends AbstractEntity {
     @Transient
     private LocalDate endDate;
 
+    private String imageUrl;
+
     //@Transient
     //private int numberOfNights;
 
@@ -179,5 +181,13 @@ public class Trip extends AbstractEntity {
 
     public LocalDate getEndDate() {
         return calculateEndDate();
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -34,8 +34,8 @@
 
             <h:panelGrid columns="6" id="searchTripGrid">
 
+                <div style="margin: 5em 0">
                 <h:panelGroup>
-
                     <p:outputLabel for="from" value="From:"/>
                     <p:calendar id="from" value="#{destinationsController.from}"
                                 mindate="#{destinationsController.dateToday}" mode="inline">
@@ -43,7 +43,9 @@
                                 listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:calendar>
                 </h:panelGroup>
+                </div>
 
+                <div style="margin: 5em 2em 5em 2em">
                 <h:panelGroup>
                     <p:outputLabel for="to" value="To:"/>
                     <p:calendar event="select" id="to" value="#{destinationsController.to}"
@@ -52,14 +54,17 @@
                                 listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:calendar>
                 </h:panelGroup>
+                </div>
 
+                <div style="margin: 5em 2em">
                 <h:panelGroup>
-                    <p:outputLabel for="inputNumberOfPassengers" value="Number of passengers:"/>
+                    <p:outputLabel style="margin:0 2em" for="inputNumberOfPassengers" value="Number of passengers:"/>
                     <p:spinner id="inputNumberOfPassengers" value="#{destinationsController.numberOfPassengers}">
                         <p:ajax process="searchTripGrid" event="change"
                                 listener="#{destinationsController.formChange()}" update="trips"/>
                     </p:spinner>
                 </h:panelGroup>
+                </div>
 
             </h:panelGrid>
 
@@ -83,9 +88,9 @@
         </h:form>
 
 
-        <div>
+        <div style="margin-top: 5rem">
 
-            <h:dataTable class="table table-hover" id="trips"
+            <h:dataTable class="table table-hover .table-responsive" id="trips"
                          value="#{destinationsController.tripsForDestination}" var="trip">
 
                 <h:column>

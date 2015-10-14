@@ -4,12 +4,9 @@ import com.realdolmen.redoairproject.converter.LocalDatePersistenceConverter;
 import com.realdolmen.redoairproject.converter.LocalTimePersistenceConverter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Entity
 public class Flight extends AbstractEntity {
@@ -32,7 +29,7 @@ public class Flight extends AbstractEntity {
     private int flightDurationInMinutes;
 
     @NotNull
-    private int seatCapacity;
+    private Integer seatCapacity;
     @NotNull
     private int seatsAvailable;
     @NotNull

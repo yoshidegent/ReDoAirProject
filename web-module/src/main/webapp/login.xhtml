@@ -26,19 +26,20 @@
 
         <div class="row">
             <div class="col-sm-4">
+                <div style="padding: 2rem; background-color: #5bc0de; border-radius: 25px;">
                <h3> Log in </h3>
                 <h:form style="margin: auto" class="form-horizontal">
 
                     <h:panelGrid columns="2">
 
-                        <h:outputLabel value="username"/>
-                        <h:inputText id="usernameInput" value="#{loginController.username}" />
+                        <h:outputLabel style="padding: 2rem" value="username"/>
+                        <h:inputText class="form-control" id="usernameInput" value="#{loginController.username}" />
 
-                        <h:outputLabel value="password"/>
-                        <h:inputSecret value="#{loginController.password}" />
+                        <h:outputLabel style="padding: 2rem" value="password"/>
+                        <h:inputSecret class="form-control" value="#{loginController.password}" />
 
-                        <h:outputLabel value=""/>
-                        <h:commandButton action="#{loginController.logInUser()}" value="Log in">
+                        <h:outputLabel style="padding: 2rem" value=""/>
+                        <h:commandButton class="btn-default btn-lg btn-block" action="#{loginController.logInUser()}" value="Log in">
                             <f:param name="cid" value="#{bookingConversationController.conversation.id}"/>
                         </h:commandButton>
                     </h:panelGrid>
@@ -48,56 +49,41 @@
 
 
 
-
+                </div>
             </div>
-            <div class="col-sm-8" style="background-color: darkgrey">
+            <div class="col-sm-8" >
+                <div style="padding: 2rem; background-color: darkgrey; border-radius: 25px;">
+
                 <h3>If you're a new traveller with Redo Air, register here</h3>
+
                 <h:form style="margin: auto" class="form-horizontal">
                     <h:panelGrid columns="2">
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
 
+                        <h:outputLabel style="padding: 2rem" value="username"/>
+                        <h:inputText class="form-control" value="#{passengerController.passenger.username}"/>
 
-                        <h:outputLabel value="username"/>
-                        <h:inputText value="#{passengerController.passenger.username}"/>
-
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
-
-                        <h:outputLabel value="password"/>
-                        <h:inputSecret value="#{passengerController.passwordToHash}">
+                        <h:outputLabel style="padding: 2rem" value="password"/>
+                        <h:inputSecret class="form-control" value="#{passengerController.passwordToHash}">
                                     <f:validateLength minimum="5" maximum="15" />
                         </h:inputSecret>
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
+                        <h:outputLabel style="padding: 2rem" value="first Name"/>
+                        <h:inputText class="form-control" value="#{passengerController.passenger.firstName}"/>
 
-                        <h:outputLabel value="First Name"/>
-                        <h:inputText value="#{passengerController.passenger.firstName}"/>
+                        <h:outputLabel style="padding: 2rem" value="last Name"/>
+                        <h:inputText class="form-control" value="#{passengerController.passenger.lastName}"/>
 
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
+                        <h:outputLabel style="padding: 2rem" value="email address"/>
+                        <h:inputText class="form-control" value="#{passengerController.passenger.emailAddress}"/>
 
-                        <h:outputLabel value="Last Name"/>
-                        <h:inputText value="#{passengerController.passenger.lastName}"/>
-
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
-
-                        <h:outputLabel value="email address"/>
-                        <h:inputText value="#{passengerController.passenger.emailAddress}"/>
-
-                        <h:outputLabel value=""/>
-                        <h:outputLabel value=""/>
-
-                        <h:outputLabel value=""/>
-                        <h:commandButton value="Register" action="#{passengerController.createPassenger}" />
+                        <h:outputLabel style="padding: 2rem" value=""/>
+                        <h:commandButton class="btn-default btn-lg btn-block" value="Register" action="#{passengerController.createPassenger}" />
                     </h:panelGrid>
 
 
                 </h:form>
-
+                </div>
             </div>
             <div>
                 <h:outputText value="#{loginController.feedbackMessage}" style="color:red"/>
