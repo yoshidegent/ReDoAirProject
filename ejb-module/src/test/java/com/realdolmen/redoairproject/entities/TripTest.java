@@ -89,4 +89,14 @@ public class TripTest {
         //the last flight will arrive the next day, so the duration is 1 day longer in reality
         Assert.assertEquals(duration +1 , trip.calculateDurationOfTrip());
     }
+
+    @Test
+    public void TestCalculateBeginAndEndDateReturnsNullWhenTripContainsNoFlights()
+    {
+        Trip trip = new Trip();
+        List<Flight> flightList = new ArrayList<>();
+        trip.setFlightList(flightList);
+        Assert.assertEquals(null, trip.calculateBeginDate());
+        Assert.assertEquals(null, trip.calculateEndDate());
+    }
 }

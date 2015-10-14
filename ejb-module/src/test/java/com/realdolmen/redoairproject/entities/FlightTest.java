@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
 
+import static org.junit.Assert.*;
+
 public class FlightTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(FlightTest.class);
@@ -24,13 +26,13 @@ public class FlightTest {
     @Test
     public void testOverridePriceForPassenger()
     {
-        Assert.assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
+        assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
         double overriddenPrice = 200.0;
         flight.overridePriceForPassenger(overriddenPrice);
         //Check the price for the passenger has changed
-        Assert.assertEquals(overriddenPrice, flight.getPricePerSeatForPassenger(), GAMMA);
+        assertEquals(overriddenPrice, flight.getPricePerSeatForPassenger(), GAMMA);
         //Check if original price is not overridden
-        Assert.assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
+        assertEquals(flight.getPricePerSeat(), PRICE_PER_SEAT, GAMMA);
     }
 
     @Test
@@ -57,7 +59,7 @@ public class FlightTest {
             LOG.debug("Profit: " + profit);
 
             //Checkif the calculation is right
-            Assert.assertEquals(profit, flight.calculateTotalProfitMargin(), GAMMA);
+            assertEquals(profit, flight.calculateTotalProfitMargin(), GAMMA);
         }
     }
 
@@ -67,7 +69,7 @@ public class FlightTest {
     {
         final double price = 50;
         flight.setPricePerSeat(-price);
-        Assert.assertEquals(price, flight.getPricePerSeat(), GAMMA);
+        assertEquals(price, flight.getPricePerSeat(), GAMMA);
     }
 
 
@@ -76,7 +78,7 @@ public class FlightTest {
     {
         final double price = 50;
         flight.overridePriceForPassenger(-price);
-        Assert.assertEquals(price, flight.getPricePerSeatForPassenger(), GAMMA);
+        assertEquals(price, flight.getPricePerSeatForPassenger(), GAMMA);
     }
 
 
@@ -85,7 +87,20 @@ public class FlightTest {
     {
         flight.setDepartureTime(LocalTime.of(23, 00));
         flight.setFlightDurationInMinutes(120);
-        Assert.assertEquals(LocalTime.of(01,00), flight.calculateArrivalTime());
+        assertEquals(LocalTime.of(01, 00), flight.calculateArrivalTime());
+    }
+
+    @Test
+    public void testcalculatePriceforPassenger()
+    {
+        assertEquals(PRICE_PER_SEAT*1.05,flight.calculatePriceforPassenger(), GAMMA);
+    }
+
+    @Test
+    public void testgetPricePerSeatForPassengerWhenNull()
+    {
+        Flight flight = new Flight(500);
+        assertEquals(500*1.05, flight.getPricePerSeatForPassenger(), GAMMA);
     }
 }
 

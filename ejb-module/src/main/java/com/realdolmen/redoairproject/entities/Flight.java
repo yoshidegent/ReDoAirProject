@@ -29,7 +29,7 @@ public class Flight extends AbstractEntity {
     private int flightDurationInMinutes;
 
     @NotNull
-    private Integer seatCapacity;
+    private int seatCapacity;
     @NotNull
     private int seatsAvailable;
     @NotNull

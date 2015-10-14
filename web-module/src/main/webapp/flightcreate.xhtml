@@ -18,7 +18,14 @@
 
 <h:body>
 
-    <ui:include src="/navbar.xhtml"/>
+    <ui:include src="/navbarpartner.xhtml"/>
+
+
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{flightController.createNewFlight()}"/>
+    </f:metadata>
+
 
 
     <div class="container">
@@ -29,7 +36,7 @@
             <h:panelGrid columns="2">
 
                 <h:outputLabel value="airline"/>
-                <h:selectOneMenu value="#{flightController.airlineId}">
+                <h:selectOneMenu class="form-control" value="#{flightController.airlineId}">
                     <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
                 </h:selectOneMenu>
 
@@ -38,7 +45,7 @@
 
 
                 <h:outputLabel value="origin"/>
-                <h:selectOneMenu value="#{flightController.airportOriginId}">
+                <h:selectOneMenu class="form-control" value="#{flightController.airportOriginId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
@@ -47,51 +54,54 @@
 
 
                 <h:outputLabel value="destination"/>
-                <h:selectOneMenu value="#{flightController.airportDestinationId}">
+                <h:selectOneMenu class="form-control" value="#{flightController.airportDestinationId}">
                     <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
                 </h:selectOneMenu>
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
-                <p:outputLabel for="popup" value="departure date:" />
+                <p:outputLabel  for="popup" value="departure date:" />
                 <p:calendar id="popup" value="#{flightController.departureDate}" />
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
                 <h:outputLabel value="seating capacity"/>
-                <h:inputText value="#{flightController.flight.seatCapacity}"/>
+                <h:inputText class="form-control" value="#{flightController.flight.seatCapacity}"/>
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
                 <h:outputLabel value="seats available"/>
-                <h:inputText value="#{flightController.flight.seatsAvailable}"/>
+                <h:inputText class="form-control" value="#{flightController.flight.seatsAvailable}"/>
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
                 <h:outputLabel value="price per seat"/>
-                <h:inputText value="#{flightController.flight.pricePerSeat}"/>
+                <h:inputText class="form-control" value="#{flightController.flight.pricePerSeat}"/>
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
-                <h:outputLabel value="seats threshold for discount"/>
-                <h:inputText value="#{flightController.flight.seatsThresholdForDiscount}"/>
+                <h:outputLabel  value="seats threshold for discount"/>
+                <h:inputText class="form-control" value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
                 <h:outputLabel value="departure time:"/>
-                <h:inputText value="#{flightController.departureTime}"/>
+                <p:inputMask class="form-control" id="time" value="#{flightController.departureTime}"
+                             mask="99:99"/>
+
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
                 <h:outputLabel value="duration in minutes"/>
-                <h:inputText value="#{flightController.flight.flightDurationInMinutes}"/>
+                <h:inputText class="form-control" value="#{flightController.flight.flightDurationInMinutes}"/>
+
 
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>

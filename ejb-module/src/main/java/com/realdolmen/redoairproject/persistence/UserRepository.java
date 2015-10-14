@@ -9,10 +9,11 @@ import com.realdolmen.redoairproject.persistence.interfaces.IUserRepository;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 
 @LocalBean
 @Stateless
-public class UserRepository extends GenericRepository<User> implements IUserRepository
+public class UserRepository extends GenericRepository<User> implements IUserRepository, Serializable
 {
     public User getUserByUsername(String username)
     {

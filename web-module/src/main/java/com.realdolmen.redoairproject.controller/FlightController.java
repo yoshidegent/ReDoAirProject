@@ -8,11 +8,13 @@ import com.realdolmen.redoairproject.persistence.UserRepository;
 import org.primefaces.event.SelectEvent;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,8 +23,8 @@ import java.util.Date;
 import java.util.List;
 
 @Named
-@RequestScoped
-public class FlightController {
+@SessionScoped
+public class FlightController implements Serializable {
     /**
      * Class fields
      */
@@ -67,6 +69,15 @@ public class FlightController {
         airportOriginId = flight.getOrigin().getId();
         departureDate = Date.from(flight.getDepartureDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
         departureTime = flight.getDepartureTime().toString();
+    }
+
+    public void createNewFlight()   {
+        flight = new Flight();
+        long airportDestinationId = 0;
+        long airportOriginId = 0;
+        Date departureDate = null;
+        String departureTime= null;
+        long overriddenPrice = 0;
     }
 
     public boolean checkUserIsNoPartner(User user)
@@ -124,12 +135,35 @@ public class FlightController {
         flight.setId(flightId);
         if (flight.getId() == null) {
             flightRepository.createOrUpdate(flight);
-            return "flightsall";
+            return "flightsallpartner";
         }   else    {
             flightRepository.createOrUpdate(flight);
             return "flightdetail?faces-redirect=true&id=" + flight.getId();
         }
     }
+
+    public String createOrUpdateFlightForPartner()  {
+        flight.setAirline(airlineRepository.findById(airlineId));
+        flight.setOrigin(airportRepository.findById(airportOriginId));
+        flight.setDestination(airportRepository.findById(airportDestinationId));
+
+        LocalDate date = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        String[] split = departureTime.split(":");
+        LocalTime time = LocalTime.of(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+
+        flight.setDepartureTime(time);
+        flight.setDepartureDate(date);
+        flight.setId(flightId);
+        if (flight.getId() == null) {
+            flightRepository.createOrUpdate(flight);
+            return "flightsallpartner";
+        }   else    {
+            flightRepository.createOrUpdate(flight);
+            return "flightdetailpartner?faces-redirect=true&id=" + flight.getId();
+        }
+    }
+
 
     public Flight getFlightById(int id)   {
         return flightRepository.findById((long) id);
@@ -223,13 +257,6 @@ public class FlightController {
         if(this.user instanceof Partner)
         {
             return this.retrieveFlightsByAirline(((Partner)user).getAirline());
-        }
-        else
-        {
-            if(this.user instanceof ReDoEmployee)
-            {
-                return this.retrieveAllFlights();
-            }
         }
 
         return null;

@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class LoginController implements Serializable{
 
     @Inject BookingConversationController bookingConversationController;
@@ -58,8 +58,12 @@ public class LoginController implements Serializable{
                         return "flightsall?faces-redirect=true&username=" + user.getUsername();
                 }
                 else {
-                    passenger = (Passenger) user;
-                    return bookingConversationController.loginRouting();
+                    if(bookingConversationController.getConversation().getId() == null) {
+                        return "worldmap";
+                    }   else {
+                        passenger = (Passenger) user;
+                        return bookingConversationController.loginRouting();
+                    }
                 }
             }
             else

@@ -8,12 +8,13 @@ import com.realdolmen.redoairproject.persistence.interfaces.IFlightRepository;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.List;
 
 
 @Stateless
 @LocalBean
-public class AirlineRepository extends GenericRepository<Airline> implements IAirlineRepository {
+public class AirlineRepository extends GenericRepository<Airline> implements IAirlineRepository, Serializable {
 
     public AirlineRepository() {
         super(Airline.class);

@@ -58,6 +58,8 @@
             <tr>
                 <td>
                     <div><ui:include src="/airplaneimage.xhtml"/></div>
+                    <h:outputLabel class="btn btn-info btn-block disabled" value="#{flight.seatsAvailable} from the #{flight.seatCapacity}  seats available"/>
+
                 </td>
 
                 <td>
@@ -114,7 +116,7 @@
                                 <p:column><h:outputLabel
                                         value="Discount for volume sales"/></p:column>
                                 <p:column><h:outputText
-                                        value="#{flight.airline.discountVolumeSales}">
+                                            value="#{flight.airline.discountVolumeSales}">
                                     <f:convertNumber type="percent"/>
                                 </h:outputText></p:column>
                             </p:row>
