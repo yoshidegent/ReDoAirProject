@@ -35,18 +35,13 @@
         <h:form style="margin: auto" class="form-horizontal">
             <h:panelGrid columns="2">
 
-                <h:outputLabel value="airline"/>
-                <h:selectOneMenu class="form-control" value="#{flightController.airlineId}">
-                    <f:selectItems value="#{flightController.retrieveAllAirlines()}" var="airline" itemValue="#{airline.id}" itemLabel="#{airline.name}" />
-                </h:selectOneMenu>
-
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
 
                 <h:outputLabel value="origin"/>
                 <h:selectOneMenu class="form-control" value="#{flightController.airportOriginId}">
-                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}, #{airport.address.country.country}" />
                 </h:selectOneMenu>
 
                 <h:outputLabel value=""/>
@@ -55,7 +50,7 @@
 
                 <h:outputLabel value="destination"/>
                 <h:selectOneMenu class="form-control" value="#{flightController.airportDestinationId}">
-                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}" />
+                    <f:selectItems value="#{flightController.retrieveAllAirports()}" var="airport" itemValue="#{airport.id}" itemLabel="#{airport.name}, #{airport.address.country.country}" />
                 </h:selectOneMenu>
 
                 <h:outputLabel value=""/>
@@ -85,7 +80,7 @@
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
 
-                <h:outputLabel  value="seats threshold for discount"/>
+                <h:outputLabel  value="seats threshold for discount: "/>
                 <h:inputText class="form-control" value="#{flightController.flight.seatsThresholdForDiscount}"/>
 
                 <h:outputLabel value=""/>
@@ -108,7 +103,7 @@
 
 
                 <h:outputLabel value=""/>
-                <h:commandButton value="add this flight" action="#{flightController.createOrUpdateFlight()}"/>
+                <h:commandButton value="add this flight" action="#{flightController.createFlightForPartner()}"/>
             </h:panelGrid>
 
             <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">

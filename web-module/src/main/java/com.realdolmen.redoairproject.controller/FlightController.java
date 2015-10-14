@@ -143,7 +143,7 @@ public class FlightController implements Serializable {
     }
 
     public String createOrUpdateFlightForPartner()  {
-        flight.setAirline(airlineRepository.findById(airlineId));
+        flight.setAirline(((Partner) user).getAirline());
         flight.setOrigin(airportRepository.findById(airportOriginId));
         flight.setDestination(airportRepository.findById(airportDestinationId));
 
@@ -157,12 +157,40 @@ public class FlightController implements Serializable {
         flight.setId(flightId);
         if (flight.getId() == null) {
             flightRepository.createOrUpdate(flight);
+            flight = new Flight();
             return "flightsallpartner";
         }   else    {
             flightRepository.createOrUpdate(flight);
             return "flightdetailpartner?faces-redirect=true&id=" + flight.getId();
         }
     }
+
+
+    public String createFlightForPartner()  {
+        flight.setId(null);
+        flight.setAirline(((Partner) user).getAirline());
+        flight.setOrigin(airportRepository.findById(airportOriginId));
+        flight.setDestination(airportRepository.findById(airportDestinationId));
+
+        LocalDate date = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        String[] split = departureTime.split(":");
+        LocalTime time = LocalTime.of(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+
+        flight.setDepartureTime(time);
+        flight.setDepartureDate(date);
+        flight.setId(flightId);
+        if (flight.getId() == null) {
+            flightRepository.createOrUpdate(flight);
+            flight = new Flight();
+            return "flightsallpartner";
+        }   else    {
+            flightRepository.createOrUpdate(flight);
+            return "flightdetailpartner?faces-redirect=true&id=" + flight.getId();
+        }
+    }
+
+
 
 
     public Flight getFlightById(int id)   {
